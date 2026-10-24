@@ -1,0 +1,2 @@
+import type { MetadataRoute } from 'next'; import { SITE } from '@/lib/site'; import { SEO_ROUTE_CONTRACTS } from '@/features/content-seo/data';
+export default function sitemap(): MetadataRoute.Sitemap { return SEO_ROUTE_CONTRACTS.filter((contract) => contract.indexable).map((contract)=>({ url:`${SITE.url}${contract.canonical}`, lastModified:new Date(), changeFrequency: contract.changeFrequency, priority:contract.priority })); }

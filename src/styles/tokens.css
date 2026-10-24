@@ -1,0 +1,40 @@
+:root {
+  /* Ported from the live Aports/Elementor source capture. */
+  --page: #f7f9fc;
+  --surface: #ffffff;
+  --soft: #e4f3f6;
+  --ink: #20203a;
+  --muted: #6d7184;
+  --brown: #1c1978;
+  --gold: #af6283;
+  --gold-soft: #efa758;
+  --indigo: #1c1978;
+  --mauve: #af6283;
+  --line: rgba(28, 25, 120, 0.13);
+  --line-gold: rgba(175, 98, 131, 0.35);
+  --success: #2f6b4f;
+  --error: #b94a48;
+
+  --font-sans: 'DM Sans', 'Roboto', Arial, Helvetica, sans-serif;
+  --font-display: 'DM Sans', 'Roboto', Arial, Helvetica, sans-serif;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  --container: 1240px;
+  --radius-sm: 3px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --shadow-card: 0 12px 40px rgba(28, 25, 120, 0.1);
+  --shadow-hero: 0 28px 80px rgba(28, 25, 120, 0.2);
+  --motion-fast: 240ms ease;
+}
