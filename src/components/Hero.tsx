@@ -13,7 +13,7 @@ export function Hero() {
           <p className="heroLead">Ideally located in Bahria Town Lahore, Aureum Mall &amp; Residences brings peaceful living, modern convenience and seamless connectivity together.</p>
           <div className="actions">
             <ButtonLink href="/about">Discover Aureum <span aria-hidden="true">↗</span></ButtonLink>
-            <ButtonLink href="/assets/aureum/Aureum-Project-Profile.pdf" variant="secondary" target="_blank" rel="noreferrer">Download profile</ButtonLink>
+            <ButtonLink href="/payment-plans" variant="secondary">Explore payment plan</ButtonLink>
           </div>
           <div className="heroProof" aria-label="Project information">
             <span><strong>25+</strong><small>Years of experience</small></span>

@@ -7,3 +7,7 @@ node_modules
 tsconfig.tsbuildinfo
 wordpress-source
 public/wordpress
+
+.vercel
+.env*
+!.env.example

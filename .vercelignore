@@ -1,0 +1,7 @@
+.vercel
+.next
+node_modules
+.env*
+wordpress-source
+public/wordpress
+public/assets/aureum/Aureum-Project-Profile.pdf

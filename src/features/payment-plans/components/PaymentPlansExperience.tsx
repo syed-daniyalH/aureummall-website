@@ -6,8 +6,6 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PAYMENT_CATEGORIES, PAYMENT_TERMS, SOURCE_PAYMENT_TABLES, type SourcePaymentRow, type SourcePaymentTable } from '../data';
 
-const PAYMENT_PLAN_SOURCE = '/assets/aureum/Aureum-Project-Profile.pdf';
-
 function formatPKR(value: number) {
   return `Rs ${new Intl.NumberFormat('en-PK').format(value)}`;
 }
@@ -79,10 +77,10 @@ export function PaymentPlansExperience() {
             <p>A structured, buyer-friendly plan for apartments, offices and shops: 10% at booking, 15% at confirmation, monthly installments, and 20% at completion.</p>
             <div className="actions">
               <ButtonLink href="#payment-workspace">View the HTML tables <span aria-hidden="true">↓</span></ButtonLink>
-              <ButtonLink href={PAYMENT_PLAN_SOURCE} target="_blank" rel="noreferrer" variant="secondary" className="onLight">Open project profile PDF <span aria-hidden="true">↗</span></ButtonLink>
+              <ButtonLink href="#payment-workspace" variant="secondary" className="onLight">Read the accessible plan <span aria-hidden="true">↓</span></ButtonLink>
             </div>
           </div>
-          <div className="paymentHeroStamp" aria-hidden="true"><span>HTML first / PDF supplemental</span><strong>07</strong></div>
+          <div className="paymentHeroStamp" aria-hidden="true"><span>HTML first / source verified</span><strong>07</strong></div>
         </div>
       </section>
       <section className="section paymentWorkspace" id="payment-workspace">
@@ -91,14 +89,14 @@ export function PaymentPlansExperience() {
             id="payment-heading"
             eyebrow="Payment plan details"
             title="The plan is readable without opening an image or PDF."
-            description="Review the published schedule in accessible HTML tables, with the project profile available as a downloadable reference."
+            description="Review the published schedule in accessible HTML tables designed for clear reading on every screen."
           />
           <div className="paymentCategoryBar" role="tablist" aria-label="Payment plan categories">
             {PAYMENT_CATEGORIES.map((item) => <button key={item.value} type="button" role="tab" aria-selected={category === item.value} onClick={() => setCategory(item.value)}>{item.label}</button>)}
           </div>
           <div className="sourcePaymentConflict" role="note">
             <Eyebrow>Important information</Eyebrow>
-            <p>Payment-plan amounts and terms are presented from the Aureum Project Profile PDF. Contact the project team for the latest availability and confirmation before making a decision.</p>
+            <p>Payment-plan amounts and terms are presented in HTML so they remain searchable and readable. Contact the project team for the latest availability and confirmation before making a decision.</p>
           </div>
           <div className="paymentPlanList">
             {tables.map((table) => <SourcePaymentTableView key={table.id} table={table} />)}
