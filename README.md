@@ -7,7 +7,8 @@ The site is one reusable platform divided into ten feature modules. See `src/fea
 ## Current scope
 
 - Website experience only.
-- CRM, sales automation, payment processing and private admin systems are not enabled.
+- Leads from every form are delivered to one webhook (`LEAD_WEBHOOK_URL`, e.g. a Google Sheet). See `docs/LEADS_SETUP.md`.
+- Payment processing and private admin systems are not enabled.
 - Public facts and media are maintained in the Next.js source and should be reviewed before release.
 
 ## Purpose
@@ -19,9 +20,9 @@ The site is one reusable platform divided into ten feature modules. See `src/fea
 ## Before publishing
 1. Review page copy and project facts with the management-approved source of truth.
 2. Keep `src/lib/property-data.ts` synchronized with the current approved project data.
-3. Keep contact delivery disabled until the final website contact workflow is explicitly approved.
-4. Add UTM persistence only if analytics is approved; add anti-spam/rate limiting before enabling any public POST route.
-5. Export current WordPress URLs and fill the redirect map in `next.config.mjs`.
+3. Set `LEAD_WEBHOOK_URL` / `LEAD_WEBHOOK_SECRET` in Vercel and send one real test lead (`docs/LEADS_SETUP.md`).
+4. Blog articles live in `src/features/news/posts.json` (39 migrated from WordPress) and render at `/news/<slug>`.
+5. Old WordPress URLs are redirected in `src/features/content-seo/redirects.mjs`; add any extra URL Search Console shows.
 6. Verify robots, sitemap, canonical URLs and Search Console after cutover.
 7. Run full unit, browser, accessibility and security QA.
 

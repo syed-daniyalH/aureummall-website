@@ -1,0 +1,4 @@
+import { WordPressPropertyPage } from '@/features/wordpress-conversion/components/WordPressPageLayouts';
+import { createRouteMetadata } from '@/features/content-seo/metadata';
+export const metadata = createRouteMetadata('/commercial-shops/ground-floor');
+export default function Page() { return <WordPressPropertyPage eyebrow="Commercial / ground floor" title="Ground floor shops at Aureum Mall." intro="Explore the ground floor retail pathway and request current shop information from the project team." image="/assets/aureum/payment-plans-07.jpg" imageAlt="Aureum Mall commercial project artwork" features={['Ground floor retail pathway', 'Visibility for everyday customer journeys', 'Current unit details shared by the team']} interest="commercial_shop" registerLabel="Ground floor shops" />; }

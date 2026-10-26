@@ -3,7 +3,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { NEWS_ITEMS } from '../data';
+import type { NewsCardItem } from '@/features/news/posts';
 import { NewsCardList } from './NewsCardList';
 
 type PropertyPageProps = {
@@ -76,11 +76,11 @@ export function WordPressGalleryPage() {
   );
 }
 
-export function WordPressNewsPage() {
+export function WordPressNewsPage({ items }: { items: readonly NewsCardItem[] }) {
   return (
     <>
-      <section className="wpInternalHero section"><div className="container wpSimpleHero"><Eyebrow>Blogs / Aureum insights</Eyebrow><h1>News, progress and useful project context.</h1><p>Follow Aureum Mall &amp; Residences through project updates, location information and payment-plan guidance.</p></div></section>
-      <section className="section wpNewsSection"><div className="container"><SectionHeading eyebrow="Latest from Aureum" title="Keep up with the project." description="Read the latest Aureum Mall &amp; Residences updates and useful information for your next step." /><NewsCardList items={NEWS_ITEMS} /></div></section>
+      <section className="wpInternalHero section"><div className="container wpSimpleHero"><Eyebrow>Blogs / Aureum insights</Eyebrow><h1>News &amp; Guides from Aureum Mall &amp; Residences</h1><p>Follow Aureum Mall &amp; Residences through project updates, location information and payment-plan guidance.</p></div></section>
+      <section className="section wpNewsSection"><div className="container"><SectionHeading eyebrow="Latest from Aureum" title="Keep up with the project." description="Read the latest Aureum Mall &amp; Residences updates and useful information for your next step." /><NewsCardList items={items} /></div></section>
     </>
   );
 }

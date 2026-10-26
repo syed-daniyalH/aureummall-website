@@ -5,6 +5,8 @@ export const SITE = {
   email: 'hello@aureummall.info',
   phoneDisplay: '(0322) 555 1121',
   phoneE164: '+923225551121',
+  /** WhatsApp number in international format without "+" (used for wa.me links). */
+  whatsappNumber: '923225551121',
   location: 'Bahria Town, Ring Road Interchange, Lahore',
 } as const;
 

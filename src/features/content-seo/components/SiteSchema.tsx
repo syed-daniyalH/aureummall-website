@@ -2,11 +2,26 @@ import { SITE } from '@/lib/site';
 
 const SITE_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
-  url: SITE.url,
-  description: SITE.tagline,
-  inLanguage: 'en',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE.url}#organization`,
+      name: SITE.name,
+      url: SITE.url,
+      email: SITE.email,
+      telephone: SITE.phoneE164,
+      logo: `${SITE.url}/assets/aureum/Logo.png`,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.url}#website`,
+      name: SITE.name,
+      url: SITE.url,
+      description: SITE.tagline,
+      inLanguage: 'en',
+      publisher: { '@id': `${SITE.url}#organization` },
+    },
+  ],
 };
 
 export function SiteSchema() {

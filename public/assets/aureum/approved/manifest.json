@@ -1,0 +1,788 @@
+[
+ {
+  "name": "renders/aureum-exterior-ring-road-interchange.webp",
+  "width": 2400,
+  "height": 1340,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/View-02-scaled.jpg"
+ },
+ {
+  "name": "og/og-default.jpg",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/View-02-scaled.jpg"
+ },
+ {
+  "name": "renders/aureum-exterior-day-view.webp",
+  "width": 1670,
+  "height": 942,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/aureumslider-2.png"
+ },
+ {
+  "name": "renders/aureum-commercial-exterior.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/01-commercial-featured-aureum-mall-ring-road-lahore1.jpg"
+ },
+ {
+  "name": "renders/aureum-render-b76d.webp",
+  "width": 1672,
+  "height": 941,
+  "source": "https://aureummall.info/wp-content/uploads/2026/09/b76d013a-7d8f-43d2-9662-4054ebd2b378.png"
+ },
+ {
+  "name": "renders/aureum-render-screenshot-0803.webp",
+  "width": 1800,
+  "height": 1001,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Screenshot-2026-08-03-at-5.16.58-PM-scaled.jpg"
+ },
+ {
+  "name": "brochures/aureum-residential-brochure-cover.webp",
+  "width": 1100,
+  "height": 1467,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/2-scaled.png"
+ },
+ {
+  "name": "brochures/aureum-offices-brochure-cover.webp",
+  "width": 1100,
+  "height": 1467,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/4-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-basement-level-1-plan.webp",
+  "width": 2000,
+  "height": 1500,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/basement-level-1-24-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-ground-floor-plan.webp",
+  "width": 2000,
+  "height": 1423,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/Ground-floor-render-plan-24-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-first-floor-plan.webp",
+  "width": 2000,
+  "height": 1423,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/1st-floor-render-plan-24-2-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-second-floor-plan.webp",
+  "width": 2000,
+  "height": 2000,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/2ND-FLOOR-11-07-2026-10-10.jpg"
+ },
+ {
+  "name": "floor-plans/aureum-1-bed-apartment-render.webp",
+  "width": 1800,
+  "height": 1349,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/1-apartment-floor-render-option-01-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-1-bed-apartment-floor-plan.webp",
+  "width": 1500,
+  "height": 2120,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/1-bed-apartment-a4-scaled.png"
+ },
+ {
+  "name": "floor-plans/aureum-2-bed-apartment-floor-plan.webp",
+  "width": 1500,
+  "height": 2120,
+  "source": "https://aureummall.info/wp-content/uploads/2023/03/2-bed-apartment-a4-scaled.png"
+ },
+ {
+  "name": "payment-plans/payment-plan-01.webp",
+  "width": 1400,
+  "height": 1979,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Payment-plans-01-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-02.webp",
+  "width": 1400,
+  "height": 1979,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Payment-plans-02-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-06.webp",
+  "width": 1400,
+  "height": 981,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Payment-plans-06-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-07.webp",
+  "width": 1400,
+  "height": 1028,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Payment-plans-07-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-08.webp",
+  "width": 1400,
+  "height": 1238,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Payment-plans-08-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-09.webp",
+  "width": 1400,
+  "height": 1053,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Payment-plans-09-scaled.jpg"
+ },
+ {
+  "name": "payment-plans/payment-plan-10.webp",
+  "width": 1400,
+  "height": 1980,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Payment-plans-10-scaled.jpg"
+ },
+ {
+  "name": "team/aureum-sales-team.webp",
+  "width": 1600,
+  "height": 1279,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/IMG_0619-scaled.jpg"
+ },
+ {
+  "name": "team/mian-ashraf.webp",
+  "width": 1400,
+  "height": 788,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/mian-ashraf-scaled.jpg"
+ },
+ {
+  "name": "team/mian-waqas.webp",
+  "width": 1000,
+  "height": 800,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/mian-waqas.png"
+ },
+ {
+  "name": "team/wali-nasir.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Wali-Nasir-scaled.png"
+ },
+ {
+  "name": "team/umaima-ahsan.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Umaima-Ahsan-scaled.png"
+ },
+ {
+  "name": "team/tayyab-rabbani.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Tayyab-Rabbani.jpeg"
+ },
+ {
+  "name": "team/saqib-ali-rao.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Saqib-Ali-Rao-scaled.png"
+ },
+ {
+  "name": "team/rimsha-khan.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Rimsha-khan-scaled.png"
+ },
+ {
+  "name": "team/muhammad-ali-humayun.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Muhammad-Ali-Humayun-scaled.png"
+ },
+ {
+  "name": "team/khadijah-khan.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Khadijah-Khan-scaled.png"
+ },
+ {
+  "name": "team/afsshan-raza.webp",
+  "width": 700,
+  "height": 933,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Afsshan-Raza-scaled.png"
+ },
+ {
+  "name": "partners/abd-traders.webp",
+  "width": 535,
+  "height": 51,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/ABD-TRADERS-golden.png"
+ },
+ {
+  "name": "partners/zavi.webp",
+  "width": 440,
+  "height": 180,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/Zavi.png"
+ },
+ {
+  "name": "partners/awami-associates.webp",
+  "width": 415,
+  "height": 367,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/awami-associates-logo.png"
+ },
+ {
+  "name": "partners/rabt.webp",
+  "width": 600,
+  "height": 215,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/RABT-LOGO-Transparent.png"
+ },
+ {
+  "name": "partners/group-23.webp",
+  "width": 409,
+  "height": 233,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/Group-23.png"
+ },
+ {
+  "name": "partners/brick-build.webp",
+  "width": 503,
+  "height": 180,
+  "source": "https://aureummall.info/wp-content/uploads/2024/08/Brick-build.png"
+ },
+ {
+  "name": "icons/favicon-source.png",
+  "width": 512,
+  "height": 512,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/favico-01.png"
+ },
+ {
+  "name": "location/aureum-location-map.webp",
+  "width": 1492,
+  "height": 1054,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/map.png"
+ },
+ {
+  "name": "events/event-1381.webp",
+  "width": 1080,
+  "height": 1350,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/751563479_122111370405325578_405939354230616702_n.jpg"
+ },
+ {
+  "name": "events/event-1380.webp",
+  "width": 1080,
+  "height": 1350,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/751361396_122111370381325578_2773370860945235774_n.jpg"
+ },
+ {
+  "name": "events/event-1370.webp",
+  "width": 1080,
+  "height": 1350,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/751737910_122111370399325578_8247242616622325862_n.jpg"
+ },
+ {
+  "name": "events/event-1322.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/753164169_122111537613325578_3721341713607127111_n.jpg"
+ },
+ {
+  "name": "events/event-1321.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/749652465_122111012295325578_838322082875204464_n.jpg"
+ },
+ {
+  "name": "events/event-1320.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/749301399_122110578669325578_8426389226378266115_n.jpg"
+ },
+ {
+  "name": "events/event-1319.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/748883049_122110748517325578_5640840944335417061_n.jpg"
+ },
+ {
+  "name": "events/event-1318.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/746295017_122110279707325578_1342269552510742050_n.jpg"
+ },
+ {
+  "name": "events/event-1317.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/746256695_122110256079325578_8403639254551014217_n.jpg"
+ },
+ {
+  "name": "events/event-1316.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/745545610_122110256277325578_5288161593925566284_n.jpg"
+ },
+ {
+  "name": "events/event-1315.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/745276043_122110256205325578_5960779077516051594_n.jpg"
+ },
+ {
+  "name": "events/event-1314.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/745045963_122110279725325578_1838512889645856444_n.jpg"
+ },
+ {
+  "name": "events/event-1313.webp",
+  "width": 1224,
+  "height": 1000,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/739548325_122109288975325578_1695153166675548642_n.jpg"
+ },
+ {
+  "name": "events/event-1312.webp",
+  "width": 1224,
+  "height": 1000,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/739243585_122109150135325578_7285949516705651209_n.jpg"
+ },
+ {
+  "name": "events/event-1311.webp",
+  "width": 1224,
+  "height": 1000,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/738616346_122109215583325578_1117418670610954218_n.jpg"
+ },
+ {
+  "name": "events/event-1310.webp",
+  "width": 1224,
+  "height": 1000,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/738593946_122109150123325578_3335859959959427482_n.jpg"
+ },
+ {
+  "name": "events/event-1309.webp",
+  "width": 1400,
+  "height": 1144,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/738593707_122109062787325578_4836819972377711999_n.jpg"
+ },
+ {
+  "name": "events/event-1308.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/738552438_122109022545325578_3128883712815802044_n.jpg"
+ },
+ {
+  "name": "events/event-1307.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/738158318_122108928933325578_969893860792000981_n.jpg"
+ },
+ {
+  "name": "events/event-1306.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/737875523_122108835081325578_5664858119598747518_n.jpg"
+ },
+ {
+  "name": "events/event-1305.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/733209849_122108445153325578_7958832205816978879_n.jpg"
+ },
+ {
+  "name": "events/event-1303.webp",
+  "width": 1224,
+  "height": 1080,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/733019693_122108273691325578_7841331570223228208_n.jpg"
+ },
+ {
+  "name": "squares/square-1462.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/6666.jpg"
+ },
+ {
+  "name": "squares/square-1461.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/5555.jpg"
+ },
+ {
+  "name": "squares/square-1460.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/4444.jpg"
+ },
+ {
+  "name": "squares/square-1459.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/3333.jpg"
+ },
+ {
+  "name": "squares/square-1458.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/2222.jpg"
+ },
+ {
+  "name": "squares/square-1457.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/1111.jpg"
+ },
+ {
+  "name": "squares/square-1456.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/999.jpg"
+ },
+ {
+  "name": "squares/square-1455.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/888.jpg"
+ },
+ {
+  "name": "squares/square-1454.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/777.jpg"
+ },
+ {
+  "name": "squares/square-1453.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/666.jpg"
+ },
+ {
+  "name": "squares/square-1452.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/555.jpg"
+ },
+ {
+  "name": "squares/square-1451.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/444.jpg"
+ },
+ {
+  "name": "squares/square-1432.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/333.jpg"
+ },
+ {
+  "name": "squares/square-1431.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/222.jpg"
+ },
+ {
+  "name": "squares/square-1430.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/111.jpg"
+ },
+ {
+  "name": "squares/square-1429.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/99.jpg"
+ },
+ {
+  "name": "squares/square-1428.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/88.jpg"
+ },
+ {
+  "name": "squares/square-1427.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/77.jpg"
+ },
+ {
+  "name": "squares/square-1426.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/66.jpg"
+ },
+ {
+  "name": "squares/square-1425.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/55.png"
+ },
+ {
+  "name": "squares/square-1424.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/44.png"
+ },
+ {
+  "name": "squares/square-1423.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/33.png"
+ },
+ {
+  "name": "squares/square-1422.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/22.png"
+ },
+ {
+  "name": "squares/square-1421.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/11.png"
+ },
+ {
+  "name": "squares/square-1407.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/5.png"
+ },
+ {
+  "name": "squares/square-1406.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/4.png"
+ },
+ {
+  "name": "squares/square-1405.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/3.png"
+ },
+ {
+  "name": "squares/square-1404.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/2.png"
+ },
+ {
+  "name": "squares/square-1403.webp",
+  "width": 500,
+  "height": 500,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/1.png"
+ },
+ {
+  "name": "blog/studio-one-bedroom-or-two-bedroom-choosing-the-right-apartment-for-you.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/2-768x1024.png"
+ },
+ {
+  "name": "blog/own-or-rent-why-more-lahore-businesses-are-buying-their-office.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/4-768x1024.png"
+ },
+ {
+  "name": "blog/why-the-ring-road-interchange-is-a-smart-address-for-your-business.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/10/01-commercial-featured-aureum-mall-ring-road-lahore1.jpg"
+ },
+ {
+  "name": "blog/aureum-mall-residences-groundbreaking-on-1-october-2026-the-future-takes-shape.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/09/b76d013a-7d8f-43d2-9662-4054ebd2b378-1024x576.png"
+ },
+ {
+  "name": "blog/aureum-mall-residences-location-ring-road.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Aureum-Mall-Residences-Location.jpg"
+ },
+ {
+  "name": "blog/aureum-mall-residences-payment-plan.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Aureum-Mall-Residences-Payment-Plan.jpg"
+ },
+ {
+  "name": "blog/aureum-mall-residences-project-guide.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Aureum-Mall-Residences-1.jpg"
+ },
+ {
+  "name": "blog/aureum-mall-residences-lifestyle-destination.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Aureum-Mall-Residences.jpg"
+ },
+ {
+  "name": "blog/apartment-resale-value-tips.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/apartment-resale.jpg"
+ },
+ {
+  "name": "blog/mixed-use-projects-lahore-urban-living.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/mixed-use-projects-Lahore.jpg"
+ },
+ {
+  "name": "blog/bahria-town-ring-road-property-values.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Bahria-town-ring-road.jpg"
+ },
+ {
+  "name": "blog/apartment-buying-guide-checklist.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/apartment-buying-guide.jpg"
+ },
+ {
+  "name": "blog/real-estate-mistakes-property-buyers.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Real-Estate-Mistakes.jpg"
+ },
+ {
+  "name": "blog/commercial-investment-long-term-wealth.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/commercial-investment.jpg"
+ },
+ {
+  "name": "blog/high-rise-investment-guide.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/High-Rise-Investment.jpg"
+ },
+ {
+  "name": "blog/apartment-security-features.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/apartment-security.jpg"
+ },
+ {
+  "name": "blog/smart-apartment-features.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/smart-apartment.jpg"
+ },
+ {
+  "name": "blog/bahria-town-lifestyle-guide.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Bahria-Town-Lifestyle.jpg"
+ },
+ {
+  "name": "blog/office-spaces-lahore-modern-commercial-towers.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/08/Office-Spaces-Lahore.jpg"
+ },
+ {
+  "name": "blog/property-appreciation-factors.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Property-Appreciation.jpg"
+ },
+ {
+  "name": "blog/real-estate-trends-lahore-2026.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Real-estate-trends-Lahore.jpg"
+ },
+ {
+  "name": "blog/complete-lifestyle.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/lifestyle.png"
+ },
+ {
+  "name": "blog/food-business-mixed-use-projects.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Food-Business-1024x683.png"
+ },
+ {
+  "name": "blog/roi-apartments-pakistan.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/ROI-apartments-1.png"
+ },
+ {
+  "name": "blog/apartment-financing-installment-plans.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Apartment-Financing-1024x683.png"
+ },
+ {
+  "name": "blog/investment-guide-lahore.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/investment-guide-lahore-1-1024x571.png"
+ },
+ {
+  "name": "blog/aureum-mall-residences-grand-launch.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/grand-launch-1-1024x571.png"
+ },
+ {
+  "name": "blog/amenities-in-apartments-property-value.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/amenities-in-apartments-1-1024x576.png"
+ },
+ {
+  "name": "blog/family-apartments-buying-guide.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Family-Apartments-1-1024x576.png"
+ },
+ {
+  "name": "blog/commercial-outlets-high-rise-benefits.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/commercial-outlets-1024x573.png"
+ },
+ {
+  "name": "blog/luxury-apartments-lahore-features.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Luxury-Apartments-Lahore-1024x576.png"
+ },
+ {
+  "name": "blog/bahria-town-investment-guide.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/investment-guide-1024x576.png"
+ },
+ {
+  "name": "blog/rental-income-lahore-apartments.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/rental-income-1024x576.png"
+ },
+ {
+  "name": "blog/apartment-investment-pakistan-roi.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/apartment-investment-pakistan-1-1024x576.png"
+ },
+ {
+  "name": "blog/food-courts-lahore-property-value.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Food-Courts-Lahore-1-1024x683.png"
+ },
+ {
+  "name": "blog/mixed-use-development-benefits.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Mixed-Use-Development-1-1024x682.png"
+ },
+ {
+  "name": "blog/commercial-property-bahria-town-lahore.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Commercial-Property-Bahria-Town-1-1024x683.png"
+ },
+ {
+  "name": "blog/high-rise-apartments-lahore.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/High-Rise-Apartments-Lahore-1024x683.png"
+ },
+ {
+  "name": "blog/buying-apartments-bahria-town-lahore.webp",
+  "width": 1200,
+  "height": 630,
+  "source": "https://aureummall.info/wp-content/uploads/2026/07/Apartments-in-Bahria-Town-Lahore-1024x683.png"
+ }
+]

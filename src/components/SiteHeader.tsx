@@ -6,6 +6,8 @@ import { PRIMARY_NAV } from '@/lib/site';
 import { BrandMark } from '@/components/ui/BrandMark';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { SITE } from '@/lib/site';
+import { track } from '@/lib/analytics';
+import { ANALYTICS_EVENTS } from '@/features/content-seo/data';
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +29,7 @@ export function SiteHeader() {
         </button>
         <nav id="primary-navigation" aria-label="Primary navigation" className={`navLinks ${isOpen ? 'isOpen' : ''}`}>
           {PRIMARY_NAV.map((item) => <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>{item.label}</Link>)}
-          <span className="headerCall"><small>Call the experts</small><a href={`tel:${SITE.phoneE164}`}>{SITE.phoneDisplay}</a></span>
+          <span className="headerCall"><small>Call the experts</small><a href={`tel:${SITE.phoneE164}`} onClick={() => track(ANALYTICS_EVENTS.callClick, { placement: 'header' })}>{SITE.phoneDisplay}</a></span>
           <ButtonLink variant="nav" href="/apartments" onClick={() => setIsOpen(false)}>Explore Residences</ButtonLink>
         </nav>
       </div>

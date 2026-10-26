@@ -1,0 +1,4 @@
+import { WordPressPropertyPage } from '@/features/wordpress-conversion/components/WordPressPageLayouts';
+import { createRouteMetadata } from '@/features/content-seo/metadata';
+export const metadata = createRouteMetadata('/apartments/1-bed');
+export default function Page() { return <WordPressPropertyPage eyebrow="Apartments / 1 bed" title="One bedroom apartments at Aureum." intro="Explore a one bedroom apartment pathway designed around comfort, convenience and a connected address." image="/assets/aureum/payment-plans-02.jpg" imageAlt="Aureum Mall and Residences project artwork" features={['One bedroom living pathway', 'Payment information in accessible tables', 'Availability confirmed directly by the team']} interest="apartment" registerLabel="One bedroom apartments" />; }

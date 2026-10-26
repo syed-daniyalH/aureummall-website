@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
-import type { NewsItem } from '../data';
+import type { NewsCardItem } from '@/features/news/posts';
 
 type NewsCardListProps = {
-  items: readonly NewsItem[];
+  items: readonly NewsCardItem[];
 };
 
 export function NewsCardList({ items }: NewsCardListProps) {
@@ -11,12 +11,12 @@ export function NewsCardList({ items }: NewsCardListProps) {
     <div className="wpNewsList">
       {items.map((item, index) => (
         <article className="wpNewsCard" key={item.slug}>
-          <span className="wpNewsIndex">0{index + 1}</span>
+          <span className="wpNewsIndex" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
           <div>
             <Eyebrow>{item.date}</Eyebrow>
-            <h2>{item.title}</h2>
+            <h2><Link href={item.href}>{item.title}</Link></h2>
             <p>{item.summary}</p>
-            <Link href={item.href}>{item.cta} <span aria-hidden="true">↗</span></Link>
+            <Link href={item.href} aria-label={`${item.cta}: ${item.title}`}>{item.cta} <span aria-hidden="true">↗</span></Link>
           </div>
         </article>
       ))}

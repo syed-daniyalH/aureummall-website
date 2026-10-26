@@ -23,8 +23,8 @@ export function Hero() {
         </div>
         <div className="heroVisual" aria-label="Aureum Mall project profile">
           <div className="heroVisualFrame">
-            <Image src="/assets/aureum/hero-film-poster.jpg" alt="Aureum Mall project film preview showing a colourful indoor recreation space" fill priority sizes="(max-width: 900px) 90vw, 520px" />
-            <span className="visualLabel">Aureum / project film</span><span className="visualLine" /><span className="visualCaption">The perfect blend of serenity and luxury.</span>
+            <Image src="/assets/aureum/approved/renders/aureum-exterior-ring-road-interchange.webp" alt="Aureum Mall and Residences exterior at the Ring Road Interchange" fill priority sizes="(max-width: 900px) 90vw, 520px" />
+            <span className="visualLabel">Aureum / exterior render</span><span className="visualLine" /><span className="visualCaption">The perfect blend of serenity and luxury.</span>
           </div>
         </div>
       </div>

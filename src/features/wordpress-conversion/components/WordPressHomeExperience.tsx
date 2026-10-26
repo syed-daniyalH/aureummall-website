@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { NEWS_ITEMS } from '../data';
+import type { NewsCardItem } from '@/features/news/posts';
 import { NewsCardList } from './NewsCardList';
 
 const FLOOR_PLANS = [
@@ -46,7 +46,7 @@ const PROJECT_STATS = [
   ['98%', 'Success Rates'],
 ] as const;
 
-export function WordPressHomeExperience() {
+export function WordPressHomeExperience({ latestNews }: { latestNews: readonly NewsCardItem[] }) {
   const [activeFloor, setActiveFloor] = useState<(typeof FLOOR_PLANS)[number]['label']>(FLOOR_PLANS[0].label);
   const selectedFloor = FLOOR_PLANS.find((floor) => floor.label === activeFloor) ?? FLOOR_PLANS[0];
 
@@ -118,7 +118,7 @@ export function WordPressHomeExperience() {
       <section className="wpNewsSection section" aria-labelledby="wp-news-heading">
         <div className="container">
           <SectionHeading id="wp-news-heading" eyebrow="Latest / project context" title="Keep up with Aureum." description="Read the latest project updates, location information and payment-plan guidance for Aureum Mall &amp; Residences." />
-          <NewsCardList items={NEWS_ITEMS} />
+          <NewsCardList items={latestNews} />
         </div>
       </section>
 
