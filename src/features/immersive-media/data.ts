@@ -18,7 +18,7 @@ export const VIRTUAL_TOUR = {
   url: 'https://360-aureum-virtual.vercel.app/',
   poster: '/assets/aureum/approved/renders/aureum-exterior-day-view.webp',
   posterAlt: 'Aureum Mall & Residences exterior render, the starting point of the 360° tour',
-  note: 'AI-assisted 360° concepts based on the architects’ perspective images. Surroundings, furnishings and connections between spaces are illustrative, not an approved floor plan. Confirm current layouts with the sales team.',
+  note: 'Artist’s impression: 360° concept views based on the architects’ perspective images. Surroundings, furnishings and connections between spaces are illustrative, not an approved floor plan. Confirm current layouts with the sales team.',
 } as const;
 
 export const MEDIA_PRINCIPLES = [
