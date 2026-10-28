@@ -11,3 +11,6 @@ public/wordpress
 .vercel
 .env*
 !.env.example
+
+# Original WordPress image archive (12 MB), kept locally only
+source-archive

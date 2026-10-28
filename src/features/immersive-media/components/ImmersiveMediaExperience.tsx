@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PROJECT_MEDIA, MEDIA_PRINCIPLES, type ImmersiveMediaAsset } from '../data';
 import { MediaAssetCard } from './MediaAssetCard';
 import { MediaLightbox } from './MediaLightbox';
+import { VirtualTourEmbed } from './VirtualTourEmbed';
 
 function MediaRegister({ assets, onOpen }: { assets: readonly ImmersiveMediaAsset[]; onOpen: (asset: ImmersiveMediaAsset) => void }) {
   return <div className="mediaGallery">{assets.map((asset) => <MediaAssetCard key={asset.id} asset={asset} onOpen={() => onOpen(asset)} />)}</div>;
@@ -26,10 +27,20 @@ export function ImmersiveMediaExperience() {
           <div>
             <Eyebrow>Project media</Eyebrow>
             <h1>Let the space become familiar before the visit.</h1>
-            <p>Explore Aureum Mall &amp; Residences through project artwork, payment-plan visuals and floor plans.</p>
-            <ButtonLink href="#media-workspace">Open the project gallery <span aria-hidden="true">↓</span></ButtonLink>
+            <p>Walk through Aureum Mall &amp; Residences in a 360° virtual tour, then explore the project artwork, payment-plan visuals and floor plans.</p>
+            <div className="mediaHeroActions">
+              <ButtonLink href="#virtual-tour">Start the 360° tour <span aria-hidden="true">↓</span></ButtonLink>
+              <ButtonLink href="#media-workspace" variant="secondary">Open the project gallery</ButtonLink>
+            </div>
           </div>
-          <div className="mediaHeroStamp" aria-hidden="true"><span>Images / plans / context</span><strong>06</strong></div>
+          <div className="mediaHeroStamp" aria-hidden="true"><span>360° tour / images / plans</span><strong>06</strong></div>
+        </div>
+      </section>
+
+      <section className="section tourSection" id="virtual-tour" aria-labelledby="tour-heading">
+        <div className="container">
+          <SectionHeading id="tour-heading" eyebrow="360° virtual tour" title="Look around before you visit." description="Drag or swipe to look in every direction, then follow the markers from the street-level arrival into the mall, residences and lifestyle spaces." />
+          <VirtualTourEmbed placement="immersive_media" />
         </div>
       </section>
 

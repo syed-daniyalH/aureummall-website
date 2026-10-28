@@ -35,7 +35,7 @@ export function UnitFinderExperience() {
             <p>Choose the part of Aureum Mall &amp; Residences that fits your plans. Contact the team for the latest availability, pricing and next steps.</p>
             <ButtonLink href="/contact">Talk to the Aureum team <span aria-hidden="true">↗</span></ButtonLink>
           </div>
-          <div className="wpInternalHeroImage"><Image src="/assets/aureum/payment-plans-02.jpg" alt="Aureum Mall and Residences project profile artwork" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <div className="wpInternalHeroImage"><Image src="/assets/aureum/approved/payment-plans/payment-plan-02.webp" alt="Aureum Mall and Residences project profile artwork" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
         </div>
       </section>
 

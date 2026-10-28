@@ -5,6 +5,7 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { WhatsAppLink } from '@/components/WhatsAppLink';
 import { JsonLd } from '@/features/content-seo/components/JsonLd';
+import { pageTitle } from '@/features/content-seo/metadata';
 import { formatPostDate, getAllPosts, getPost, getRelatedPosts, publishedIso } from '@/features/news/posts';
 import { SITE } from '@/lib/site';
 
@@ -21,22 +22,22 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const post = getPost(slug);
   if (!post) return {};
   const path = `/news/${post.slug}`;
+  const title = post.seoTitle ?? post.title;
   return {
-    // Titles that already carry the brand are used as-is so the brand is not repeated.
-    title: post.title.includes('Aureum') ? { absolute: post.title } : post.title,
+    title: pageTitle(title),
     description: post.description,
     alternates: { canonical: path },
     robots: { index: true, follow: true },
     openGraph: {
       type: 'article',
-      title: post.title,
+      title,
       description: post.description,
       url: `${SITE.url}${path}`,
       siteName: SITE.name,
       publishedTime: publishedIso(post),
       locale: 'en_PK',
     },
-    twitter: { card: 'summary_large_image', title: post.title, description: post.description },
+    twitter: { card: 'summary_large_image', title, description: post.description },
   };
 }
 

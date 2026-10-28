@@ -47,7 +47,7 @@ export function WordPressAboutPage() {
       <section className="wpInternalHero section">
         <div className="container wpInternalHeroGrid">
           <div><Eyebrow>About Aureum Mall &amp; Residences</Eyebrow><h1>A destination shaped around serenity, luxury and connection.</h1><p>Aureum Mall &amp; Residences brings apartments, commercial spaces, food courts and offices together at Bahria Town, Ring Road Interchange, Lahore.</p><ButtonLink href="/building-explorer">Explore the building <span aria-hidden="true">↗</span></ButtonLink></div>
-          <div className="wpInternalHeroImage"><Image src="/assets/aureum/payment-plans-02.jpg" alt="Aureum Mall and Residences project building" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <div className="wpInternalHeroImage"><Image src="/assets/aureum/approved/payment-plans/payment-plan-02.webp" alt="Aureum Mall and Residences project building" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
         </div>
       </section>
       <section className="section wpAboutSection">
@@ -59,11 +59,11 @@ export function WordPressAboutPage() {
 }
 
 const GALLERY_ASSETS = [
-  { src: '/assets/aureum/payment-plans-02.jpg', alt: 'Aureum Mall project profile artwork', label: 'Project profile' },
-  { src: '/assets/aureum/payment-plans-10.jpg', alt: 'Aureum Mall payment plan artwork', label: 'Payment plans' },
-  { src: '/assets/aureum/payment-plans-07.jpg', alt: 'Aureum Mall payment plan artwork detail', label: 'Investment view' },
-  { src: '/assets/aureum/floor-ground.png', alt: 'Aureum Mall ground floor plan', label: 'Ground floor plan' },
-  { src: '/assets/aureum/floor-first.png', alt: 'Aureum Mall first floor plan', label: 'First floor plan' },
+  { src: '/assets/aureum/approved/payment-plans/payment-plan-02.webp', alt: 'Aureum Mall project profile artwork', label: 'Project profile' },
+  { src: '/assets/aureum/approved/payment-plans/payment-plan-10.webp', alt: 'Aureum Mall payment plan artwork', label: 'Payment plans' },
+  { src: '/assets/aureum/approved/payment-plans/payment-plan-07.webp', alt: 'Aureum Mall payment plan artwork detail', label: 'Investment view' },
+  { src: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan.webp', alt: 'Aureum Mall ground floor plan', label: 'Ground floor plan' },
+  { src: '/assets/aureum/approved/floor-plans/aureum-first-floor-plan.webp', alt: 'Aureum Mall first floor plan', label: 'First floor plan' },
   { src: '/assets/aureum/neighborhoods.jpg', alt: 'Aureum Mall neighbourhood context', label: 'Neighbourhoods' },
 ] as const;
 

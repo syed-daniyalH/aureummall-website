@@ -17,7 +17,7 @@ export function SiteHeader() {
       <div className="utilityBar">
         <div className="container utilityBarInner">
           <span>{SITE.location}.</span>
-          <div className="utilityLinks"><a href={`mailto:${SITE.email}`}>{SITE.email}</a><a href="https://www.facebook.com/aureummall" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/aureum.mall" target="_blank" rel="noreferrer">Instagram</a></div>
+          <div className="utilityLinks"><a href={`mailto:${SITE.email}`}>{SITE.email}</a><a href={SITE.social.facebook} target="_blank" rel="noreferrer">Facebook</a><a href={SITE.social.instagram} target="_blank" rel="noreferrer">Instagram</a></div>
         </div>
       </div>
       <div className="container navRow">

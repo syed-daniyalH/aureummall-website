@@ -8,6 +8,8 @@ export type NewsPost = {
   /** Slug the article had on the old WordPress site (used for 301 redirects). */
   legacySlug: string;
   title: string;
+  /** Shorter title for search results when `title` is too long for Google (~60 characters). */
+  seoTitle?: string;
   description: string;
   summary: string;
   /** WordPress publish time, Pakistan local time without offset (e.g. "2026-08-15T09:11:33"). */

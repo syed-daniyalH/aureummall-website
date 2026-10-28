@@ -16,7 +16,7 @@ export const SEO_ROUTE_CONTRACTS: readonly SeoRouteContract[] = [
   { route: '/news', intent: 'Read project updates', title: 'News & Insights | Aureum Mall & Residences', description: 'Read Aureum Mall & Residences project news, location context and payment-plan guidance.', canonical: '/news', indexable: true, changeFrequency: 'weekly', priority: 0.7 },
   { route: '/unit-finder', intent: 'Find a property pathway', title: 'Find Your Space | Aureum Mall & Residences', description: 'Explore Aureum apartments, commercial shops and corporate offices, then contact the team for current details.', canonical: '/unit-finder', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
   { route: '/building-explorer', intent: 'Understand the building', title: 'Building Explorer', description: 'Explore Aureum by residential, retail and office layers with an accessible building interaction.', canonical: '/building-explorer', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
-  { route: '/immersive-media', intent: 'Explore project media', title: 'Project Media | Aureum Mall & Residences', description: 'Explore Aureum project imagery, film and floor plans with accessible text descriptions.', canonical: '/immersive-media', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
+  { route: '/immersive-media', intent: 'Explore project media', title: 'Project Media | Aureum Mall & Residences', description: 'Take the Aureum 360° virtual tour and explore project imagery and floor plans with accessible text descriptions.', canonical: '/immersive-media', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
   { route: '/apartments', intent: 'Explore residences', title: 'Apartments for Sale in Bahria Town Lahore', description: 'Explore Aureum apartment layouts, sizes, payment plans and enquiry options.', canonical: '/apartments', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
   { route: '/commercial-shops', intent: 'Explore commercial retail', title: 'Commercial Shops for Sale in Lahore', description: 'Explore Aureum commercial shop sizes, floors, payment plans and enquiry options.', canonical: '/commercial-shops', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
   { route: '/corporate-offices', intent: 'Explore office space', title: 'Corporate Offices in Bahria Town Lahore', description: 'Explore Aureum corporate office sizes, payment plans and enquiry options.', canonical: '/corporate-offices', indexable: true, changeFrequency: 'monthly', priority: 0.8 },
@@ -57,6 +57,7 @@ export const ANALYTICS_EVENTS = {
   whatsappClick: 'whatsapp_click',
   callClick: 'call_click',
   brochureDownload: 'brochure_download',
+  virtualTourOpen: 'virtual_tour_open',
 } as const;
 
 export type AnalyticsEventName = (typeof ANALYTICS_EVENTS)[keyof typeof ANALYTICS_EVENTS];

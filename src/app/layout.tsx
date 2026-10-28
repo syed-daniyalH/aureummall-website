@@ -9,7 +9,7 @@ import { AnalyticsScripts } from '@/components/AnalyticsScripts';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: 'Aureum Mall & Residences | Bahria Town Lahore', template: '%s | Aureum Mall & Residences' },
+  title: { default: 'Aureum Mall & Residences | Bahria Town Lahore', template: '%s | Aureum Mall' },
   description: 'Explore Aureum Mall & Residences in Bahria Town Lahore: apartments, commercial shops, corporate offices, payment plans, location and project updates.',
   alternates: { canonical: '/' },
   openGraph: {

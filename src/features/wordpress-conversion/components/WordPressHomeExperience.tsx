@@ -5,14 +5,15 @@ import { useState } from 'react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { VirtualTourEmbed } from '@/features/immersive-media/components/VirtualTourEmbed';
 import type { NewsCardItem } from '@/features/news/posts';
 import { NewsCardList } from './NewsCardList';
 
 const FLOOR_PLANS = [
-  { label: 'Basement Level 1', image: '/assets/aureum/floor-basement-level-1.png' },
-  { label: 'Ground Floor', image: '/assets/aureum/floor-ground.png' },
-  { label: '1st Floor', image: '/assets/aureum/floor-first.png' },
-  { label: '1 Bed Apartment', image: '/assets/aureum/1-apartment-floor-render-option-01-scaled.png' },
+  { label: 'Basement Level 1', image: '/assets/aureum/approved/floor-plans/aureum-basement-level-1-plan.webp' },
+  { label: 'Ground Floor', image: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan.webp' },
+  { label: '1st Floor', image: '/assets/aureum/approved/floor-plans/aureum-first-floor-plan.webp' },
+  { label: '1 Bed Apartment', image: '/assets/aureum/approved/floor-plans/aureum-1-bed-apartment-render.webp' },
 ] as const;
 
 const AMENITIES = [
@@ -91,6 +92,16 @@ export function WordPressHomeExperience({ latestNews }: { latestNews: readonly N
         </div>
       </section>
 
+      <section className="wpTourSection section" aria-labelledby="wp-tour-heading">
+        <div className="container wpTourGrid">
+          <div>
+            <SectionHeading id="wp-tour-heading" eyebrow="360° virtual tour" title="Walk through Aureum before you visit." description="Step inside an interactive 360° concept tour of the development: look around the arrival, the mall, the residences and lifestyle spaces." />
+            <ButtonLink href="/immersive-media#virtual-tour" variant="dark">See all project media <span aria-hidden="true">→</span></ButtonLink>
+          </div>
+          <VirtualTourEmbed placement="home" />
+        </div>
+      </section>
+
       <section className="wpAmenitiesSection section" aria-labelledby="wp-amenities-heading">
         <div className="container wpAmenitiesGrid">
           <div>
@@ -107,7 +118,7 @@ export function WordPressHomeExperience({ latestNews }: { latestNews: readonly N
 
       <section className="wpPlansSection section" aria-labelledby="wp-plans-heading">
         <div className="container wpPlansGrid">
-          <div className="wpPlanImage" style={{ position: 'relative' }}><Image src="/assets/aureum/payment-plans-10.jpg" alt="Aureum Mall payment plan artwork" fill sizes="(max-width: 900px) 92vw, 520px" /></div>
+          <div className="wpPlanImage" style={{ position: 'relative' }}><Image src="/assets/aureum/approved/payment-plans/payment-plan-10.webp" alt="Aureum Mall payment plan artwork" fill sizes="(max-width: 900px) 92vw, 520px" /></div>
           <div>
             <SectionHeading id="wp-plans-heading" eyebrow="Investment / payment plans" title="A plan that makes the next step easier to understand." description="Experience luxury living with a flexible payment plan designed to make premium living and smart investment more accessible." />
             <ButtonLink href="/payment-plans" variant="dark">Open full payment plans <span aria-hidden="true">→</span></ButtonLink>
