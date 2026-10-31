@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { LeadForm } from '@/components/LeadForm';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -12,9 +13,11 @@ export type ArchitectureLandingProps = {
   points: readonly string[];
   ctaHref?: string;
   ctaLabel?: string;
+  /** Page-specific sections shown after the key points. */
+  children?: ReactNode;
 };
 
-export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '/contact#enquiry', ctaLabel = 'Request details' }: ArchitectureLandingProps) {
+export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '/contact#enquiry', ctaLabel = 'Request details', children }: ArchitectureLandingProps) {
   return (
     <>
       <section className="wpInternalHero section">
@@ -36,6 +39,7 @@ export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '
           </ul>
         </div>
       </section>
+      {children}
     </>
   );
 }

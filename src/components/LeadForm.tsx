@@ -22,6 +22,7 @@ const SUBMIT_LABEL: Record<LeadIntent, string> = {
   enquiry: 'Request details',
   site_visit: 'Book my site visit',
   payment_plan: 'Send me the payment plan',
+  brochure: 'Send me the brochure',
 };
 
 type Status = 'idle' | 'submitting' | 'error';

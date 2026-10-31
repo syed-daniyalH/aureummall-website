@@ -4,7 +4,12 @@ import { useMemo, useState } from 'react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { PAYMENT_CATEGORIES, PAYMENT_TERMS, SOURCE_PAYMENT_TABLES, type SourcePaymentRow, type SourcePaymentTable } from '../data';
+import { PAYMENT_CATEGORIES, PAYMENT_SOURCE_LABEL, PAYMENT_TERMS, SOURCE_PAYMENT_TABLES, type SourcePaymentRow, type SourcePaymentTable } from '../data';
+
+const PLAN_SUMMARIES = [
+  { title: 'Apartments & offices', facts: [['4.5 yrs', 'Payment plan'], ['3.5 yrs', 'Possession*'], ['10%', 'Booking'], ['15%', 'Confirmation'], ['55%', '55 monthly × 1%'], ['20%', 'Completion']] },
+  { title: 'Shops & food court', facts: [['3.5 yrs', 'Payment plan'], ['2.5 yrs', 'Possession*'], ['10%', 'Booking'], ['15%', 'Confirmation'], ['42%', '42 monthly × 1%'], ['13%', 'Half-yearly'], ['20%', 'Completion']] },
+] as const;
 
 function formatPKR(value: number) {
   return `Rs ${new Intl.NumberFormat('en-PK').format(value)}`;
@@ -20,11 +25,11 @@ function SourcePaymentTableView({ table }: { table: SourcePaymentTable }) {
           <Eyebrow>Payment schedule</Eyebrow>
           <h2>{table.title}</h2>
         </div>
-        <p>{table.rateLabel} · {table.installmentLabel}</p>
+        <p>{table.rateLabel} · {table.installmentLabel} · {table.possessionLabel}</p>
       </header>
       <div className="paymentTableWrap">
         <table>
-          <caption>{table.title} payment plan 2026 — from the Aureum Project Profile PDF, page 29.</caption>
+          <caption>{table.title} payment plan — from the {PAYMENT_SOURCE_LABEL}.</caption>
           <thead>
             <tr>
               <th scope="col">Type</th>
@@ -55,7 +60,7 @@ function SourcePaymentTableView({ table }: { table: SourcePaymentTable }) {
           </tbody>
         </table>
       </div>
-      <p className="sourcePaymentNote">Reference: Aureum Project Profile PDF, Payment Plan 2026, page 29.</p>
+      <p className="sourcePaymentNote">{table.note ? `${table.note} ` : ''}Starting base prices; 10% category charges are additional.</p>
     </article>
   );
 }
@@ -74,7 +79,7 @@ export function PaymentPlansExperience() {
           <div>
             <Eyebrow>Investment / payment plans</Eyebrow>
             <h1>Payment Plan 2026</h1>
-            <p>A structured, buyer-friendly plan for apartments, offices and shops: 10% at booking, 15% at confirmation, monthly installments, and 20% at completion.</p>
+            <p>Studios from PKR 8,307,000, offices at PKR 23,500 per sq ft and shops from PKR 7,740,000: 10% at booking, 15% at confirmation, 1% monthly installments and 20% on completion.</p>
             <div className="actions">
               <ButtonLink href="#payment-workspace">View the HTML tables <span aria-hidden="true">↓</span></ButtonLink>
               <ButtonLink href="#payment-workspace" variant="secondary" className="onLight">Read the accessible plan <span aria-hidden="true">↓</span></ButtonLink>
@@ -94,14 +99,22 @@ export function PaymentPlansExperience() {
           <div className="paymentCategoryBar" role="tablist" aria-label="Payment plan categories">
             {PAYMENT_CATEGORIES.map((item) => <button key={item.value} type="button" role="tab" aria-selected={category === item.value} onClick={() => setCategory(item.value)}>{item.label}</button>)}
           </div>
+          <div className="planSummaryGrid">
+            {PLAN_SUMMARIES.map((plan) => (
+              <article className="planSummary" key={plan.title}>
+                <Eyebrow>{plan.title}</Eyebrow>
+                <dl>{plan.facts.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+              </article>
+            ))}
+          </div>
           <div className="sourcePaymentConflict" role="note">
             <Eyebrow>Important information</Eyebrow>
-            <p>Payment-plan amounts and terms are presented in HTML so they remain searchable and readable. Contact the project team for the latest availability and confirmation before making a decision.</p>
+            <p>Starting base prices from the {PAYMENT_SOURCE_LABEL}. Applicable 10% category charges are additional, and possession timing (*) is indicative. Contact the project team to confirm availability before making a decision.</p>
           </div>
           <div className="paymentPlanList">
             {tables.map((table) => <SourcePaymentTableView key={table.id} table={table} />)}
           </div>
-          <div className="paymentTerms"><Eyebrow>Publishing rules</Eyebrow><ul>{PAYMENT_TERMS.map((term) => <li key={term}>{term}</li>)}</ul></div>
+          <div className="paymentTerms"><Eyebrow>Terms</Eyebrow><ul>{PAYMENT_TERMS.map((term) => <li key={term}>{term}</li>)}</ul></div>
         </div>
       </section>
     </>

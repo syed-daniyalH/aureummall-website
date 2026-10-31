@@ -7,45 +7,21 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { VirtualTourEmbed } from '@/features/immersive-media/components/VirtualTourEmbed';
 import type { NewsCardItem } from '@/features/news/posts';
+import { AMENITIES, PROJECT_STATS } from '@/lib/project-facts';
+import { ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
+import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
+import { FOOD_COURT_IMAGE, LEISURE_IMAGES, LOCATION_MAP, MALL_IMAGES, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
 import { NewsCardList } from './NewsCardList';
 
 const FLOOR_PLANS = [
-  { label: 'Basement Level 1', image: '/assets/aureum/approved/floor-plans/aureum-basement-level-1-plan.webp' },
-  { label: 'Ground Floor', image: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan.webp' },
+  { label: 'Ground Floor', image: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan-2026.webp' },
   { label: '1st Floor', image: '/assets/aureum/approved/floor-plans/aureum-first-floor-plan.webp' },
-  { label: '1 Bed Apartment', image: '/assets/aureum/approved/floor-plans/aureum-1-bed-apartment-render.webp' },
+  { label: '2nd Floor', image: '/assets/aureum/approved/floor-plans/aureum-second-floor-plan-2026.webp' },
+  { label: 'Food Court', image: '/assets/aureum/approved/floor-plans/aureum-food-court-floor-plan-2026.webp' },
+  { label: 'Residential Floor', image: '/assets/aureum/approved/floor-plans/aureum-residential-floor-plan-2026.webp' },
+  { label: 'Basement Level 1', image: '/assets/aureum/approved/floor-plans/aureum-basement-1-plan-2026.webp' },
 ] as const;
 
-const AMENITIES = [
-  'Swimming Pool',
-  'Mosque',
-  'Gym',
-  'Sauna',
-  'Steam Room',
-  'Spa',
-  'Huge Parking',
-  'High Speed Elevators',
-  'Automated Switches',
-  'Generator Backup',
-  'CCTV Surveillance',
-  'Professional Security',
-  'Reception',
-  'Conference Hall',
-  'Waste Management',
-  'Fire Management',
-  'Indoor Sports',
-  'Indoor Games',
-  'Lockers',
-  'Food Court',
-  'Retail Mall',
-] as const;
-
-const PROJECT_STATS = [
-  ['210+', 'Total Apartments'],
-  ['80+', 'Quality Features'],
-  ['35', 'Hotel Rooms'],
-  ['98%', 'Success Rates'],
-] as const;
 
 export function WordPressHomeExperience({ latestNews }: { latestNews: readonly NewsCardItem[] }) {
   const [activeFloor, setActiveFloor] = useState<(typeof FLOOR_PLANS)[number]['label']>(FLOOR_PLANS[0].label);
@@ -73,6 +49,14 @@ export function WordPressHomeExperience({ latestNews }: { latestNews: readonly N
           <div className="wpFeatureGrid">
             {['Hotels & Food Courts', 'Residential & Commercials', 'Corporate Offices', '1 & 2 Bed Apartments', 'Wide Parking'].map((feature, index) => <article className="wpFeatureCard" key={feature}><span>0{index + 1}</span><strong>{feature}</strong></article>)}
           </div>
+        </div>
+      </section>
+
+      <section className="section showcaseSection" aria-labelledby="wp-inside-heading">
+        <div className="container">
+          <SectionHeading id="wp-inside-heading" eyebrow="Inside Aureum" title="Shop, dine, play and live." description="Three retail levels around a central atrium, a food court beside the playland, and homes planned for light and calm." />
+          <ShowcaseGallery images={[MALL_IMAGES[0], FOOD_COURT_IMAGE, LEISURE_IMAGES[0], RESIDENCE_IMAGES[0], MALL_IMAGES[2], RESIDENCE_IMAGES[2]]} branded />
+          <ButtonLink href="/gallery" variant="dark">Open the full gallery <span aria-hidden="true">→</span></ButtonLink>
         </div>
       </section>
 
@@ -118,13 +102,15 @@ export function WordPressHomeExperience({ latestNews }: { latestNews: readonly N
 
       <section className="wpPlansSection section" aria-labelledby="wp-plans-heading">
         <div className="container wpPlansGrid">
-          <div className="wpPlanImage" style={{ position: 'relative' }}><Image src="/assets/aureum/approved/payment-plans/payment-plan-10.webp" alt="Aureum Mall payment plan artwork" fill sizes="(max-width: 900px) 92vw, 520px" /></div>
+          <div className="wpPlanImage" style={{ position: 'relative' }}><Image src={MALL_IMAGES[1].src} alt={MALL_IMAGES[1].alt} fill sizes="(max-width: 900px) 92vw, 520px" /></div>
           <div>
             <SectionHeading id="wp-plans-heading" eyebrow="Investment / payment plans" title="A plan that makes the next step easier to understand." description="Experience luxury living with a flexible payment plan designed to make premium living and smart investment more accessible." />
             <ButtonLink href="/payment-plans" variant="dark">Open full payment plans <span aria-hidden="true">→</span></ButtonLink>
           </div>
         </div>
       </section>
+
+      <BrochureDownloads />
 
       <section className="wpNewsSection section" aria-labelledby="wp-news-heading">
         <div className="container">
@@ -135,7 +121,7 @@ export function WordPressHomeExperience({ latestNews }: { latestNews: readonly N
 
       <section className="wpLocationSection section" aria-labelledby="wp-location-heading">
         <div className="container wpLocationGrid">
-          <div className="wpLocationVisual" style={{ position: 'relative' }}><Image src="/assets/aureum/map.png" alt="Aureum Mall location map" fill sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <div className="wpLocationVisual wpLocationMap" style={{ position: 'relative' }}><Image src={LOCATION_MAP.src} alt={LOCATION_MAP.alt} fill sizes="(max-width: 900px) 92vw, 560px" /></div>
           <div>
             <Eyebrow>Location / Ring Road Interchange</Eyebrow>
             <h2 id="wp-location-heading">A location designed to keep you connected.</h2>

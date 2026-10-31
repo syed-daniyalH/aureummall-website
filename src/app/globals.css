@@ -4783,3 +4783,121 @@ textarea:focus-visible {
     transition: none;
   }
 }
+
+/* ===== Project showcase (src/features/project-showcase) ===== */
+.showcaseSection .sectionHeading,
+.developerSection h2,
+.levelsSection .sectionHeading,
+.accessSection .sectionHeading,
+.amenitiesSection .sectionHeading,
+.apartmentTypesSection .sectionHeading,
+.brochureSection .sectionHeading { margin-bottom: 28px; }
+
+.showcaseGallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-bottom: 26px; }
+.showcaseFigure { margin: 0; }
+.showcaseFigureImage { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-sm); background: #edf2fa; box-shadow: 0 10px 30px rgba(28, 25, 120, 0.08); }
+.showcaseFigureImage img { object-fit: cover; transition: transform 500ms ease; }
+.showcaseFigure:hover .showcaseFigureImage img { transform: scale(1.03); }
+.showcaseFigure figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; font-size: 13px; }
+.showcaseFigure figcaption strong { color: var(--indigo); }
+.showcaseFigure figcaption span { color: var(--muted); font-size: 11px; letter-spacing: 0.04em; white-space: nowrap; }
+.showcaseNote { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; }
+.floorPlanGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.planFigure .showcaseFigureImage { aspect-ratio: 4 / 3; background: #f3f5f8; }
+.planFigure .showcaseFigureImage img { object-fit: contain; padding: 10px; }
+.zoomHint { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; border-radius: 2px; background: var(--indigo); color: var(--surface); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; }
+.galleryJump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.galleryJump a { padding: 9px 15px; border: 1px solid var(--line); border-radius: 30px; color: var(--indigo); font-size: 13px; font-weight: 600; }
+.galleryJump a:hover { border-color: var(--mauve); color: var(--mauve); }
+
+.developerSection { background: var(--page); }
+.developerGrid { display: grid; grid-template-columns: minmax(200px, 0.5fr) minmax(0, 1.5fr); gap: clamp(32px, 6vw, 90px); align-items: center; }
+.developerLogo { display: grid; place-items: center; padding: 30px; border-radius: var(--radius-sm); background: #f9f8f4; box-shadow: var(--shadow-card); }
+.developerLogo img { width: 100%; height: auto; max-width: 260px; }
+.developerSection h2 { color: var(--indigo); font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -0.04em; line-height: 1.1; }
+.developerSection p { color: var(--muted); }
+.developerStats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 28px 0; }
+.developerStats div { padding-top: 14px; border-top: 1px solid var(--line); }
+.developerStats dd { margin: 0; color: var(--mauve); font-size: 34px; font-weight: 700; letter-spacing: -0.04em; }
+.developerStats dt { color: var(--muted); font-size: 13px; }
+.developerPortfolio { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.developerPortfolio li { display: flex; flex-wrap: wrap; gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.developerPortfolio strong { color: var(--indigo); }
+.developerPortfolio span { color: var(--muted); font-size: 14px; }
+
+.levelsGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: clamp(32px, 6vw, 90px); align-items: center; }
+.levelsList { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.levelsList li { display: grid; grid-template-columns: 140px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.levelsList strong { color: var(--indigo); }
+.levelsList span { color: var(--muted); font-size: 15px; }
+.levelsList em { color: var(--mauve); font-style: normal; font-weight: 700; white-space: nowrap; }
+.levelsImage .showcaseFigureImage { aspect-ratio: 4 / 5; }
+
+.accessSection { background: var(--page); }
+.accessGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.accessGrid li { display: grid; gap: 8px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.accessGrid strong { color: var(--indigo); font-size: 18px; }
+.accessGrid span { color: var(--muted); font-size: 14px; }
+
+.amenitiesGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 22px; margin: 0 0 34px; padding: 0; list-style: none; }
+.amenitiesGrid li { display: flex; align-items: center; gap: 12px; min-height: 58px; border-bottom: 1px solid var(--line); color: var(--indigo); font-weight: 600; }
+.amenitiesGrid span { color: var(--mauve); font-size: 12px; font-weight: 700; }
+
+.apartmentTypes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.apartmentTypes li { display: flex; flex-direction: column; gap: 8px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); box-shadow: 0 10px 30px rgba(28, 25, 120, 0.06); }
+.apartmentTypes h3 { margin: 0; color: var(--indigo); font-size: 22px; }
+.apartmentTypes p { flex: 1; margin: 0; color: var(--muted); font-size: 14px; }
+.apartmentTypes strong { color: var(--mauve); }
+
+.disclaimerSection { background: var(--page); }
+.disclaimerSection ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+.planSummaryGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-bottom: 22px; }
+.planSummary { padding: 22px; border-radius: var(--radius-sm); background: var(--indigo); color: var(--surface); }
+.planSummary .eyebrow { color: var(--gold-soft); }
+.planSummary dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); gap: 14px; margin: 12px 0 0; }
+.planSummary dd { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: -0.03em; }
+.planSummary dt { color: rgba(255, 255, 255, 0.72); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+.planSummary div { display: flex; flex-direction: column-reverse; }
+
+.brochureSection { background: var(--page); }
+.brochureGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.brochureCard { display: flex; flex-direction: column; gap: 10px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.brochureCard h3 { margin: 0; color: var(--indigo); font-size: 20px; }
+.brochureCard p { flex: 1; margin: 0; color: var(--muted); font-size: 14px; }
+.brochureCard .button { align-self: flex-start; }
+.brochureForm { display: grid; gap: 14px; max-width: 760px; margin-top: 24px; padding: 24px; border: 1px solid var(--line-gold); border-radius: var(--radius-sm); background: var(--surface); box-shadow: var(--shadow-card); }
+.brochureForm > p { margin: 0; color: var(--ink); }
+.brochureFields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 14px; }
+.brochureFields .formField { display: grid; gap: 6px; }
+.brochureFields .formField > span:first-child { color: var(--indigo); font-size: 13px; font-weight: 600; }
+.brochureActions { display: flex; align-items: center; gap: 16px; }
+.brochureCancel { border: 0; background: none; color: var(--muted); cursor: pointer; text-decoration: underline; }
+
+.trustMapFigure { margin: 0; }
+.trustMapFigure img { display: block; width: 100%; height: auto; border-radius: var(--radius-sm); box-shadow: var(--shadow-card); }
+.trustMapFigure figcaption { padding-top: 8px; color: var(--muted); font-size: 12px; }
+.wpLocationMap img { object-fit: contain !important; }
+.wpFloorVisual img { object-fit: contain; padding: 12px; }
+
+@media (max-width: 1100px) {
+  .brochureGrid, .apartmentTypes, .accessGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .amenitiesGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .showcaseGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .developerGrid, .levelsGrid, .planSummaryGrid { grid-template-columns: 1fr; }
+  .developerLogo { max-width: 260px; }
+  .amenitiesGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .showcaseGallery, .floorPlanGallery, .brochureGrid, .apartmentTypes, .accessGrid, .brochureFields { grid-template-columns: 1fr; }
+  .developerStats { grid-template-columns: 1fr; }
+  .levelsList li { grid-template-columns: 1fr auto; }
+  .levelsList span { grid-column: 1 / -1; }
+  .showcaseFigure figcaption { flex-direction: column; gap: 2px; }
+}
+
+/* Let wide payment tables scroll inside their card instead of stretching the page on phones. */
+.paymentPlanList > * { min-width: 0; }
+

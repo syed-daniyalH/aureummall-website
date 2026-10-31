@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const PROPERTY_INTERESTS = ['apartment', 'commercial_shop', 'food_court', 'corporate_office', 'other'] as const;
-export const LEAD_INTENTS = ['enquiry', 'site_visit', 'payment_plan'] as const;
+export const LEAD_INTENTS = ['enquiry', 'site_visit', 'payment_plan', 'brochure'] as const;
 
 export const PROPERTY_INTEREST_LABELS: Record<(typeof PROPERTY_INTERESTS)[number], string> = {
   apartment: 'Apartment',

@@ -14,3 +14,10 @@ public/wordpress
 
 # Original WordPress image archive (12 MB), kept locally only
 source-archive
+
+# Source design files (renders, plans, brochures, mood board ~330 MB). Web-ready copies live in public/.
+docs/*.pdf
+docs/*.png
+docs/*.jpg
+docs/*.jpeg
+public/assets/aureum/selected-downloads
