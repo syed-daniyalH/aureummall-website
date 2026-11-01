@@ -5,6 +5,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SITE } from '@/lib/site';
 import { LOCATION_MAP } from '@/features/project-showcase/images';
 import { LiveMap } from './LiveMap';
+import { SiteUpdates } from './SiteUpdates';
+import { GROUNDBREAKING, SITE_UPDATES } from '../site-updates';
 
 function LocationSection() {
   return (
@@ -33,16 +35,18 @@ export function ConstructionUpdatesSection({ standalone = false }: { standalone?
   const content = (
     <section className="section trustUpdatesSection" id="construction-register">
       <div className="container">
-        <SectionHeading eyebrow="Latest project update" title="The future takes shape." description="Follow Aureum Mall & Residences as the project moves forward." />
-        <div className="trustTimeline">
-          <article className="trustTimelineItem"><span>1 October 2026</span><div><Eyebrow>Aureum Mall &amp; Residences Groundbreaking</Eyebrow><p>Every landmark begins with a vision, but it is construction that turns that vision into reality. Aureum Mall &amp; Residences is taking shape as a destination for living, business and everyday experiences.</p><ButtonLink href="/contact" variant="dark">Talk to the team <span aria-hidden="true">↗</span></ButtonLink></div></article>
+        <SectionHeading eyebrow="Site progress" title="The future takes shape." description="Dated video from the site, newest first. Tap any video to watch it with sound." />
+        <SiteUpdates limit={standalone ? undefined : 3} />
+        <div className="actions">
+          {standalone ? null : <ButtonLink href="/construction-updates" variant="dark">See every site update</ButtonLink>}
+          <ButtonLink href="/contact?intent=site_visit#enquiry" variant={standalone ? 'dark' : 'secondary'} className={standalone ? undefined : 'onLight'}>Book a site visit</ButtonLink>
         </div>
       </div>
     </section>
   );
 
   if (!standalone) return content;
-  return <><section className="section trustHero"><div className="container trustHeroGrid"><div><Eyebrow>Project updates</Eyebrow><h1>Follow Aureum as it takes shape.</h1><p>Read the latest project progress and contact the team for current information.</p><ButtonLink href="#construction-register">Read the latest update <span aria-hidden="true">↓</span></ButtonLink></div><div className="trustHeroStamp" aria-hidden="true"><span>Progress / updates</span><strong>01</strong></div></div></section>{content}</>;
+  return <><section className="section trustHero"><div className="container trustHeroGrid"><div><Eyebrow>Project updates</Eyebrow><h1>Follow Aureum as it takes shape.</h1><p>Construction began on {GROUNDBREAKING.dateLabel}. Watch dated video from the site, then book a visit to see it for yourself.</p><ButtonLink href="#construction-register">Watch the latest update <span aria-hidden="true">↓</span></ButtonLink></div><div className="trustHeroStamp" aria-hidden="true"><span>Video updates from site</span><strong>{String(SITE_UPDATES.length).padStart(2, '0')}</strong></div></div></section>{content}</>;
 }
 
 function TrustFaqSection() {

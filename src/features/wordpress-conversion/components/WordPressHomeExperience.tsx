@@ -4,6 +4,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { BuildingExplorer } from '@/features/building-explorer/components/BuildingExplorer';
 import { VirtualTourEmbed } from '@/features/immersive-media/components/VirtualTourEmbed';
 import { LiveMap } from '@/features/trust-location/components/LiveMap';
+import { SiteUpdates } from '@/features/trust-location/components/SiteUpdates';
 import { PriceCalculator } from '@/features/payment-plans/components/PriceCalculator';
 import { AMENITIES, DEVELOPER, PROJECT_STATS } from '@/lib/project-facts';
 import { ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
@@ -48,6 +49,14 @@ export function WordPressHomeExperience() {
           <SectionHeading id="wp-prices-heading" eyebrow="Prices & payment plan" title="What it costs, in plain numbers." description="Choose a unit to see its base price and every instalment, from booking to possession." />
           <PriceCalculator />
           <ButtonLink href="/payment-plans" variant="dark">See every payment table</ButtonLink>
+        </div>
+      </section>
+
+      <section className="section trustUpdatesSection" aria-labelledby="wp-site-heading">
+        <div className="container">
+          <SectionHeading id="wp-site-heading" eyebrow="On site now" title="Construction is under way." description="Dated video from the site since the groundbreaking on 1 October 2026. Tap to watch with sound." />
+          <SiteUpdates limit={3} />
+          <ButtonLink href="/construction-updates" variant="dark">See every site update</ButtonLink>
         </div>
       </section>
 
