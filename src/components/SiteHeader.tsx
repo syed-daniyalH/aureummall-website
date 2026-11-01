@@ -14,12 +14,6 @@ export function SiteHeader() {
 
   return (
     <header className="siteHeader">
-      <div className="utilityBar">
-        <div className="container utilityBarInner">
-          <span>{SITE.location}.</span>
-          <div className="utilityLinks"><a href={`mailto:${SITE.email}`}>{SITE.email}</a><a href={SITE.social.facebook} target="_blank" rel="noreferrer">Facebook</a><a href={SITE.social.instagram} target="_blank" rel="noreferrer">Instagram</a></div>
-        </div>
-      </div>
       <div className="container navRow">
         <Link className="brand" href="/" onClick={() => setIsOpen(false)} aria-label={SITE.name}>
           <BrandMark />
@@ -30,7 +24,7 @@ export function SiteHeader() {
         <nav id="primary-navigation" aria-label="Primary navigation" className={`navLinks ${isOpen ? 'isOpen' : ''}`}>
           {PRIMARY_NAV.map((item) => <Link key={item.href} href={item.href} onClick={() => setIsOpen(false)}>{item.label}</Link>)}
           <span className="headerCall"><small>Call the experts</small><a href={`tel:${SITE.phoneE164}`} onClick={() => track(ANALYTICS_EVENTS.callClick, { placement: 'header' })}>{SITE.phoneDisplay}</a></span>
-          <ButtonLink variant="nav" href="/apartments" onClick={() => setIsOpen(false)}>Explore Residences</ButtonLink>
+          <ButtonLink variant="nav" href="/contact?intent=site_visit#enquiry" onClick={() => setIsOpen(false)}>Book a visit</ButtonLink>
         </nav>
       </div>
     </header>

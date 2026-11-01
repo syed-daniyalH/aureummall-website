@@ -82,11 +82,11 @@ export function PaymentPlansExperience() {
             <h1>Payment Plan 2026</h1>
             <p>Studios from PKR 8,307,000, offices at PKR 23,500 per sq ft and shops from PKR 7,740,000: 10% at booking, 15% at confirmation, 1% monthly installments and 20% on completion.</p>
             <div className="actions">
-              <ButtonLink href="#payment-workspace">View the HTML tables <span aria-hidden="true">↓</span></ButtonLink>
-              <ButtonLink href="#payment-workspace" variant="secondary" className="onLight">Read the accessible plan <span aria-hidden="true">↓</span></ButtonLink>
+              <ButtonLink href="#payment-workspace">See the price tables <span aria-hidden="true">↓</span></ButtonLink>
+              <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
             </div>
           </div>
-          <div className="paymentHeroStamp" aria-hidden="true"><span>HTML first / source verified</span><strong>07</strong></div>
+          <div className="paymentHeroStamp" aria-hidden="true"><span>Booking from</span><strong>10%</strong></div>
         </div>
       </section>
       <section className="section paymentWorkspace" id="payment-workspace">
@@ -94,8 +94,8 @@ export function PaymentPlansExperience() {
           <SectionHeading
             id="payment-heading"
             eyebrow="Payment plan details"
-            title="The plan is readable without opening an image or PDF."
-            description="Review the published schedule in accessible HTML tables designed for clear reading on every screen."
+            title="Every unit, every instalment."
+            description="Sizes, prices and the full instalment schedule for each category, from the Aureum Master Catalogue."
           />
           <div className="paymentCategoryBar" role="tablist" aria-label="Payment plan categories">
             {PAYMENT_CATEGORIES.map((item) => <button key={item.value} type="button" role="tab" aria-selected={category === item.value} onClick={() => setCategory(item.value)}>{item.label}</button>)}

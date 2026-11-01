@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import './globals.css';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
@@ -6,6 +7,10 @@ import { ContactActions } from '@/components/ContactActions';
 import { SITE } from '@/lib/site';
 import { SiteSchema } from '@/features/content-seo/components/SiteSchema';
 import { AnalyticsScripts } from '@/components/AnalyticsScripts';
+
+// Self-hosted by next/font: DM Sans for text, Cormorant Garamond for large headings.
+const sans = DM_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-dm-sans' });
+const serif = Cormorant_Garamond({ subsets: ['latin'], weight: ['500', '600'], display: 'swap', variable: '--font-cormorant' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -24,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>
         <SiteSchema />
         <AnalyticsScripts />

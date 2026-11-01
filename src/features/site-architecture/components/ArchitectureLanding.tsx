@@ -59,7 +59,7 @@ export function FaqPage() {
   return (
     <>
       <JsonLd id="faq-page-schema" data={schema} />
-      <ArchitectureLanding eyebrow="Aureum / frequently asked questions" title="The information you need before the next step." intro="Find clear answers about the project, available pathways and how to speak with the team." points={['Current information is shared by the project team.', 'Payment schedules are presented in accessible HTML.', 'Site visits can be requested through the enquiry form.']} />
+      <ArchitectureLanding eyebrow="Aureum / frequently asked questions" title="The information you need before the next step." intro="Find clear answers about the project, available pathways and how to speak with the team." points={['Current information is shared by the project team.', 'Payment schedules are published as clear tables on every page size.', 'Site visits can be requested through the enquiry form.']} />
       <section className="section trustFaqSection">
         <div className="container">
           <SectionHeading eyebrow="Clear answers" title="Aureum questions, answered." description="If you need a detail that is not listed here, contact the team directly." />

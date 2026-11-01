@@ -3526,7 +3526,7 @@ textarea:focus-visible {
 .section:nth-of-type(even),
 .soft,
 .finderSection {
-  background: #f7f9fc;
+  background: var(--page);
 }
 
 .sectionHeading,
@@ -3735,7 +3735,7 @@ textarea:focus-visible {
 }
 
 .wpInquirySection {
-  background: #f7f9fc;
+  background: var(--page);
 }
 
 .wpInquiryGrid {
@@ -3837,7 +3837,7 @@ textarea:focus-visible {
 .wpGalleryImage {
   position: relative;
   min-height: 330px;
-  background: #edf2fa;
+  background: var(--soft);
 }
 
 .wpGalleryImage img {
@@ -4010,7 +4010,7 @@ textarea:focus-visible {
 }
 
 .wpFeatureBand {
-  background: #f7f9fc;
+  background: var(--page);
 }
 
 .wpFeatureGrid {
@@ -4094,7 +4094,7 @@ textarea:focus-visible {
   position: relative;
   min-height: 520px;
   overflow: hidden;
-  background: #edf2fa;
+  background: var(--soft);
 }
 
 .wpFloorVisual img,
@@ -4551,7 +4551,7 @@ textarea:focus-visible {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: #f7f9fc;
+  background: var(--page);
 }
 
 .articleCta p {
@@ -4812,7 +4812,7 @@ textarea:focus-visible {
 
 .showcaseGallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-bottom: 26px; }
 .showcaseFigure { margin: 0; }
-.showcaseFigureImage { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-sm); background: #edf2fa; box-shadow: 0 10px 30px rgba(28, 25, 120, 0.08); }
+.showcaseFigureImage { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--radius-sm); background: var(--soft); box-shadow: 0 10px 30px rgba(28, 25, 120, 0.08); }
 .showcaseFigureImage img { object-fit: cover; transition: transform 500ms ease; }
 .showcaseFigure:hover .showcaseFigureImage img { transform: scale(1.03); }
 .showcaseFigure figcaption { display: flex; justify-content: space-between; gap: 12px; padding-top: 10px; font-size: 13px; }
@@ -4820,7 +4820,7 @@ textarea:focus-visible {
 .showcaseFigure figcaption span { color: var(--muted); font-size: 11px; letter-spacing: 0.04em; white-space: nowrap; }
 .showcaseNote { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; }
 .floorPlanGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.planFigure .showcaseFigureImage { aspect-ratio: 4 / 3; background: #f3f5f8; }
+.planFigure .showcaseFigureImage { aspect-ratio: 4 / 3; background: var(--page); }
 .planFigure .showcaseFigureImage img { object-fit: contain; padding: 10px; }
 .zoomHint { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; border-radius: 2px; background: var(--indigo); color: var(--surface); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; }
 .galleryJump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
@@ -4918,3 +4918,411 @@ textarea:focus-visible {
 /* Let wide payment tables scroll inside their card instead of stretching the page on phones. */
 .paymentPlanList > * { min-width: 0; }
 
+
+/* ---------- Design refresh: serif headings, navy and gold palette, one button style, cinematic hero, footer ---------- */
+
+/* Large headings use the serif. The :not(.srOnly) gives these class-level specificity, so, coming last, they override the per-section heading rules above. */
+h1:not(.srOnly),
+h2:not(.srOnly) {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+}
+
+.eyebrow,
+.cardEyebrow {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+:is(.heroCinema, .wpInternalHero, .wpAboutStats, .wpAmenitiesSection, .paymentHero, .trustHero, .mediaHero, .finderPageHero, .footer) .eyebrow {
+  color: var(--gold-soft);
+}
+
+/* Inner-page heroes style every p at 18px; keep the label small. */
+.wpInternalHero p.eyebrow,
+.wpSimpleHero p.eyebrow {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Dark bands: deep navy instead of the purple-to-pink gradient. */
+.wpInternalHero,
+.wpAboutStats,
+.wpAmenitiesSection {
+  background: linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
+}
+
+.propertyCardVisual {
+  background: linear-gradient(160deg, var(--indigo), var(--navy-deep));
+}
+
+/* These page heroes also carry .section, whose white background (set later in the file) was hiding their white headings. */
+.section:is(.paymentHero, .mediaHero, .trustHero, .finderPageHero) {
+  background: linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
+  color: var(--surface);
+}
+
+.wpInternalHeroImage {
+  border: 0;
+  background: var(--navy-deep);
+}
+
+/* One button family: same shape and type, two fills. */
+.button,
+.navCta {
+  min-height: 48px;
+  padding: 13px 24px;
+  border-radius: 2px;
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  transform: none;
+}
+
+.button.primary {
+  border-color: var(--gold-soft);
+  background: var(--gold-soft);
+  color: var(--navy-deep);
+}
+
+.button.primary:hover {
+  border-color: #e6d2aa;
+  background: #e6d2aa;
+}
+
+.button.secondary {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: transparent;
+  color: var(--surface);
+}
+
+.button.secondary:hover {
+  border-color: var(--surface);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button.secondary.onLight {
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+
+.button.ghost,
+.darkButton,
+.navCta {
+  border: 1px solid var(--indigo);
+  background: var(--indigo);
+  color: var(--surface);
+}
+
+.darkButton:hover,
+.navCta:hover {
+  border-color: var(--navy-deep);
+  background: var(--navy-deep);
+}
+
+/* Header: one calm row. */
+.siteHeader {
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: none;
+}
+
+.navRow {
+  min-height: 80px;
+}
+
+.navLinks {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.navLinks a:not(.navCta):hover {
+  color: var(--gold);
+}
+
+.headerCall a {
+  color: var(--indigo) !important;
+}
+
+@media (max-width: 760px) {
+  .navRow {
+    min-height: 68px;
+  }
+
+  .navLinks {
+    top: 100%;
+  }
+}
+
+/* Cinematic hero: the building fills the first screen. */
+.heroCinema {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: max(560px, calc(100svh - 80px));
+  overflow: hidden;
+  background: var(--navy-deep);
+  color: var(--surface);
+}
+
+.heroCinemaImage {
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+.heroCinemaShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(17, 18, 50, 0.82) 0%, rgba(17, 18, 50, 0.45) 45%, rgba(17, 18, 50, 0) 75%),
+    linear-gradient(0deg, rgba(17, 18, 50, 0.9) 0%, rgba(17, 18, 50, 0) 45%);
+}
+
+.heroCinemaInner,
+.heroCinemaFoot {
+  position: relative;
+  z-index: 1;
+}
+
+.heroCinemaInner {
+  padding-top: 120px;
+}
+
+.heroCinemaKicker {
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.heroCinema h1 {
+  max-width: 820px;
+  margin: 18px 0 20px;
+  color: var(--surface);
+  font-size: clamp(54px, 8vw, 112px);
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.heroCinema h1 span {
+  display: block;
+  color: var(--gold-soft);
+  font-style: italic;
+}
+
+.heroCinemaLead {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.55;
+}
+
+.heroCinema .actions {
+  margin-top: 32px;
+}
+
+.heroCinemaFoot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 64px;
+  padding: 22px 0 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.heroCinemaFacts {
+  display: flex;
+  gap: clamp(28px, 5vw, 72px);
+  margin: 0;
+}
+
+.heroCinemaFacts div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.heroCinemaFacts dt {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heroCinemaFacts dd {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.heroCinemaNote {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 760px) {
+  .heroCinema {
+    min-height: calc(100svh - 68px - 64px);
+  }
+
+  .heroCinemaImage {
+    object-position: 48% 40%;
+  }
+
+  .heroCinemaShade {
+    background: linear-gradient(0deg, rgba(17, 18, 50, 0.95) 0%, rgba(17, 18, 50, 0.7) 45%, rgba(17, 18, 50, 0.15) 75%);
+  }
+
+  .heroCinemaInner {
+    padding-top: 200px;
+  }
+
+  .heroCinema h1 {
+    font-size: clamp(46px, 13vw, 60px);
+  }
+
+  .heroCinema .actions .button {
+    flex: 1 1 100%;
+  }
+
+  .heroCinemaFoot {
+    margin-top: 36px;
+    padding-bottom: 20px;
+  }
+
+  .heroCinemaFacts {
+    gap: 22px;
+  }
+
+  .heroCinemaNote {
+    display: none;
+  }
+}
+
+.wpTourSection .sectionNote {
+  margin-top: 20px;
+}
+
+/* Footer */
+.siteFooter {
+  padding: 80px 0 32px;
+  background: var(--navy-deep);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 14px;
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 48px;
+}
+
+.footerIntro .brandMark {
+  width: 150px;
+  height: 70px;
+}
+
+.footerStatement {
+  max-width: 320px;
+  margin: 20px 0 8px;
+  color: var(--surface);
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.footerDeveloper {
+  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footerColumn h2 {
+  margin: 0 0 8px;
+  color: var(--gold-soft);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.footerColumn address {
+  font-style: normal;
+}
+
+.siteFooter a:not(.button) {
+  color: rgba(255, 255, 255, 0.78);
+  transition: color var(--motion-fast);
+}
+
+.siteFooter a:not(.button):hover {
+  color: var(--gold-soft);
+}
+
+.footerSocial {
+  display: flex;
+  gap: 18px;
+  margin-top: 6px;
+}
+
+.siteFooter .footerBottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+}
+
+@media (max-width: 960px) {
+  .footerTop {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footerIntro {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .siteFooter {
+    padding: 56px 0 96px;
+  }
+
+  .footerTop {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .siteFooter .footerBottom {
+    flex-direction: column;
+  }
+}
