@@ -5819,3 +5819,125 @@ h2:not(.srOnly) {
     }
   }
 }
+/* ---------- Official film: silent, looping, non-interactive background ---------- */
+.bgFilm {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+}
+
+.bgFilm.isVisible {
+  opacity: 1;
+}
+
+.bgFilm iframe,
+.bgFilm video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 0;
+  pointer-events: none;
+}
+
+/* Cover the frame like object-fit: cover, then zoom slightly so YouTube's corner logo and title area sit outside it. */
+.bgFilm iframe {
+  width: max(100cqw, 177.78cqh);
+  height: max(100cqh, 56.25cqw);
+  transform: translate(-50%, -50%) scale(1.22);
+}
+
+.bgFilm video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+/* .section prefix so the alternating section background rule above cannot override it. */
+.section.filmSection {
+  background: var(--navy-deep);
+  color: var(--surface);
+}
+
+.filmIntro {
+  margin-bottom: 28px;
+}
+
+.filmSection .eyebrow {
+  color: var(--gold-soft);
+}
+
+.filmIntro h2 {
+  margin: 8px 0 0;
+  color: var(--surface);
+  font-size: clamp(36px, 4.6vw, 60px);
+}
+
+.filmFrame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--navy-deep);
+}
+
+.filmPosterImage {
+  object-fit: cover;
+}
+/* ---------- Live map ---------- */
+.liveMap {
+  margin: 0;
+}
+
+.liveMap iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--soft);
+}
+
+.liveMap figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 20px;
+  padding-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.liveMap figcaption a {
+  color: var(--indigo);
+  font-weight: 700;
+}
+
+.liveMap figcaption a:hover {
+  color: var(--gold);
+}
+
+.wpLiveMap iframe {
+  min-height: 440px;
+}
+
+.trustLiveMap {
+  margin-top: 40px;
+}
+
+.trustLiveMap iframe {
+  min-height: 460px;
+}
+
+@media (max-width: 760px) {
+  .liveMap iframe,
+  .wpLiveMap iframe,
+  .trustLiveMap iframe {
+    min-height: 320px;
+  }
+}

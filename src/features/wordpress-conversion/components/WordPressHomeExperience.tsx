@@ -1,14 +1,14 @@
-import Image from 'next/image';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { BuildingExplorer } from '@/features/building-explorer/components/BuildingExplorer';
 import { VirtualTourEmbed } from '@/features/immersive-media/components/VirtualTourEmbed';
+import { LiveMap } from '@/features/trust-location/components/LiveMap';
 import { PriceCalculator } from '@/features/payment-plans/components/PriceCalculator';
 import { AMENITIES, DEVELOPER, PROJECT_STATS } from '@/lib/project-facts';
 import { ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
 import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
-import { FOOD_COURT_IMAGE, LEISURE_IMAGES, LOCATION_MAP, MALL_IMAGES, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
+import { FOOD_COURT_IMAGE, LEISURE_IMAGES, MALL_IMAGES, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
 
 // The homepage tells the project in order: what it is, what is inside, where you fit, what it costs, then how to visit.
 export function WordPressHomeExperience() {
@@ -77,7 +77,7 @@ export function WordPressHomeExperience() {
 
       <section className="wpLocationSection section" aria-labelledby="wp-location-heading">
         <div className="container wpLocationGrid">
-          <div className="wpLocationVisual wpLocationMap" style={{ position: 'relative' }}><Image src={LOCATION_MAP.src} alt={LOCATION_MAP.alt} fill sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <LiveMap className="wpLiveMap" />
           <div>
             <Eyebrow>Location / Ring Road Interchange</Eyebrow>
             <h2 id="wp-location-heading">At the gateway to Bahria Town.</h2>

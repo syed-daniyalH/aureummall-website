@@ -21,10 +21,21 @@ export const VIRTUAL_TOUR = {
   note: 'Artist’s impression: 360° concept views based on the architects’ perspective images. Surroundings, furnishings and connections between spaces are illustrative, not an approved floor plan. Confirm current layouts with the sales team.',
 } as const;
 
+/**
+ * The official TVC, played silently on a loop as a background. Set `file` to a self-hosted MP4 in /public
+ * (for example '/video/aureum-tvc.mp4') to drop YouTube entirely; until then it streams from the Aureum Mall channel.
+ */
+export const BRAND_FILM: { youtubeId: string; file?: string; title: string; poster: string; posterAlt: string } = {
+  youtubeId: 'Y7RDAxEacbI',
+  title: 'Aureum Mall & Residences | Official TVC',
+  poster: '/assets/aureum/approved/renders/aureum-exterior-ring-road-interchange.webp',
+  posterAlt: 'Aureum Mall & Residences at the Bahria Town Ring Road Interchange',
+};
+
 export const MEDIA_PRINCIPLES = [
-  'Project imagery is presented with descriptive text for easy browsing.',
-  'Floor plans remain available alongside their labels and context.',
-  'Local project assets keep the experience fast and consistent across devices.',
+  'Images are artist’s impressions; brand signage is illustrative.',
+  'Floor plans follow the August 2026 drawings and are subject to final approval.',
+  'Visit the sales team to see current progress and availability.',
 ] as const;
 
 export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [

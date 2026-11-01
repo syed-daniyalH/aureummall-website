@@ -4,6 +4,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { SITE } from '@/lib/site';
 import { LOCATION_MAP } from '@/features/project-showcase/images';
+import { LiveMap } from './LiveMap';
 
 function LocationSection() {
   return (
@@ -21,6 +22,7 @@ function LocationSection() {
             <figcaption>{LOCATION_MAP.note}</figcaption>
           </figure>
         </div>
+        <LiveMap className="trustLiveMap" />
         <div className="trustSourceBar"><Eyebrow>Location information</Eyebrow><p>The project is located at {SITE.location}. Contact the Aureum team for current directions and visit arrangements.</p></div>
       </div>
     </section>

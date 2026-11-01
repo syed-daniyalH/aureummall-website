@@ -20,8 +20,6 @@ const PLAN_LINKS = [
   { href: '/news', label: 'News & guides' },
 ] as const;
 
-const DIRECTIONS_URL = 'https://www.google.com/maps/search/?api=1&query=Aureum+Mall+Bahria+Town+Lahore';
-
 export function SiteFooter() {
   return (
     <footer className="footer siteFooter">
@@ -43,12 +41,13 @@ export function SiteFooter() {
         <div className="footerColumn">
           <h2>Visit &amp; contact</h2>
           <address>{SITE.location}</address>
-          <a href={DIRECTIONS_URL} target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span></a>
+          <a href={SITE.directionsUrl} target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span></a>
           <a href={`tel:${SITE.phoneE164}`}>{SITE.phoneDisplay}</a>
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <div className="footerSocial">
             <a href={SITE.social.facebook} target="_blank" rel="noreferrer">Facebook</a>
             <a href={SITE.social.instagram} target="_blank" rel="noreferrer">Instagram</a>
+            <a href={SITE.social.youtube} target="_blank" rel="noreferrer">YouTube</a>
           </div>
         </div>
       </div>

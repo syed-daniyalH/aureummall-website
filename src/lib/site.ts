@@ -17,7 +17,11 @@ export const SITE = {
   social: {
     facebook: 'https://www.facebook.com/aureummall',
     instagram: 'https://www.instagram.com/aureum.mall',
+    youtube: 'https://www.youtube.com/@AureumMall',
   },
+  /** Google Maps place search for the project, as used on aureummall.info. */
+  mapEmbedUrl: 'https://maps.google.com/maps?q=Aureum%20Mall%20And%20Residencies&t=m&z=15&output=embed&iwloc=near',
+  directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Aureum+Mall+And+Residencies+Bahria+Town+Lahore',
 } as const;
 
 export const PRIMARY_NAV = [

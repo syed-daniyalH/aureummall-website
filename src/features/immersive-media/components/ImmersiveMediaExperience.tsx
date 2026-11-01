@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PROJECT_MEDIA, MEDIA_PRINCIPLES, type ImmersiveMediaAsset } from '../data';
 import { MediaAssetCard } from './MediaAssetCard';
 import { MediaLightbox } from './MediaLightbox';
+import { BrandFilmSection } from './BrandFilm';
 import { VirtualTourEmbed } from './VirtualTourEmbed';
 
 function MediaRegister({ assets, onOpen }: { assets: readonly ImmersiveMediaAsset[]; onOpen: (asset: ImmersiveMediaAsset) => void }) {
@@ -37,6 +38,8 @@ export function ImmersiveMediaExperience() {
         </div>
       </section>
 
+      <BrandFilmSection placement="immersive_media" />
+
       <section className="section tourSection" id="virtual-tour" aria-labelledby="tour-heading">
         <div className="container">
           <SectionHeading id="tour-heading" eyebrow="360° virtual tour" title="Look around before you visit." description="Drag or swipe to look in every direction, then follow the markers from the street-level arrival into the mall, residences and lifestyle spaces." />
@@ -47,7 +50,7 @@ export function ImmersiveMediaExperience() {
       <section className="section mediaWorkspace" id="media-workspace">
         <div className="container">
           <SectionHeading id="media-heading" eyebrow="Aureum project gallery" title="See the project clearly." description="Browse the project visuals and open any item for a larger view with its description and context." />
-          <div className="mediaRegisterMeta" aria-label="Project media status"><span><strong>{String(PROJECT_MEDIA.length).padStart(2, '0')}</strong> project assets</span><span>Local gallery</span><span>Accessible descriptions</span></div>
+          <div className="mediaRegisterMeta" aria-label="Project media status"><span><strong>{String(PROJECT_MEDIA.length).padStart(2, '0')}</strong> images and plans</span></div>
           <MediaRegister assets={visualAssets} onOpen={(asset) => setSelectedAssetId(asset.id)} />
         </div>
       </section>
