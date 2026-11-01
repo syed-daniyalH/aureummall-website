@@ -2807,11 +2807,28 @@ textarea:focus-visible {
   font-size: 13px;
 }
 
-.sourcePaymentTableCard caption {
-  margin-bottom: 14px;
+.paymentTableSource {
+  margin: 0 0 14px;
   color: var(--muted);
   font-size: 12px;
-  text-align: left;
+}
+
+.paymentTableSwipe {
+  display: none;
+}
+
+/* Keep the unit type in view while the wide table scrolls sideways. */
+.sourcePaymentTableCard tr > th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface);
+}
+
+@media (max-width: 1240px) {
+  .paymentTableSwipe {
+    display: inline;
+  }
 }
 
 .sourcePaymentTableCard th,

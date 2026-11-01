@@ -27,9 +27,10 @@ function SourcePaymentTableView({ table }: { table: SourcePaymentTable }) {
         </div>
         <p>{table.rateLabel} · {table.installmentLabel} · {table.possessionLabel}</p>
       </header>
+      <p className="paymentTableSource">From the {PAYMENT_SOURCE_LABEL}.<span className="paymentTableSwipe"> Swipe sideways to see every column.</span></p>
       <div className="paymentTableWrap">
         <table>
-          <caption>{table.title} payment plan — from the {PAYMENT_SOURCE_LABEL}.</caption>
+          <caption className="srOnly">{table.title} payment plan — from the {PAYMENT_SOURCE_LABEL}.</caption>
           <thead>
             <tr>
               <th scope="col">Type</th>
