@@ -22,15 +22,18 @@ export const VIRTUAL_TOUR = {
 } as const;
 
 /**
- * The official TVC, played silently on a loop as a background. Set `file` to a self-hosted MP4 in /public
- * (for example '/video/aureum-tvc.mp4') to drop YouTube entirely; until then it streams from the Aureum Mall channel.
+ * The official TVC, played silently on a loop as a background from our own files (no soundtrack, fast-start MP4):
+ * 720p for phones, 1080p for larger screens. Full version with sound: youtube.com/watch?v=Y7RDAxEacbI
  */
-export const BRAND_FILM: { youtubeId: string; file?: string; title: string; poster: string; posterAlt: string } = {
-  youtubeId: 'Y7RDAxEacbI',
+export const BRAND_FILM = {
+  sources: [
+    { src: '/video/aureum-tvc-720.mp4', media: '(max-width: 760px)' },
+    { src: '/video/aureum-tvc-1080.mp4' },
+  ],
   title: 'Aureum Mall & Residences | Official TVC',
   poster: '/assets/aureum/approved/renders/aureum-exterior-ring-road-interchange.webp',
   posterAlt: 'Aureum Mall & Residences at the Bahria Town Ring Road Interchange',
-};
+} as const;
 
 export const MEDIA_PRINCIPLES = [
   'Images are artist’s impressions; brand signage is illustrative.',

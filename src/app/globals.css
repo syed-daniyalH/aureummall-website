@@ -5824,11 +5824,18 @@ h2:not(.srOnly) {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  container-type: size;
   pointer-events: none;
 }
 
-/* The poster covers the film until it is playing (and while it restarts); the film itself always stays visible. */
+.bgFilm video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The poster covers the film until its first frame plays, then fades away. */
 .bgFilm .bgFilmCover {
   z-index: 1;
   object-fit: cover;
@@ -5843,33 +5850,11 @@ h2:not(.srOnly) {
   object-position: 50% 45%;
 }
 
-.bgFilm iframe,
-.bgFilm video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  border: 0;
-  pointer-events: none;
-}
-
-/* Cover the frame like object-fit: cover, without extra zoom so words in the film stay in view. */
-.bgFilm iframe {
-  width: max(100cqw, 177.78cqh);
-  height: max(100cqh, 56.25cqw);
-  transform: translate(-50%, -50%);
-}
-
 /* Portrait phones: play the whole frame as a full-width band at the top of the hero instead of cropping its sides. */
 @media (max-width: 760px) {
   .heroCinemaFilm {
     inset: 0 0 auto;
     height: 56.25vw;
-  }
-
-  .heroCinemaFilm iframe,
-  .heroCinemaFilm video {
-    width: 100%;
-    height: 100%;
   }
 
   .heroCinemaFilm::after {
@@ -5892,13 +5877,6 @@ h2:not(.srOnly) {
   .heroCinema:has(.heroCinemaFilm) .heroCinemaInner {
     padding-top: calc(56.25vw + 24px);
   }
-}
-
-.bgFilm video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
 }
 
 /* .section prefix so the alternating section background rule above cannot override it. */
