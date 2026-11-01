@@ -43,6 +43,8 @@ export type SourcePaymentTable = {
   rateLabel: string;
   installmentLabel: string;
   possessionLabel: string;
+  /** Number of 1% monthly instalments in the plan (55 for residences and offices, 42 for shops). */
+  monthlyCount: number;
   note?: string;
   rows: readonly SourcePaymentRow[];
 };
@@ -79,6 +81,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
     rateLabel: 'Rate 19,500 to 20,500 / Sq.ft.',
     installmentLabel: '4.5-year plan · 55 monthly installments',
     possessionLabel: 'Indicative possession 3.5 years',
+    monthlyCount: 55,
     note: 'Premium Glass Collection residences (1,491 and 1,727 sq ft) are quoted individually.',
     rows: [
       unit('Studio', 426, 19500),
@@ -95,6 +98,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
     rateLabel: 'Rate 23,500 / Sq.ft.',
     installmentLabel: '4.5-year plan · 55 monthly installments',
     possessionLabel: 'Indicative possession 3.5 years',
+    monthlyCount: 55,
     note: 'Every office includes a lifetime amenities membership.',
     rows: [
       unit('Office', 1007, 23500),
@@ -110,6 +114,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
     rateLabel: 'Rate 45,000 / Sq.ft.',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
+    monthlyCount: 42,
     note: 'First-floor shops range from 172 to 707 sq ft. Ground-floor prices on request.',
     rows: [
       unit('Shop', 172, 45000, true),
@@ -125,6 +130,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
     rateLabel: 'Rate 40,000 / Sq.ft.',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
+    monthlyCount: 42,
     note: 'Second-floor shops range from 478 to 643 sq ft.',
     rows: [
       unit('Shop', 478, 40000, true),
@@ -139,6 +145,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
     rateLabel: 'Rate 70,000 / Sq.ft.',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
+    monthlyCount: 42,
     note: 'Food court units of around 301 sq ft beside the playland and trampoline park.',
     rows: [unit('Food court unit', 301, 70000, true)],
   },

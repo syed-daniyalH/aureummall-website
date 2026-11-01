@@ -5,6 +5,7 @@ import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { PAYMENT_CATEGORIES, PAYMENT_SOURCE_LABEL, PAYMENT_TERMS, SOURCE_PAYMENT_TABLES, type SourcePaymentRow, type SourcePaymentTable } from '../data';
+import { PriceCalculator } from './PriceCalculator';
 
 const PLAN_SUMMARIES = [
   { title: 'Apartments & offices', facts: [['4.5 yrs', 'Payment plan'], ['3.5 yrs', 'Possession*'], ['10%', 'Booking'], ['15%', 'Confirmation'], ['55%', '55 monthly × 1%'], ['20%', 'Completion']] },
@@ -87,6 +88,12 @@ export function PaymentPlansExperience() {
             </div>
           </div>
           <div className="paymentHeroStamp" aria-hidden="true"><span>Booking from</span><strong>10%</strong></div>
+        </div>
+      </section>
+      <section className="section calcSection" aria-labelledby="payment-calc-heading">
+        <div className="container">
+          <SectionHeading id="payment-calc-heading" eyebrow="Payment calculator" title="Your unit, your instalments." description="Choose a unit to see its base price and what is due at each stage." />
+          <PriceCalculator />
         </div>
       </section>
       <section className="section paymentWorkspace" id="payment-workspace">

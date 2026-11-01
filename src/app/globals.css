@@ -4937,7 +4937,7 @@ h2:not(.srOnly) {
   letter-spacing: 0.2em;
 }
 
-:is(.heroCinema, .wpInternalHero, .wpAboutStats, .wpAmenitiesSection, .paymentHero, .trustHero, .mediaHero, .finderPageHero, .footer) .eyebrow {
+:is(.heroCinema, .wpInternalHero, .wpAboutStats, .wpAmenitiesSection, .paymentHero, .trustHero, .mediaHero, .finderPageHero, .explorerHero, .footer) .eyebrow {
   color: var(--gold-soft);
 }
 
@@ -4960,7 +4960,7 @@ h2:not(.srOnly) {
 }
 
 /* These page heroes also carry .section, whose white background (set later in the file) was hiding their white headings. */
-.section:is(.paymentHero, .mediaHero, .trustHero, .finderPageHero) {
+.section:is(.paymentHero, .mediaHero, .trustHero, .finderPageHero, .explorerHero) {
   background: linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
   color: var(--surface);
 }
@@ -5324,5 +5324,498 @@ h2:not(.srOnly) {
 
   .siteFooter .footerBottom {
     flex-direction: column;
+  }
+}
+/* ---------- Building explorer ---------- */
+.explorerSection {
+  background: var(--page);
+}
+
+.bxLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(32px, 5vw, 64px);
+  margin-top: 8px;
+}
+
+.bxElevation {
+  padding: 36px 28px 22px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(170deg, var(--indigo) 0%, var(--navy-deep) 100%);
+  color: var(--surface);
+}
+
+.bxStack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bxLevel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
+}
+
+.bxLevel:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.bxLevel-tower {
+  width: 64%;
+  min-height: 150px;
+  align-items: flex-end;
+  padding-bottom: 14px;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(255, 255, 255, 0.07) 22px 23px),
+    repeating-linear-gradient(0deg, transparent 0 18px, rgba(255, 255, 255, 0.07) 18px 19px),
+    rgba(255, 255, 255, 0.04);
+}
+
+.bxLevel-hotel {
+  width: 64%;
+}
+
+.bxLevel-basement {
+  min-height: 48px;
+  border-style: dashed;
+  background: transparent;
+}
+
+/* Ground line between the ground floor and the basements. */
+.bxLevel-podium + .bxLevel-basement {
+  margin-top: 22px;
+}
+
+.bxLevel-podium + .bxLevel-basement::before {
+  position: absolute;
+  top: -13px;
+  right: -28px;
+  left: -28px;
+  content: '';
+  border-top: 1px solid rgba(216, 191, 142, 0.55);
+}
+
+.bxLevel.isActive {
+  border-color: var(--gold-soft);
+  background: var(--gold-soft);
+  color: var(--navy-deep);
+}
+
+.bxLevelName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.bxLevelMeta {
+  font-size: 12px;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+.bxHint {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.bxPanel {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: 22px;
+}
+
+.bxPanel > * {
+  width: 100%;
+}
+
+.bxPanel > .button {
+  width: auto;
+}
+
+.bxPanelHead h3 {
+  margin: 10px 0 10px;
+  color: var(--indigo);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 3.2vw, 42px);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+.bxPanelHead p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.bxPlan {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.bxPlan img {
+  object-fit: contain;
+}
+
+.bxPlan span {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  background: var(--indigo);
+  color: var(--surface);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.bxUnitsTitle {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.bxUnits ul {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.bxUnits a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  transition: background var(--motion-fast);
+}
+
+.bxUnits a:hover {
+  background: var(--surface);
+}
+
+.bxUnits strong {
+  display: block;
+  color: var(--indigo);
+  font-size: 15px;
+}
+
+.bxUnitPrice {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.bxUnitPrice small {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bxNote {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .bxLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .bxElevation {
+    padding: 24px 16px 16px;
+  }
+
+  .bxLevel {
+    min-height: 46px;
+    padding: 0 14px;
+  }
+
+  .bxLevel-tower {
+    min-height: 96px;
+  }
+
+  .bxLevel-podium + .bxLevel-basement::before {
+    right: -16px;
+    left: -16px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .bxUnits ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    border-top: 0;
+  }
+
+  .bxUnits li {
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* ---------- Price calculator ---------- */
+.calc {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(28px, 4vw, 56px);
+  margin: 8px 0 36px;
+  scroll-margin-top: 100px;
+}
+
+.calcControls fieldset {
+  margin: 0 0 26px;
+  padding: 0;
+  border: 0;
+}
+
+.calcControls legend {
+  padding: 0;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.calcPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.calcPills button {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 13px;
+  transition: background var(--motion-fast), color var(--motion-fast), border-color var(--motion-fast);
+}
+
+.calcPills button:hover {
+  border-color: var(--indigo);
+}
+
+.calcPills button[aria-pressed='true'] {
+  border-color: var(--indigo);
+  background: var(--indigo);
+  color: var(--surface);
+}
+
+.calcTerms {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.calcResult {
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(170deg, var(--indigo) 0%, var(--navy-deep) 100%);
+  color: var(--surface);
+}
+
+.calcUnit {
+  margin: 0;
+  color: var(--gold-soft);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.calcTotal {
+  margin: 14px 0 0;
+}
+
+.calcTotal span,
+.calcTotal small {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+}
+
+.calcTotal strong {
+  display: block;
+  margin: 2px 0 4px;
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.calcBar {
+  display: flex;
+  gap: 2px;
+  height: 10px;
+  margin: 26px 0 8px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.calcBar span {
+  flex-basis: 0;
+  transition: flex-grow 400ms ease;
+}
+
+.calcBar-booking { background: var(--gold-soft); }
+.calcBar-confirmation { background: #a8874f; }
+.calcBar-monthly { background: rgba(255, 255, 255, 0.78); }
+.calcBar-halfYearly { background: #9aa6e0; }
+.calcBar-completion { background: #6c78c9; }
+
+.calcStages {
+  margin: 0;
+}
+
+.calcStages div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.calcStages dt {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.calcStages dt small {
+  display: block;
+  margin-left: 16px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.calcStages dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.calcDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: 1px;
+}
+
+.calcFirst {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  font-size: 13px;
+}
+
+.calcFirst strong {
+  color: var(--gold-soft);
+  font-size: 18px;
+}
+
+.calcResult .actions {
+  margin-top: 24px;
+}
+
+.calcNote {
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+@media (max-width: 900px) {
+  .calc {
+    grid-template-columns: 1fr;
+  }
+
+  .calcResult .actions .button {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------- Motion: gentle reveal on scroll, only where supported and wanted ---------- */
+@keyframes aureumReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aureumHeroSettle {
+  from {
+    transform: scale(1.06);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .heroCinemaImage {
+    animation: aureumHeroSettle 1.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  @supports (animation-timeline: view()) {
+    main :is(.sectionHeading, .showcaseFigure, .wpStat, .wpIntroCopy, .bxLayout, .calc, .brochureCard, .wpLocationVisual) {
+      animation: aureumReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
   }
 }
