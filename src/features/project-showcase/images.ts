@@ -25,6 +25,14 @@ export const RESIDENCE_IMAGES: readonly ShowcaseImage[] = [
   { src: `${base}/residences/aureum-corridor-2.webp`, alt: 'Residential corridor with numbered apartment doors', label: 'Arrival corridor' },
 ];
 
+/** Five-second interior walkthrough clips (silent, 1280 × 960), in the order a resident arrives home. */
+export const RESIDENCE_CLIPS = [
+  { src: '/video/aureum-corridor-clip-1.mp4', label: 'The residential corridor', detail: 'Hotel-style corridors with marble floors and soft linear lighting.' },
+  { src: '/video/aureum-corridor-clip-2.mp4', label: 'Walking to your door', detail: 'Numbered, back-lit apartment entrances along a quiet hallway.' },
+  { src: '/video/aureum-corridor-clip-3.mp4', label: 'Your front door', detail: 'A full-height door opens straight into the living space.' },
+  { src: '/video/aureum-lounge-clip.mp4', label: 'Living & dining', detail: 'Open kitchen, dining and lounge with floor-to-ceiling glazing.' },
+] as const;
+
 export const CUTAWAY_IMAGES: readonly ShowcaseImage[] = [
   { src: `${base}/residences/aureum-studio-cutaway.webp`, alt: 'Representative 3D layout of an Aureum studio apartment', label: 'Studio · representative layout' },
   { src: `${base}/residences/aureum-two-bed-cutaway.webp`, alt: 'Representative 3D layout of an Aureum two-bedroom apartment', label: 'Two bedrooms · representative layout' },

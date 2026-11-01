@@ -2,6 +2,7 @@ import { WordPressPropertyPage } from '@/features/wordpress-conversion/component
 import { createRouteMetadata } from '@/features/content-seo/metadata';
 import { ApartmentTypesSection, ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
 import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
+import { ResidenceWalkthrough } from '@/features/project-showcase/components/ResidenceWalkthrough';
 import { CUTAWAY_IMAGES, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -20,6 +21,7 @@ export default function Page() {
       registerLabel="Apartment enquiry"
     >
       <ApartmentTypesSection />
+      <ResidenceWalkthrough />
       <section className="section showcaseSection">
         <div className="container">
           <SectionHeading eyebrow="Interiors" title="Light, space and calm." description="Floor-to-ceiling glazing, open living and dining areas and quiet, hotel-style corridors." />
