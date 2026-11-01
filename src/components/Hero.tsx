@@ -2,11 +2,13 @@ import Image from 'next/image';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { BackgroundFilm } from '@/features/immersive-media/components/BrandFilm';
 
+const HERO_IMAGE = '/assets/aureum/approved/renders/aureum-exterior-night.webp';
+
 export function Hero() {
   return (
     <section className="heroCinema" aria-labelledby="hero-title">
-      <Image className="heroCinemaImage" src="/assets/aureum/approved/renders/aureum-exterior-night.webp" alt="Aureum Mall and Residences at night, with the glass atrium entrance" fill priority sizes="100vw" />
-      <BackgroundFilm className="heroCinemaFilm" />
+      <Image className="heroCinemaImage" src={HERO_IMAGE} alt="Aureum Mall and Residences at night, with the glass atrium entrance" fill priority sizes="100vw" />
+      <BackgroundFilm className="heroCinemaFilm" poster={HERO_IMAGE} sizes="100vw" />
       <div className="heroCinemaShade" aria-hidden="true" />
       <div className="container heroCinemaInner">
         <p className="heroCinemaKicker">Bahria Town · Ring Road Interchange · Lahore</p>

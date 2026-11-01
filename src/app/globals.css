@@ -5825,13 +5825,22 @@ h2:not(.srOnly) {
   inset: 0;
   overflow: hidden;
   container-type: size;
-  opacity: 0;
   pointer-events: none;
+}
+
+/* The poster covers the film until it is playing (and while it restarts); the film itself always stays visible. */
+.bgFilm .bgFilmCover {
+  z-index: 1;
+  object-fit: cover;
   transition: opacity 1.4s ease;
 }
 
-.bgFilm.isVisible {
-  opacity: 1;
+.bgFilm.isVisible .bgFilmCover {
+  opacity: 0;
+}
+
+.heroCinemaFilm .bgFilmCover {
+  object-position: 50% 45%;
 }
 
 .bgFilm iframe,
@@ -5843,11 +5852,46 @@ h2:not(.srOnly) {
   pointer-events: none;
 }
 
-/* Cover the frame like object-fit: cover, then zoom slightly so YouTube's corner logo and title area sit outside it. */
+/* Cover the frame like object-fit: cover, without extra zoom so words in the film stay in view. */
 .bgFilm iframe {
   width: max(100cqw, 177.78cqh);
   height: max(100cqh, 56.25cqw);
-  transform: translate(-50%, -50%) scale(1.22);
+  transform: translate(-50%, -50%);
+}
+
+/* Portrait phones: play the whole frame as a full-width band at the top of the hero instead of cropping its sides. */
+@media (max-width: 760px) {
+  .heroCinemaFilm {
+    inset: 0 0 auto;
+    height: 56.25vw;
+  }
+
+  .heroCinemaFilm iframe,
+  .heroCinemaFilm video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .heroCinemaFilm::after {
+    position: absolute;
+    inset: auto 0 0;
+    height: 35%;
+    content: '';
+    background: linear-gradient(0deg, var(--navy-deep), transparent);
+  }
+
+  .heroCinema:has(.heroCinemaFilm.isVisible) .heroCinemaImage {
+    opacity: 0;
+    transition: opacity 1.4s ease;
+  }
+
+  .heroCinema:has(.heroCinemaFilm.isVisible) .heroCinemaShade {
+    background: none;
+  }
+
+  .heroCinema:has(.heroCinemaFilm) .heroCinemaInner {
+    padding-top: calc(56.25vw + 24px);
+  }
 }
 
 .bgFilm video {
