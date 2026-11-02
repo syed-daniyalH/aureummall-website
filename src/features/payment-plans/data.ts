@@ -152,7 +152,7 @@ export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
 ];
 
 export const PAYMENT_CATEGORIES = [
-  { value: 'all', label: 'All pathways' },
+  { value: 'all', label: 'All units' },
   { value: 'apartment', label: 'Apartments' },
   { value: 'commercial_shop', label: 'Commercial shops' },
   { value: 'corporate_office', label: 'Corporate offices' },
