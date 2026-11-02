@@ -80,7 +80,7 @@ export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [
     description: 'Large-format retail, a showroom and the central atrium.',
     alt: 'Aureum Mall ground floor plan',
     caption: 'Ground floor plan, August 2026 drawings.',
-    src: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan-2026.webp',
+    src: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan-2026-v2.webp',
   },
   {
     id: 'first-floor',
@@ -90,7 +90,7 @@ export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [
     description: 'A premium retail floor with a seamless customer experience.',
     alt: 'Aureum Mall first floor plan',
     caption: 'First floor plan from the Aureum project materials.',
-    src: '/assets/aureum/approved/floor-plans/aureum-first-floor-plan.webp',
+    src: '/assets/aureum/approved/floor-plans/aureum-first-floor-plan-v2.webp',
   },
   {
     id: 'residential-floor',
@@ -100,6 +100,6 @@ export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [
     description: 'Studios, one- and two-bedroom apartments and premium glass residences around an open-to-sky courtyard, with offices on the right-hand side.',
     alt: 'Typical Aureum residential floor plan',
     caption: 'Typical residential floor, 6th to 12th floors.',
-    src: '/assets/aureum/approved/floor-plans/aureum-residential-floor-plan-2026.webp',
+    src: '/assets/aureum/approved/floor-plans/aureum-residential-floor-plan-2026-v2.webp',
   },
 ] as const;

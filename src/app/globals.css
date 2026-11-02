@@ -4820,8 +4820,10 @@ textarea:focus-visible {
 .showcaseFigure figcaption span { color: var(--muted); font-size: 11px; letter-spacing: 0.04em; white-space: nowrap; }
 .showcaseNote { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; }
 .floorPlanGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.planFigure .showcaseFigureImage { aspect-ratio: 4 / 3; background: var(--page); }
-.planFigure .showcaseFigureImage img { object-fit: contain; padding: 10px; }
+/* Plans always show whole, on the same white card, without the hover zoom that would clip their edges. */
+.planFigure .showcaseFigureImage { aspect-ratio: 4 / 3; border: 1px solid var(--line); background: var(--surface); box-shadow: none; }
+.planFigure .showcaseFigureImage img { object-fit: contain; padding: 16px 16px 44px; }
+.planFigure:hover .showcaseFigureImage img { transform: none; }
 .zoomHint { position: absolute; right: 12px; bottom: 12px; padding: 6px 10px; border-radius: 2px; background: var(--indigo); color: var(--surface); font-size: 11px; font-weight: 700; letter-spacing: 0.06em; }
 .galleryJump { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .galleryJump a { padding: 9px 15px; border: 1px solid var(--line); border-radius: 30px; color: var(--indigo); font-size: 13px; font-weight: 600; }

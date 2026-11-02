@@ -41,13 +41,13 @@ export const CUTAWAY_IMAGES: readonly ShowcaseImage[] = [
 const PLAN_NOTE = 'Subject to final approved drawings';
 
 export const FLOOR_PLAN_IMAGES: readonly ShowcaseImage[] = [
-  { src: `${base}/floor-plans/aureum-ground-floor-plan-2026.webp`, alt: 'Aureum ground floor plan with retail, showroom and the central atrium', label: 'Ground floor · 26 ft', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-first-floor-plan.webp`, alt: 'Aureum first floor plan with shops, kiosks and the grocery store', label: 'First floor · 18 ft', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-food-court-floor-plan-2026.webp`, alt: 'Aureum third floor plan with food court, playland and trampoline park', label: 'Third floor · food court · 25 ft', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-second-floor-plan-2026.webp`, alt: 'Aureum second floor plan with numbered shops around the atrium', label: 'Second floor · 18 ft', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-residential-floor-plan-2026.webp`, alt: 'Typical Aureum residential floor with apartments around an open-to-sky courtyard and offices', label: 'Typical residential floor · 6th to 12th', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-basement-1-plan-2026.webp`, alt: 'Aureum basement level 1 parking plan', label: 'Basement level 1 · parking', note: PLAN_NOTE },
-  { src: `${base}/floor-plans/aureum-basement-2-plan-2026.webp`, alt: 'Aureum basement level 2 parking plan', label: 'Basement level 2 · parking', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-ground-floor-plan-2026-v2.webp`, alt: 'Aureum ground floor plan with retail, showroom and the central atrium', label: 'Ground floor · 26 ft', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-first-floor-plan-v2.webp`, alt: 'Aureum first floor plan with shops, kiosks and the grocery store', label: 'First floor · 18 ft', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-food-court-floor-plan-2026-v2.webp`, alt: 'Aureum third floor plan with food court, playland and trampoline park', label: 'Third floor · food court · 25 ft', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-second-floor-plan-2026-v2.webp`, alt: 'Aureum second floor plan with numbered shops around the atrium', label: 'Second floor · 18 ft', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-residential-floor-plan-2026-v2.webp`, alt: 'Typical Aureum residential floor with apartments around an open-to-sky courtyard and offices', label: 'Typical residential floor · 6th to 12th', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-basement-1-plan-2026-v2.webp`, alt: 'Aureum basement level 1 parking plan', label: 'Basement level 1 · parking', note: PLAN_NOTE },
+  { src: `${base}/floor-plans/aureum-basement-2-plan-2026-v2.webp`, alt: 'Aureum basement level 2 parking plan', label: 'Basement level 2 · parking', note: PLAN_NOTE },
 ];
 
 export const LOCATION_MAP: ShowcaseImage = { src: `${base}/location/aureum-location-map-2026.webp`, alt: 'Map of Aureum Mall & Residences at the Bahria Town Ring Road Interchange, Lahore, with nearby landmarks', label: 'Bahria Town Ring Road Interchange', note: 'Illustrative map, not to scale' };
