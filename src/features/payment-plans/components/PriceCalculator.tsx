@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, type CSSProperties } from 'react';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { ANALYTICS_EVENTS } from '@/features/content-seo/data';
 import { track } from '@/lib/analytics';
@@ -8,12 +8,48 @@ import { whatsappHref } from '@/lib/whatsapp';
 import { PAYMENT_SOURCE_LABEL, SOURCE_PAYMENT_TABLES } from '../data';
 import { CALC_HASH_PREFIX, PRICED_UNITS, describeUnit, formatLakhCrore, formatPKR, formatSqFt } from '../units';
 
-type Stage = { key: string; label: string; detail: string; total: number; percent: number };
+type Stage = { key: string; when: string; label: string; detail: string; total: number; percent: number };
 
-/** Pick a category and a unit to see the base price and every stage of the catalogue payment plan. */
+const COUNT_MS = 900;
+
+/** Counts from the previous value to the new one, so changing unit visibly re-tallies the plan. */
+function useCountUp(target: number) {
+  const [value, setValue] = useState(target);
+  const fromRef = useRef(target);
+
+  useEffect(() => {
+    const from = fromRef.current;
+    fromRef.current = target;
+    if (from === target) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      queueMicrotask(() => setValue(target));
+      return;
+    }
+    let frame = 0;
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - start) / COUNT_MS);
+      const eased = 1 - (1 - t) ** 3;
+      setValue(Math.round(from + (target - from) * eased));
+      if (t < 1) frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, [target]);
+
+  return value;
+}
+
+function Amount({ value }: { value: number }) {
+  return <>{formatPKR(useCountUp(value))}</>;
+}
+
+/** Pick a category and a unit to see the base price and the payment plan as a timeline, booking to possession. */
 export function PriceCalculator({ id = 'price-calculator' }: { id?: string }) {
   const [unitId, setUnitId] = useState(PRICED_UNITS[0].id);
+  const [inView, setInView] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const uid = useId();
   const unit = PRICED_UNITS.find((item) => item.id === unitId) ?? PRICED_UNITS[0];
   const { table, row } = unit;
@@ -33,21 +69,35 @@ export function PriceCalculator({ id = 'price-calculator' }: { id?: string }) {
     return () => window.removeEventListener('hashchange', applyHash);
   }, []);
 
+  // Hold the timeline animation until the card is on screen, so visitors see the line draw.
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      setInView(true);
+      observer.disconnect();
+    }, { threshold: 0.35 });
+    observer.observe(card);
+    return () => observer.disconnect();
+  }, []);
+
   function choose(nextId: string) {
     setUnitId(nextId);
     track(ANALYTICS_EVENTS.priceCalculatorSelect, { unit: nextId });
   }
 
   const stages: Stage[] = [
-    { key: 'booking', label: 'Booking', detail: '10% on booking', total: row.booking, percent: 10 },
-    { key: 'confirmation', label: 'Confirmation', detail: '15% on confirmation', total: row.confirmation, percent: 15 },
-    { key: 'monthly', label: 'Monthly', detail: `${formatPKR(row.monthlyInstallment)} × ${table.monthlyCount} months`, total: row.monthlyInstallment * table.monthlyCount, percent: table.monthlyCount },
-    ...(row.halfYearly ? [{ key: 'halfYearly', label: 'Half-yearly', detail: `${formatPKR(row.halfYearly)} × 6`, total: row.halfYearly * 6, percent: 13 }] : []),
-    { key: 'completion', label: 'On completion', detail: '20% on possession', total: row.completion, percent: 20 },
+    { key: 'booking', when: 'At booking', label: 'Booking', detail: 'Reserves your unit', total: row.booking, percent: 10 },
+    { key: 'confirmation', when: 'On confirmation', label: 'Confirmation', detail: 'Confirms the allotment', total: row.confirmation, percent: 15 },
+    { key: 'monthly', when: `Months 1–${table.monthlyCount}`, label: 'Monthly', detail: `${formatPKR(row.monthlyInstallment)} × ${table.monthlyCount}`, total: row.monthlyInstallment * table.monthlyCount, percent: table.monthlyCount },
+    ...(row.halfYearly ? [{ key: 'halfYearly', when: 'Every 6 months', label: 'Half-yearly', detail: `${formatPKR(row.halfYearly)} × 6`, total: row.halfYearly * 6, percent: 13 }] : []),
+    { key: 'completion', when: 'On possession', label: 'Completion', detail: 'Paid at handover', total: row.completion, percent: 20 },
   ];
 
   const description = describeUnit(unit);
   const whatsapp = whatsappHref(`a ${description}, base price ${formatPKR(row.totalPrice)}`);
+  const timelineStyle = { '--steps': stages.length } as CSSProperties;
 
   return (
     <div className="calc" id={id} ref={rootRef}>
@@ -70,40 +120,45 @@ export function PriceCalculator({ id = 'price-calculator' }: { id?: string }) {
             ))}
           </div>
         </fieldset>
-        <p className="calcTerms">{table.installmentLabel} · {table.possessionLabel}</p>
       </div>
 
-      <div className="calcResult" aria-live="polite" aria-labelledby={`${uid}-total`}>
-        <p className="calcUnit">{description}</p>
-        <p className="calcTotal" id={`${uid}-total`}>
-          <span>Base price</span>
-          <strong>{formatPKR(row.totalPrice)}</strong>
-          <small>≈ {formatLakhCrore(row.totalPrice)} · {formatSqFt(row.sizeSqFt)} at {formatPKR(row.ratePerSqFt)} per sq ft</small>
-        </p>
-
-        <div className="calcBar" aria-hidden="true">
-          {stages.map((stage) => <span key={stage.key} className={`calcBar-${stage.key}`} style={{ flexGrow: stage.percent }} />)}
+      <div className={`calcCard${inView ? ' isInView' : ''}`} ref={cardRef} aria-live="polite" aria-labelledby={`${uid}-total`}>
+        <div className="calcHead">
+          <div>
+            <p className="calcUnit">{description}</p>
+            <p className="calcTotal" id={`${uid}-total`}>
+              <span>Base price</span>
+              <strong><Amount value={row.totalPrice} /></strong>
+              <small>≈ {formatLakhCrore(row.totalPrice)} · {formatSqFt(row.sizeSqFt)} at {formatPKR(row.ratePerSqFt)} per sq ft</small>
+            </p>
+          </div>
+          <div className="calcDue">
+            <span>Due at booking &amp; confirmation</span>
+            <strong><Amount value={row.booking + row.confirmation} /></strong>
+            <small>{table.installmentLabel}</small>
+          </div>
         </div>
 
-        <dl className="calcStages">
-          {stages.map((stage) => (
-            <div key={stage.key}>
-              <dt><i className={`calcDot calcBar-${stage.key}`} aria-hidden="true" />{stage.label}<small>{stage.detail}</small></dt>
-              <dd>{formatPKR(stage.total)}</dd>
-            </div>
+        {/* Keyed by unit so the line draws and the stages light up again on every change. */}
+        <ol className="calcTimeline" key={unit.id} style={timelineStyle} aria-label="Payment plan stages">
+          {stages.map((stage, index) => (
+            <li key={stage.key} className={`calcStep calcStep-${stage.key}`} style={{ '--i': index } as CSSProperties}>
+              <span className="calcNode" aria-hidden="true" />
+              <p className="calcWhen">{stage.when}</p>
+              <p className="calcPct">{stage.percent}%</p>
+              <p className="calcAmount"><Amount value={stage.total} /></p>
+              <p className="calcLabel">{stage.label}<small>{stage.detail}</small></p>
+            </li>
           ))}
-        </dl>
+        </ol>
 
-        <div className="calcFirst">
-          <span>Due at booking and confirmation</span>
-          <strong>{formatPKR(row.booking + row.confirmation)}</strong>
+        <div className="calcFoot">
+          <div className="actions">
+            <a className="button primary" href={whatsapp} target="_blank" rel="noopener" onClick={() => track(ANALYTICS_EVENTS.whatsappClick, { placement: 'price_calculator', unit: unit.id })}>Ask about this unit on WhatsApp</a>
+            <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
+          </div>
+          <p className="calcNote">{table.possessionLabel}. Base prices from the {PAYMENT_SOURCE_LABEL}; applicable 10% category charges are additional. Prices, plans and availability are subject to final confirmation.</p>
         </div>
-
-        <div className="actions">
-          <a className="button primary" href={whatsapp} target="_blank" rel="noopener" onClick={() => track(ANALYTICS_EVENTS.whatsappClick, { placement: 'price_calculator', unit: unit.id })}>Ask about this unit on WhatsApp</a>
-          <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
-        </div>
-        <p className="calcNote">Base prices from the {PAYMENT_SOURCE_LABEL}. Applicable 10% category charges are additional. Prices, plans and availability are subject to final confirmation.</p>
       </div>
     </div>
   );

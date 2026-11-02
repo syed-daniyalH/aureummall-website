@@ -4924,6 +4924,11 @@ textarea:focus-visible {
 /* ---------- Design refresh: serif headings, navy and gold palette, one button style, cinematic hero, footer ---------- */
 
 /* Large headings use the serif. The :not(.srOnly) gives these class-level specificity, so, coming last, they override the per-section heading rules above. */
+/* Cormorant defaults to old-style figures (1 looks like I); use lining figures everywhere so prices and dates read clearly. */
+body {
+  font-variant-numeric: lining-nums;
+}
+
 h1:not(.srOnly),
 h2:not(.srOnly) {
   font-family: var(--font-serif);
@@ -5593,18 +5598,22 @@ h2:not(.srOnly) {
   }
 }
 
-/* ---------- Price calculator ---------- */
+/* ---------- Price calculator: payment plan as a horizontal timeline ---------- */
 .calc {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  align-items: start;
-  gap: clamp(28px, 4vw, 56px);
+  gap: 28px;
   margin: 8px 0 36px;
   scroll-margin-top: 100px;
 }
 
+.calcControls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 20px 48px;
+}
+
 .calcControls fieldset {
-  margin: 0 0 26px;
+  margin: 0;
   padding: 0;
   border: 0;
 }
@@ -5646,17 +5655,25 @@ h2:not(.srOnly) {
   color: var(--surface);
 }
 
-.calcTerms {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
+.calcCard {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 3.6vw, 48px);
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(216, 191, 142, 0.13), transparent 55%),
+    linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
+  color: var(--surface);
 }
 
-.calcResult {
-  padding: clamp(24px, 3vw, 36px);
-  border-radius: var(--radius-sm);
-  background: linear-gradient(170deg, var(--indigo) 0%, var(--navy-deep) 100%);
-  color: var(--surface);
+.calcHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .calcUnit {
@@ -5681,113 +5698,273 @@ h2:not(.srOnly) {
 
 .calcTotal strong {
   display: block;
-  margin: 2px 0 4px;
+  margin: 2px 0 6px;
   font-family: var(--font-serif);
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(40px, 5vw, 64px);
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 600;
-  line-height: 1.05;
+  line-height: 1;
 }
 
-.calcBar {
-  display: flex;
-  gap: 2px;
-  height: 10px;
-  margin: 26px 0 8px;
-  overflow: hidden;
-  border-radius: 999px;
+.calcDue {
+  min-width: 250px;
+  padding: 18px 22px;
+  border: 1px solid rgba(216, 191, 142, 0.35);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.calcBar span {
-  flex-basis: 0;
-  transition: flex-grow 400ms ease;
-}
-
-.calcBar-booking { background: var(--gold-soft); }
-.calcBar-confirmation { background: #a8874f; }
-.calcBar-monthly { background: rgba(255, 255, 255, 0.78); }
-.calcBar-halfYearly { background: #9aa6e0; }
-.calcBar-completion { background: #6c78c9; }
-
-.calcStages {
-  margin: 0;
-}
-
-.calcStages div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.calcStages dt {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.calcStages dt small {
+.calcDue span,
+.calcDue small {
   display: block;
-  margin-left: 16px;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 12px;
-  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  letter-spacing: 0.06em;
 }
 
-.calcStages dd {
+.calcDue span {
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calcDue strong {
+  display: block;
+  margin: 6px 0 4px;
+  color: var(--gold-soft);
+  font-family: var(--font-serif);
+  font-size: 30px;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.calcTimeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--steps), minmax(0, 1fr));
+  margin: 40px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Track and gold fill run from the first stage's dot to the last. */
+.calcTimeline::before,
+.calcTimeline::after {
+  position: absolute;
+  top: 6px;
+  right: calc(50% / var(--steps));
+  left: calc(50% / var(--steps));
+  height: 2px;
+  content: '';
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.calcTimeline::after {
+  background: linear-gradient(90deg, var(--gold-soft), #f1e2bf);
+  transform-origin: left center;
+}
+
+.calcStep {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+  text-align: center;
+}
+
+.calcNode {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--gold-soft);
+  border-radius: 50%;
+  background: var(--gold-soft);
+  box-shadow: 0 0 0 6px rgba(216, 191, 142, 0.14);
+}
+
+.calcWhen {
+  margin: 20px 0 8px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calcPct {
   margin: 0;
-  font-variant-numeric: tabular-nums;
+  color: var(--gold-soft);
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.calcAmount {
+  margin: 10px 0 4px;
+  font-size: 15px;
+  font-variant-numeric: lining-nums tabular-nums;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.calcDot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 50%;
-  vertical-align: 1px;
+.calcLabel {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.calcFirst {
+.calcLabel small {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.calcFoot {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 8px 16px;
-  margin-top: 18px;
-  padding: 14px 16px;
-  background: rgba(255, 255, 255, 0.07);
-  font-size: 13px;
+  gap: 18px 32px;
+  margin-top: 36px;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.calcFirst strong {
-  color: var(--gold-soft);
-  font-size: 18px;
-}
-
-.calcResult .actions {
-  margin-top: 24px;
+.calcFoot .actions {
+  margin: 0;
 }
 
 .calcNote {
-  margin: 18px 0 0;
+  max-width: 440px;
+  margin: 0;
   color: rgba(255, 255, 255, 0.5);
   font-size: 12px;
   line-height: 1.55;
 }
 
-@media (max-width: 900px) {
-  .calc {
-    grid-template-columns: 1fr;
+@keyframes calcLine {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes calcLineDown {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes calcNodeOn {
+  from { background: var(--navy-deep); box-shadow: 0 0 0 0 rgba(216, 191, 142, 0); transform: scale(0.7); }
+  60% { box-shadow: 0 0 0 12px rgba(216, 191, 142, 0.22); transform: scale(1.25); }
+  to { background: var(--gold-soft); box-shadow: 0 0 0 6px rgba(216, 191, 142, 0.14); transform: none; }
+}
+
+@keyframes calcRise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Runs once the card is on screen, and again whenever a new unit is picked (the timeline remounts). */
+@media (prefers-reduced-motion: no-preference) {
+  .calcCard.isInView .calcTimeline::after {
+    animation: calcLine 1.5s cubic-bezier(0.65, 0, 0.35, 1) both;
   }
 
-  .calcResult .actions .button {
-    flex: 1 1 100%;
+  .calcCard.isInView .calcNode {
+    animation: calcNodeOn 0.55s ease both;
+    animation-delay: calc(var(--i) * 1.5s / (var(--steps) - 1));
+  }
+
+  .calcCard.isInView .calcStep > p {
+    animation: calcRise 0.6s ease both;
+    animation-delay: calc(var(--i) * 1.5s / (var(--steps) - 1) + 0.1s);
   }
 }
 
+@media (max-width: 900px) {
+  .calcControls {
+    grid-template-columns: 1fr;
+  }
+
+  .calcDue {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Phones: the timeline runs top to bottom. */
+@media (max-width: 760px) {
+  .calcTimeline {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+    margin-top: 30px;
+  }
+
+  .calcTimeline::before,
+  .calcTimeline::after {
+    top: 7px;
+    right: auto;
+    bottom: 7px;
+    left: 6px;
+    width: 2px;
+    height: auto;
+  }
+
+  .calcTimeline::after {
+    background: linear-gradient(180deg, var(--gold-soft), #f1e2bf);
+    transform-origin: center top;
+  }
+
+  .calcCard.isInView .calcTimeline::after {
+    animation-name: calcLineDown;
+  }
+
+  .calcStep {
+    display: grid;
+    grid-template-columns: 14px minmax(0, 1fr) auto;
+    align-items: baseline;
+    column-gap: 16px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .calcNode {
+    grid-row: 1 / span 3;
+    align-self: start;
+    margin-top: 1px;
+  }
+
+  .calcWhen {
+    grid-column: 2;
+    margin: 0;
+  }
+
+  .calcPct {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    font-size: 30px;
+  }
+
+  .calcAmount {
+    grid-column: 2;
+    margin: 4px 0 2px;
+    font-size: 17px;
+  }
+
+  .calcLabel {
+    grid-column: 2;
+  }
+
+  .calcFoot .actions .button {
+    flex: 1 1 100%;
+  }
+}
 /* ---------- Motion: gentle reveal on scroll, only where supported and wanted ---------- */
 @keyframes aureumReveal {
   from {
