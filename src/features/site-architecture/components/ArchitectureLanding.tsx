@@ -31,7 +31,7 @@ export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '
       <section className="section wpPropertySection">
         <div className="container wpPropertyGrid">
           <div>
-            <SectionHeading eyebrow="Aureum / information" title="A clear next step for your plans." description="Explore the available pathway, then contact the project team for the current approved details." />
+            <SectionHeading eyebrow="Next steps" title="Everything you need to decide." description="See prices and the payment plan, explore the building level by level, then talk to the sales team for current availability." />
             <ButtonLink href="/payment-plans" variant="dark">View payment plans <span aria-hidden="true">→</span></ButtonLink>
           </div>
           <ul className="wpPropertyFeatures">
@@ -47,8 +47,8 @@ export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '
 export function FaqPage() {
   const faqs = [
     ['Where is Aureum Mall & Residences?', 'Aureum Mall & Residences is planned at Bahria Town, Ring Road Interchange, Lahore.'],
-    ['What property types are available?', 'The project brings together apartments, commercial shops, corporate offices and food court pathways.'],
-    ['Where can I see the payment plan?', 'Visit the Payment Plans page or contact the team for the latest approved schedule.'],
+    ['What property types are available?', 'Studios, one- and two-bedroom apartments, commercial shops on three floors, food court units and full-glass corporate offices.'],
+    ['Where can I see the payment plan?', 'The Payment Plans page shows every unit with its base price and instalments, and the calculator works out each stage for you.'],
     ['How can I book a site visit?', 'Use the site-visit form to share your preferred timing and the sales team will confirm the next step.'],
   ] as const;
   const schema = {
@@ -59,7 +59,7 @@ export function FaqPage() {
   return (
     <>
       <JsonLd id="faq-page-schema" data={schema} />
-      <ArchitectureLanding eyebrow="Aureum / frequently asked questions" title="The information you need before the next step." intro="Find clear answers about the project, available pathways and how to speak with the team." points={['Current information is shared by the project team.', 'Payment schedules are published as clear tables on every page size.', 'Site visits can be requested through the enquiry form.']} />
+      <ArchitectureLanding eyebrow="Aureum / frequently asked questions" title="The information you need before the next step." intro="Clear answers about the project, the spaces available and how to speak with the sales team." points={['Current information is shared by the project team.', 'Payment schedules are published as clear tables on every page size.', 'Site visits can be requested through the enquiry form.']} />
       <section className="section trustFaqSection">
         <div className="container">
           <SectionHeading eyebrow="Clear answers" title="Aureum questions, answered." description="If you need a detail that is not listed here, contact the team directly." />

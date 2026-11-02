@@ -31,7 +31,7 @@ export function UnitFinderExperience() {
         <div className="container wpInternalHeroGrid">
           <div>
             <Eyebrow>Find your space</Eyebrow>
-            <h1>Explore the right pathway at Aureum.</h1>
+            <h1>Find the right space at Aureum.</h1>
             <p>Choose the part of Aureum Mall &amp; Residences that fits your plans. Contact the team for the latest availability, pricing and next steps.</p>
             <ButtonLink href="/contact">Talk to the Aureum team <span aria-hidden="true">↗</span></ButtonLink>
           </div>
@@ -41,9 +41,9 @@ export function UnitFinderExperience() {
 
       <section className="section wpPropertySection">
         <div className="container">
-          <SectionHeading eyebrow="Aureum / choose a pathway" title="Start with the space that matters to you." description="Aureum brings living, working and retail together at Bahria Town, Ring Road Interchange, Lahore." />
+          <SectionHeading eyebrow="Choose a space" title="Start with the space that matters to you." description="Aureum brings living, working and retail together at Bahria Town, Ring Road Interchange, Lahore." />
           <ul className="wpPropertyFeatures">
-            {SPACE_PATHS.map((space) => <li key={space.title}><span>{space.label}</span><div><strong>{space.title}</strong><p>{space.description}</p><ButtonLink href={space.href} variant="secondary">Explore {space.title.toLowerCase()} <span aria-hidden="true">↗</span></ButtonLink></div></li>)}
+            {SPACE_PATHS.map((space) => <li key={space.title}><span>{space.label}</span><div><strong>{space.title}</strong><p>{space.description}</p><ButtonLink href={space.href} variant="secondary" className="onLight">Explore {space.title.toLowerCase()} <span aria-hidden="true">↗</span></ButtonLink></div></li>)}
           </ul>
         </div>
       </section>

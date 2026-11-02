@@ -6366,3 +6366,15 @@ h2:not(.srOnly) {
     scroll-snap-align: start;
   }
 }
+/* Simple page heroes share the page's left edge; the heading and paragraph keep their own reading widths. */
+.container.wpSimpleHero {
+  max-width: none;
+}
+
+.explorerHeroStamp span,
+.paymentHeroStamp span,
+.trustHeroStamp span,
+.mediaHeroStamp span,
+.finderHeroStamp span {
+  font-size: 11px;
+}

@@ -34,7 +34,7 @@ export function WordPressPropertyPage({ eyebrow, title, intro, image, imageAlt, 
       </section>
       <section className="section wpPropertySection">
         <div className="container wpPropertyGrid">
-          <div><SectionHeading eyebrow="Aureum / your next step" title="Clear information for the next decision." description="Aureum brings residential, commercial and office spaces together in one connected destination. Explore the pathway that fits your plans." /><ButtonLink href="/payment-plans" variant="dark">See payment plans <span aria-hidden="true">→</span></ButtonLink></div>
+          <div><SectionHeading eyebrow="Aureum / your next step" title="Clear information for the next decision." description="Aureum brings residential, commercial and office spaces together in one connected destination. Choose the space that fits your plans." /><ButtonLink href="/payment-plans" variant="dark">See payment plans <span aria-hidden="true">→</span></ButtonLink></div>
           <ul className="wpPropertyFeatures">{features.map((feature, index) => <li key={feature}><span>0{index + 1}</span><strong>{feature}</strong></li>)}</ul>
         </div>
       </section>
