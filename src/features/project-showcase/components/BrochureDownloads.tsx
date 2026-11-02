@@ -100,7 +100,7 @@ export function BrochureDownloads({ only }: { only?: readonly Brochure['id'][] }
         <ul className="brochureGrid">
           {brochures.map((brochure) => (
             <li key={brochure.id} className="brochureCard">
-              <Eyebrow>{brochure.details}</Eyebrow>
+              <Eyebrow>Brochure</Eyebrow>
               <h3>{brochure.title}</h3>
               <p>{brochure.description}</p>
               <Button type="button" variant="dark" onClick={() => choose(brochure)}>Download brochure</Button>

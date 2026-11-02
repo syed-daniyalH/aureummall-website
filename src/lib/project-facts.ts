@@ -61,15 +61,14 @@ export type Brochure = {
   title: string;
   description: string;
   file: string;
-  details: string;
   interest: 'apartment' | 'commercial_shop' | 'corporate_office' | 'other';
 };
 
 export const BROCHURES: readonly Brochure[] = [
-  { id: 'master-catalogue', title: 'The Aureum Catalogue', description: 'The complete project: retail, dining, offices, residences, amenities, floor plans and pricing.', file: '/brochures/aureum-master-catalogue.pdf', details: 'PDF · 26 pages · 13 MB', interest: 'other' },
-  { id: 'residential', title: 'Residential Collection', description: 'Studios, one- and two-bedroom apartments with layouts and starting prices.', file: '/brochures/aureum-residential-brochure.pdf', details: 'PDF · 3 pages · 4 MB', interest: 'apartment' },
-  { id: 'offices', title: 'Corporate Offices', description: 'Full-glass offices facing Ring Road, sizes, pricing and the lifetime amenities membership.', file: '/brochures/aureum-offices-brochure.pdf', details: 'PDF · 12 pages · 2.5 MB', interest: 'corporate_office' },
-  { id: 'commercial', title: 'Commercial Collection', description: 'Shops and food court units, floor-by-floor plans and the commercial payment plan.', file: '/brochures/aureum-commercial-brochure.pdf', details: 'PDF · 12 pages · 4.4 MB', interest: 'commercial_shop' },
+  { id: 'master-catalogue', title: 'The Aureum Catalogue', description: 'The complete project: retail, dining, offices, residences, amenities, floor plans and pricing.', file: '/brochures/aureum-master-catalogue.pdf', interest: 'other' },
+  { id: 'residential', title: 'Residential Collection', description: 'Studios, one- and two-bedroom apartments with layouts and starting prices.', file: '/brochures/aureum-residential-brochure.pdf', interest: 'apartment' },
+  { id: 'offices', title: 'Corporate Offices', description: 'Full-glass offices facing Ring Road, sizes, pricing and the lifetime amenities membership.', file: '/brochures/aureum-offices-brochure.pdf', interest: 'corporate_office' },
+  { id: 'commercial', title: 'Commercial Collection', description: 'Shops and food court units, floor-by-floor plans and the commercial payment plan.', file: '/brochures/aureum-commercial-brochure.pdf', interest: 'commercial_shop' },
 ];
 
 export const IMAGE_DISCLAIMER = 'Artist’s impression. Brand signage is illustrative and does not indicate confirmed tenants.';

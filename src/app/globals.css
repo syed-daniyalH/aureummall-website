@@ -4949,9 +4949,12 @@ h2:not(.srOnly) {
 }
 
 /* Dark bands: deep navy instead of the purple-to-pink gradient. */
+/* .section prefix so the alternating ivory section background cannot override a dark band when sections move. */
 .wpInternalHero,
-.wpAboutStats,
-.wpAmenitiesSection {
+.section.wpInternalHero,
+.section.wpAboutStats,
+.section.wpAmenitiesSection,
+.section.mediaPrinciples {
   background: linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
 }
 
