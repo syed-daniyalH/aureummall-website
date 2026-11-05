@@ -27,6 +27,7 @@ export const SITE = {
 export const PRIMARY_NAV = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
+  { href: '/team', label: 'Team' },
   { href: '/payment-plans', label: 'Payment Plans' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/immersive-media#virtual-tour', label: '360° Tour' },
