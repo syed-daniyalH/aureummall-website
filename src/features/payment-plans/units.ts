@@ -44,10 +44,13 @@ const APARTMENT_NOUNS: Record<string, string> = {
   Studio: 'studio apartment',
   '1 Bedroom': 'one-bedroom apartment',
   '2 Bedrooms': 'two-bedroom apartment',
+  '2 Bedrooms + Servant Quarter': 'two-bedroom apartment with servant quarter',
+  'Signature Glass': 'premium Signature Glass Apartment',
 };
 
 /** Plain-language description of a unit, for headings and the pre-filled WhatsApp message. */
 export function describeUnit({ table, row }: PricedUnit) {
   const noun = APARTMENT_NOUNS[row.type] ?? row.type.toLowerCase();
-  return `${formatSqFt(row.sizeSqFt)} ${noun} (${table.title})`;
+  const unitCategory = row.unitCategory ? `${row.unitCategory.toLowerCase()} category; ` : '';
+  return `${formatSqFt(row.sizeSqFt)} ${noun} (${unitCategory}${table.title})`;
 }

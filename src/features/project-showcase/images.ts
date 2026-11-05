@@ -16,6 +16,12 @@ export const LEISURE_IMAGES: readonly ShowcaseImage[] = [
   { src: `${base}/leisure/aureum-playland-3.webp`, alt: 'Family entertainment rides in the Aureum playland', label: 'Family entertainment' },
 ];
 
+/** Office interiors from the Aureum Catalogue (corporate offices chapter). */
+export const OFFICE_IMAGES: readonly ShowcaseImage[] = [
+  { src: `${base}/offices/aureum-office-workspace.jpg`, alt: 'Open-plan Aureum corporate office with linear ceiling lighting and workstations', label: 'Open-plan workspace' },
+  { src: `${base}/offices/aureum-office-reception.jpg`, alt: 'Aureum corporate office reception with timber seating and wayfinding signage', label: 'Reception & wayfinding' },
+];
+
 export const RESIDENCE_IMAGES: readonly ShowcaseImage[] = [
   { src: `${base}/residences/aureum-lounge-1.webp`, alt: 'Aureum apartment lounge with open kitchen', label: 'Living & kitchen' },
   { src: `${base}/residences/aureum-bedroom-1.webp`, alt: 'Aureum apartment bedroom with built-in wardrobes', label: 'Bedroom' },

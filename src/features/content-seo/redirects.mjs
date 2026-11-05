@@ -58,12 +58,13 @@ const ARCHIVE_REDIRECTS = [
   { source: '/page/:page(\\d+)', destination: '/news', permanent: true },
 ];
 
-/**
- * The 125 MB project profile PDF is not deployed (too large). Until a compressed copy is added to
- * public/downloads/, send old links to the payment plans page instead of a 404. Temporary on purpose.
- */
+/** Preserve previously shared PDF URLs after the November 2026 project-literature refresh. */
 const FILE_REDIRECTS = [
-  { source: '/wp-content/uploads/2026/08/Aureum-Project-Profile.pdf', destination: '/payment-plans', permanent: false },
+  { source: '/wp-content/uploads/2026/08/Aureum-Project-Profile.pdf', destination: '/brochures/aureum-mall-and-residences-catalogue.pdf', permanent: true },
+  { source: '/brochures/aureum-residential-brochure.pdf', destination: '/brochures/aureum-residential-collection.pdf', permanent: true },
+  { source: '/brochures/aureum-offices-brochure.pdf', destination: '/brochures/aureum-office-collection.pdf', permanent: true },
+  { source: '/brochures/aureum-master-catalogue.pdf', destination: '/brochures/aureum-mall-and-residences-catalogue.pdf', permanent: true },
+  { source: '/brochures/aureum-commercial-brochure.pdf', destination: '/brochures/aureum-commercial-and-food-court-brochure.pdf', permanent: true },
 ];
 
 export const WORDPRESS_REDIRECTS = [...POST_REDIRECTS, ...ARCHIVE_REDIRECTS, ...FILE_REDIRECTS];

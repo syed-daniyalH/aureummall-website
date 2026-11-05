@@ -27,6 +27,9 @@ export const APPROVED_PAYMENT_PLANS: PaymentPlan[] = [];
 export type SourcePaymentRow = {
   type: string;
   sizeSqFt: number;
+  unitCategory?: 'Inner' | 'Outer';
+  /** Premium homes (the Signature Glass Apartments), sold as a category of their own. */
+  premium?: boolean;
   ratePerSqFt: number;
   totalPrice: number;
   booking: number;
@@ -49,105 +52,118 @@ export type SourcePaymentTable = {
   rows: readonly SourcePaymentRow[];
 };
 
-export const PAYMENT_SOURCE_LABEL = 'Aureum Master Catalogue, October 2026';
+export const PAYMENT_SOURCE_LABEL = 'Aureum brochures and project factsheet, November 2026';
+
+type UnitOptions = {
+  unitCategory?: SourcePaymentRow['unitCategory'];
+  premium?: boolean;
+  withHalfYearly?: boolean;
+};
 
 /**
  * Builds a row from size × rate using the catalogue's plan: 10% booking, 15% confirmation, 1% monthly,
  * 20% completion and, for shops and food court units, 13% across 6 half-yearly instalments.
  */
-function unit(type: string, sizeSqFt: number, ratePerSqFt: number, withHalfYearly = false): SourcePaymentRow {
+function unit(type: string, sizeSqFt: number, ratePerSqFt: number, options: UnitOptions = {}): SourcePaymentRow {
   const totalPrice = sizeSqFt * ratePerSqFt;
   const share = (percent: number) => Math.round((totalPrice * percent) / 100);
   return {
     type,
     sizeSqFt,
+    unitCategory: options.unitCategory,
+    premium: options.premium,
     ratePerSqFt,
     totalPrice,
     booking: share(10),
     confirmation: share(15),
     monthlyInstallment: share(1),
-    halfYearly: withHalfYearly ? Math.round((totalPrice * 0.13) / 6) : undefined,
+    halfYearly: options.withHalfYearly ? Math.round((totalPrice * 0.13) / 6) : undefined,
     completion: share(20),
   };
 }
 
-// Transcribed from the Aureum Master Catalogue (pricing pages 24–25) and the matching residential,
-// offices and commercial brochures, October 2026. Base prices only; 10% category charges are extra.
+// Transcribed from the updated November 2026 Aureum Catalogue (the official price list). The residences
+// follow its seven listed units: the 1,316 sq ft two-bedroom includes a servant quarter, and the Signature
+// Glass Apartments are the premium category. The Commercial & Food Court brochure and factsheet set
+// first-floor shops at PKR 50,000/sq ft. Base prices exclude 10% category charges.
 export const SOURCE_PAYMENT_TABLES: readonly SourcePaymentTable[] = [
   {
     id: 'apartments',
     title: 'Apartments',
     category: 'apartment',
-    rateLabel: 'Rate 19,500 to 20,500 / Sq.ft.',
+    rateLabel: 'Rate PKR 20,500 to 23,000 / sq ft',
     installmentLabel: '4.5-year plan · 55 monthly installments',
     possessionLabel: 'Indicative possession 3.5 years',
     monthlyCount: 55,
-    note: 'Premium Glass Collection residences (1,491 and 1,727 sq ft) are quoted individually.',
+    note: 'Inner and outer categories as per the official price list; Signature Glass Apartments are the premium category.',
     rows: [
-      unit('Studio', 426, 19500),
-      unit('1 Bedroom', 622, 20500),
-      unit('1 Bedroom', 658, 20500),
-      unit('2 Bedrooms', 1103, 20500),
-      unit('2 Bedrooms', 1316, 20500),
+      unit('Studio', 426, 20500, { unitCategory: 'Inner' }),
+      unit('1 Bedroom', 622, 21500, { unitCategory: 'Outer' }),
+      unit('1 Bedroom', 658, 21500, { unitCategory: 'Outer' }),
+      unit('2 Bedrooms', 1103, 21500, { unitCategory: 'Outer' }),
+      unit('2 Bedrooms + Servant Quarter', 1316, 21500, { unitCategory: 'Outer' }),
+      unit('Signature Glass', 1491, 23000, { unitCategory: 'Outer', premium: true }),
+      unit('Signature Glass', 1727, 23000, { unitCategory: 'Outer', premium: true }),
     ],
   },
   {
     id: 'offices',
     title: 'Corporate Offices',
     category: 'corporate_office',
-    rateLabel: 'Rate 23,500 / Sq.ft.',
+    rateLabel: 'Rate PKR 25,000 / sq ft',
     installmentLabel: '4.5-year plan · 55 monthly installments',
     possessionLabel: 'Indicative possession 3.5 years',
     monthlyCount: 55,
     note: 'Every office includes a lifetime amenities membership.',
     rows: [
-      unit('Office', 1007, 23500),
-      unit('Office', 1009, 23500),
-      unit('Office', 1295, 23500),
-      unit('Office', 2595, 23500),
+      unit('Office', 1007, 25000),
+      unit('Office', 1009, 25000),
+      unit('Office', 1295, 25000),
+      unit('Office', 2595, 25000),
     ],
   },
   {
     id: 'first-floor-shops',
     title: 'Shops · First Floor',
     category: 'commercial_shop',
-    rateLabel: 'Rate 45,000 / Sq.ft.',
+    rateLabel: 'Rate PKR 50,000 / sq ft',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
     monthlyCount: 42,
     note: 'First-floor shops range from 172 to 707 sq ft. Ground-floor prices on request.',
     rows: [
-      unit('Shop', 172, 45000, true),
-      unit('Shop', 366, 45000, true),
-      unit('Shop', 571, 45000, true),
-      unit('Shop', 707, 45000, true),
+      unit('Shop', 172, 50000, { withHalfYearly: true }),
+      unit('Shop', 366, 50000, { withHalfYearly: true }),
+      unit('Shop', 571, 50000, { withHalfYearly: true }),
+      unit('Shop', 707, 50000, { withHalfYearly: true }),
     ],
   },
   {
     id: 'second-floor-shops',
     title: 'Shops · Second Floor',
     category: 'commercial_shop',
-    rateLabel: 'Rate 40,000 / Sq.ft.',
+    rateLabel: 'Rate PKR 42,500 / sq ft',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
     monthlyCount: 42,
     note: 'Second-floor shops range from 478 to 643 sq ft.',
     rows: [
-      unit('Shop', 478, 40000, true),
-      unit('Shop', 608, 40000, true),
-      unit('Shop', 643, 40000, true),
+      unit('Shop', 478, 42500, { withHalfYearly: true }),
+      unit('Shop', 502, 42500, { withHalfYearly: true }),
+      unit('Shop', 608, 42500, { withHalfYearly: true }),
+      unit('Shop', 643, 42500, { withHalfYearly: true }),
     ],
   },
   {
     id: 'food-court',
     title: 'Food Court · Third Floor',
     category: 'commercial_shop',
-    rateLabel: 'Rate 70,000 / Sq.ft.',
+    rateLabel: 'Rate PKR 75,000 / sq ft',
     installmentLabel: '3.5-year plan · 42 monthly + half-yearly installments',
     possessionLabel: 'Indicative possession 2.5 years',
     monthlyCount: 42,
     note: 'Food court units of around 301 sq ft beside the playland and trampoline park.',
-    rows: [unit('Food court unit', 301, 70000, true)],
+    rows: [unit('Food court unit', 301, 75000, { withHalfYearly: true })],
   },
 ];
 

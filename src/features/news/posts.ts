@@ -1,4 +1,5 @@
 import postsData from './posts.json';
+import { BLOG_IMAGE_NAMES } from './blog-images';
 
 export type NewsFaq = { question: string; answer: string };
 
@@ -27,7 +28,17 @@ export type NewsCardItem = {
   summary: string;
   href: string;
   cta: string;
+  /** The article's cover image, when one was migrated with it. */
+  image?: string;
 };
+
+/** Finds a post's migrated cover image by its slug, its old WordPress slug, or a file name that contains it. */
+export function postImage(post: NewsPost) {
+  const names = [...BLOG_IMAGE_NAMES];
+  const name = [post.slug, post.legacySlug].find((slug) => BLOG_IMAGE_NAMES.has(slug))
+    ?? names.find((candidate) => candidate.includes(post.legacySlug) || post.legacySlug.includes(candidate));
+  return name ? `/assets/aureum/approved/blog/${name}.webp` : undefined;
+}
 
 const POSTS = (postsData as NewsPost[]).slice().sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
@@ -76,6 +87,7 @@ export function toNewsCard(post: NewsPost): NewsCardItem {
     summary: post.summary,
     href: `/news/${post.slug}`,
     cta: 'Read article',
+    image: postImage(post),
   };
 }
 

@@ -10,6 +10,7 @@ The site is one reusable platform divided into ten feature modules. See `src/fea
 - Leads from every form are delivered to one webhook (`LEAD_WEBHOOK_URL`, e.g. a Google Sheet). See `docs/LEADS_SETUP.md`.
 - Payment processing and private admin systems are not enabled.
 - Public facts and media are maintained in the Next.js source and should be reviewed before release.
+- The reconciled November 2026 product and price sources are documented in `docs/AUREUM_CONTENT_SOURCE_REGISTER.md`.
 
 ## Purpose
 - Replace the WordPress/Elementor implementation with a maintainable Next.js code base.

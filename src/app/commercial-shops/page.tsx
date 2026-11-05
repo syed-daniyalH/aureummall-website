@@ -12,7 +12,7 @@ export default function Page() {
     <WordPressPropertyPage
       eyebrow="Commercial / retail and food court"
       title="Room to make an impression."
-      intro="Three retail levels around a central atrium, with tall ceilings, wide passages and a glass facade visible from Ring Road. Shops from 172 sq ft and PKR 7,740,000."
+      intro="Three retail levels around a central atrium, with tall ceilings, wide passages and a glass facade visible from Ring Road. Shops from 172 sq ft and PKR 8,600,000."
       image={MALL_IMAGES[0].src}
       imageAlt={MALL_IMAGES[0].alt}
       features={['Ceiling heights of 26 ft (ground) and 18 ft (first and second)', 'A 15,224 sq ft grocery store, travelators and kiosks', 'Separate commercial entrance and 2 dedicated elevators', 'Food court beside an 11,948 sq ft playland and trampoline park']}
@@ -25,7 +25,7 @@ export default function Page() {
           <ShowcaseGallery images={[...MALL_IMAGES, FOOD_COURT_IMAGE, ...LEISURE_IMAGES.slice(0, 2)]} branded />
         </div>
       </section>
-      <BrochureDownloads only={['commercial', 'master-catalogue']} />
+      <BrochureDownloads only={['commercial', 'master-catalogue', 'factsheet']} />
     </WordPressPropertyPage>
   );
 }

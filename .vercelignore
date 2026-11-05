@@ -1,6 +1,7 @@
 .vercel
 .next
 node_modules
+tmp/
 .env*
 wordpress-source
 public/wordpress

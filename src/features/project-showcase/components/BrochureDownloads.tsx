@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { FormEvent, useEffect, useId, useRef, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -96,19 +97,24 @@ export function BrochureDownloads({ only }: { only?: readonly Brochure['id'][] }
   return (
     <section className="section brochureSection" id="brochures" aria-labelledby={`${uid}-heading`}>
       <div className="container">
-        <SectionHeading id={`${uid}-heading`} eyebrow="Brochures" title="Take Aureum with you." description="Download the official brochures with floor plans, sizes and starting prices." />
+        <SectionHeading id={`${uid}-heading`} eyebrow="Project literature" title="Take Aureum with you." description="Download the current catalogue, collections and project factsheet with floor plans, sizes and prices." />
         <ul className="brochureGrid">
           {brochures.map((brochure) => (
             <li key={brochure.id} className="brochureCard">
-              <Eyebrow>Brochure</Eyebrow>
-              <h3>{brochure.title}</h3>
-              <p>{brochure.description}</p>
-              <Button type="button" variant="dark" onClick={() => choose(brochure)}>Download brochure</Button>
+              <div className="brochureCover">
+                <Image src={brochure.cover} alt={brochure.coverAlt} fill sizes="(max-width: 520px) 92vw, (max-width: 1000px) 45vw, 280px" />
+              </div>
+              <div className="brochureCardCopy">
+                <Eyebrow>{brochure.format}</Eyebrow>
+                <h3>{brochure.title}</h3>
+                <p>{brochure.description}</p>
+                <Button type="button" variant="dark" onClick={() => choose(brochure)}>Download {brochure.format.toLowerCase()}</Button>
+              </div>
             </li>
           ))}
         </ul>
         {selected ? (
-          <form className="brochureForm" onSubmit={submit} aria-label={`Get the ${selected.title} brochure`}>
+          <form className="brochureForm" onSubmit={submit} aria-label={`Get ${selected.title}`}>
             <p><strong>{selected.title}</strong>: share your name and number and the download starts right away.</p>
             <div className="brochureFields">
               <label className="formField"><span>Full name</span><input name="fullName" required minLength={2} maxLength={120} autoComplete="name" /></label>

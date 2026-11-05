@@ -37,7 +37,7 @@ export const BRAND_FILM = {
 
 export const MEDIA_PRINCIPLES = [
   'Images are artist’s impressions; brand signage is illustrative.',
-  'Floor plans follow the August 2026 drawings and are subject to final approval.',
+  'Floor plans follow the current project drawings and are subject to final approval.',
   'Visit the sales team to see current progress and availability.',
 ] as const;
 
@@ -79,7 +79,7 @@ export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [
     title: 'Ground floor plan',
     description: 'Large-format retail, a showroom and the central atrium.',
     alt: 'Aureum Mall ground floor plan',
-    caption: 'Ground floor plan, August 2026 drawings.',
+    caption: 'Ground floor plan from the current project drawings, subject to final approval.',
     src: '/assets/aureum/approved/floor-plans/aureum-ground-floor-plan-2026-v2.webp',
   },
   {
@@ -97,7 +97,7 @@ export const PROJECT_MEDIA: readonly ImmersiveMediaAsset[] = [
     kind: 'floor-plan',
     label: 'Residential floor',
     title: 'Typical residential floor',
-    description: 'Studios, one- and two-bedroom apartments and premium glass residences around an open-to-sky courtyard, with offices on the right-hand side.',
+    description: 'Studios, one- and two-bedroom apartments and Signature Glass Apartments around an open-to-sky courtyard, with offices on the right-hand side.',
     alt: 'Typical Aureum residential floor plan',
     caption: 'Typical residential floor, 6th to 12th floors.',
     src: '/assets/aureum/approved/floor-plans/aureum-residential-floor-plan-2026-v2.webp',

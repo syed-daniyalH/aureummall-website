@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -50,9 +51,9 @@ export function ConstructionUpdatesSection({ standalone = false }: { standalone?
 }
 
 function TrustFaqSection() {
-  return <section className="section trustFaqSection"><div className="container"><SectionHeading eyebrow="Clear answers" title="Everything starts with the right information." description="Quick answers about the location, the spaces available and the payment plan." /><div className="trustFaqList"><details className="trustFaqItem"><summary>Where is Aureum located?<span aria-hidden="true">+</span></summary><p>{SITE.location}</p></details><details className="trustFaqItem"><summary>What can I explore at Aureum?<span aria-hidden="true">+</span></summary><p>Aureum brings together 1 &amp; 2 bed apartments, commercial shops, corporate offices, food courts, parking and everyday amenities.</p></details><details className="trustFaqItem"><summary>Where can I see the payment plan?<span aria-hidden="true">+</span></summary><p>Visit the <a href="/payment-plans">Payment Plans</a> page or contact the Aureum team for the latest details.</p></details></div></div></section>;
+  return <section className="section trustFaqSection"><div className="container"><SectionHeading eyebrow="Clear answers" title="Everything starts with the right information." description="Quick answers about the location, the spaces available and the payment plan." /><div className="trustFaqList"><details className="trustFaqItem"><summary>Where is Aureum located?<span aria-hidden="true">+</span></summary><p>{SITE.location}</p></details><details className="trustFaqItem"><summary>What can I explore at Aureum?<span aria-hidden="true">+</span></summary><p>Aureum brings together 1 &amp; 2 bed apartments, commercial shops, corporate offices, food courts, parking and everyday amenities.</p></details><details className="trustFaqItem"><summary>Where can I see the payment plan?<span aria-hidden="true">+</span></summary><p>Visit the <Link href="/payment-plans">Payment Plans</Link> page or contact the Aureum team for the latest details.</p></details></div></div></section>;
 }
 
 export function TrustLocationExperience() {
-  return <><section className="section trustHero"><div className="container trustHeroGrid"><div><Eyebrow>Location / Aureum Mall</Eyebrow><h1>Know the place. Plan your visit.</h1><p>Find Aureum Mall &amp; Residences in Bahria Town Lahore and connect with the project team.</p><ButtonLink href="#trust-location-workspace">Explore the location <span aria-hidden="true">↓</span></ButtonLink></div><div className="trustHeroStamp" aria-hidden="true"><span>Lahore / Bahria Town</span><strong>01</strong></div></div></section><LocationSection /><ConstructionUpdatesSection /><TrustFaqSection /></>;
+  return <><section className="section trustHero"><div className="container trustHeroGrid"><div><Eyebrow>Location / Aureum Mall</Eyebrow><h1>Know the place. Plan your visit.</h1><p>Find Aureum Mall &amp; Residences in Bahria Town Lahore and connect with the project team.</p><ButtonLink href="#trust-location-workspace">Explore the location <span aria-hidden="true">↓</span></ButtonLink></div><div className="trustHeroStamp" aria-hidden="true"><span>Minutes from Bahria Town</span><strong>0</strong></div></div></section><LocationSection /><ConstructionUpdatesSection /><TrustFaqSection /></>;
 }

@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import type { ShowcaseImage } from '@/features/project-showcase/components/ProjectShowcase';
+import { EXTERIOR_NIGHT } from '@/features/project-showcase/images';
 import type { ReactNode } from 'react';
 import { LeadForm } from '@/components/LeadForm';
 import { ButtonLink } from '@/components/ui/ButtonLink';
@@ -13,19 +16,24 @@ export type ArchitectureLandingProps = {
   points: readonly string[];
   ctaHref?: string;
   ctaLabel?: string;
+  /** The picture beside the hero text; the building at night when a page has nothing more specific. */
+  image?: ShowcaseImage;
   /** Page-specific sections shown after the key points. */
   children?: ReactNode;
 };
 
-export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '/contact#enquiry', ctaLabel = 'Request details', children }: ArchitectureLandingProps) {
+export function ArchitectureLanding({ eyebrow, title, intro, points, ctaHref = '/contact#enquiry', ctaLabel = 'Request details', image = EXTERIOR_NIGHT, children }: ArchitectureLandingProps) {
   return (
     <>
       <section className="wpInternalHero section">
-        <div className="container wpSimpleHero">
-          <Eyebrow>{eyebrow}</Eyebrow>
-          <h1>{title}</h1>
-          <p>{intro}</p>
-          <ButtonLink href={ctaHref}>{ctaLabel} <span aria-hidden="true">↗</span></ButtonLink>
+        <div className="container wpInternalHeroGrid">
+          <div>
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h1>{title}</h1>
+            <p>{intro}</p>
+            <ButtonLink href={ctaHref}>{ctaLabel} <span aria-hidden="true">↗</span></ButtonLink>
+          </div>
+          <div className="wpInternalHeroImage"><Image src={image.src} alt={image.alt} fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
         </div>
       </section>
       <section className="section wpPropertySection">

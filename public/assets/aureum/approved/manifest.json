@@ -36,16 +36,34 @@
   "source": "https://aureummall.info/wp-content/uploads/2026/08/Screenshot-2026-08-03-at-5.16.58-PM-scaled.jpg"
  },
  {
-  "name": "brochures/aureum-residential-brochure-cover.webp",
-  "width": 1100,
-  "height": 1467,
-  "source": "https://aureummall.info/wp-content/uploads/2026/10/2-scaled.png"
+  "name": "brochures/aureum-residential-collection-cover.webp",
+  "width": 992,
+  "height": 1404,
+  "source": "Aureum Residential Collection PDF, page 1 (November 2026)"
  },
  {
-  "name": "brochures/aureum-offices-brochure-cover.webp",
-  "width": 1100,
-  "height": 1467,
-  "source": "https://aureummall.info/wp-content/uploads/2026/10/4-scaled.png"
+  "name": "brochures/aureum-office-collection-cover.webp",
+  "width": 992,
+  "height": 1404,
+  "source": "Aureum Office Collection PDF, page 1 (November 2026)"
+ },
+ {
+  "name": "brochures/aureum-master-catalogue-cover.webp",
+  "width": 1400,
+  "height": 989,
+  "source": "Aureum Mall and Residences Catalogue PDF, page 1 (November 2026)"
+ },
+ {
+  "name": "brochures/aureum-commercial-food-court-cover.webp",
+  "width": 992,
+  "height": 1404,
+  "source": "Aureum Commercial and Food Court Brochure PDF, page 1 (November 2026)"
+ },
+ {
+  "name": "brochures/aureum-project-factsheet-cover.webp",
+  "width": 992,
+  "height": 1404,
+  "source": "Aureum Project Factsheet PDF, page 1 (November 2026)"
  },
  {
   "name": "floor-plans/aureum-basement-level-1-plan.webp",

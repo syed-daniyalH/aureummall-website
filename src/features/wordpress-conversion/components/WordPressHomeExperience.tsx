@@ -8,7 +8,6 @@ import { SiteUpdates } from '@/features/trust-location/components/SiteUpdates';
 import { PriceCalculator } from '@/features/payment-plans/components/PriceCalculator';
 import { AMENITIES, DEVELOPER, PROJECT_STATS } from '@/lib/project-facts';
 import { ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
-import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
 import { FOOD_COURT_IMAGE, LEISURE_IMAGES, MALL_IMAGES, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
 
 // The homepage tells the project in order: what it is, what is inside, where you fit, what it costs, then how to visit.
@@ -95,8 +94,6 @@ export function WordPressHomeExperience() {
           </div>
         </div>
       </section>
-
-      <BrochureDownloads />
     </>
   );
 }

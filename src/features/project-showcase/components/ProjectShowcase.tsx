@@ -1,7 +1,9 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { calcHref, formatLakhCrore, formatPKR, formatSqFt, PRICED_UNITS } from '@/features/payment-plans/units';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { ACCESS, AMENITIES, APARTMENT_TYPES, BUILDING_LEVELS, DEVELOPER, IMAGE_DISCLAIMER, PROJECT_DISCLAIMERS } from '@/lib/project-facts';
+import { ACCESS, AMENITIES, APARTMENT_TYPES, BUILDING_LEVELS, DEVELOPER, IMAGE_DISCLAIMER, LEADERSHIP, PROJECT_DISCLAIMERS } from '@/lib/project-facts';
 
 /** `note` replaces the default "Artist’s impression" caption (e.g. for drawings and maps). */
 export type ShowcaseImage = { src: string; alt: string; label?: string; note?: string };
@@ -16,7 +18,66 @@ export function DeveloperSection() {
           <h2 id="developer-heading">We don’t just lay bricks, we lay the foundation for your future.</h2>
           <p>{DEVELOPER.summary}</p>
           <dl className="developerStats">{DEVELOPER.stats.map(([value, label]) => <div key={label}><dd>{value}</dd><dt>{label}</dt></div>)}</dl>
-          <ul className="developerPortfolio">{DEVELOPER.portfolio.map((project) => <li key={project.name}><strong>{project.name}</strong><span>{project.detail}</span></li>)}</ul>
+        </div>
+      </div>
+      <div className="container portfolioBlock">
+        <div className="portfolioIntro">
+          <Eyebrow>The portfolio</Eyebrow>
+          <h3>Landmarks that define Karachi.</h3>
+        </div>
+        <ul className="portfolioGrid">
+          {DEVELOPER.portfolio.map((project, index) => (
+            <li className="portfolioCard" key={project.name}>
+              <div className="portfolioImage">
+                <Image src={project.image} alt={`${project.name}, ${project.detail}`} fill sizes="(max-width: 860px) 92vw, 400px" />
+                <span className="portfolioBadge">Delivered</span>
+              </div>
+              <div className="portfolioBody">
+                <p className="portfolioIndex">{String(index + 1).padStart(2, '0')} · Bahria Town Karachi</p>
+                <h4>{project.name}</h4>
+                <p className="portfolioDetail">{project.detail}</p>
+                <ul>{project.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/** Chairman and CEO, as alternating editorial rows: portrait on one side, name, role and profile on the other. */
+export function LeadershipSection() {
+  return (
+    <section className="section leadershipSection" aria-labelledby="leadership-heading">
+      <div className="container">
+        <div className="leadershipIntro">
+          <Eyebrow>Leadership</Eyebrow>
+          <h2 id="leadership-heading">The people behind Aureum.</h2>
+          <p>Aureum Mall &amp; Residences is backed by {DEVELOPER.name}: a chairman with a record of delivered landmarks, and a chief executive building the next one.</p>
+        </div>
+        <div className="leadershipList">
+          {LEADERSHIP.map((leader, index) => (
+            <article className={`leaderRow${index % 2 ? ' isReversed' : ''}`} key={leader.name} aria-labelledby={`leader-${index}`}>
+              <div className="leaderMedia">
+                <div className="leaderPortrait">
+                  <Image src={leader.image.src} alt={leader.image.alt} fill sizes="(max-width: 860px) 92vw, 460px" style={{ objectPosition: leader.image.position, transform: `scale(${leader.image.zoom})`, transformOrigin: '50% 0' }} />
+                </div>
+                {leader.inset ? (
+                  <div className="leaderInset">
+                    <Image src={leader.inset.src} alt={leader.inset.alt} fill sizes="200px" style={{ objectPosition: leader.inset.position }} />
+                  </div>
+                ) : null}
+                <span className="leaderIndex" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              </div>
+              <div className="leaderBody">
+                <p className="leaderRole">{leader.role}</p>
+                <h3 id={`leader-${index}`}>{leader.name}</h3>
+                <ul className="leaderOrgs">{leader.organisations.map((organisation) => <li key={organisation}>{organisation}</li>)}</ul>
+                <p className="leaderBio">{leader.bio}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -45,7 +106,7 @@ export function AccessSection() {
   return (
     <section className="section accessSection" aria-labelledby="access-heading">
       <div className="container">
-        <SectionHeading id="access-heading" eyebrow="Arrival & intelligence" title="A separate way in for everyone." description="Smart access, lighting and security monitoring connected through an Integrated Building Management System (IBMS), with 24/7 security and power backup." />
+        <SectionHeading id="access-heading" eyebrow="Arrival & intelligence" title="A separate way in for everyone." description="AI smart access at every entrance, AI surveillance with 24/7 CCTV monitoring, professional security and fire management, power backup and automated building systems." />
         <ul className="accessGrid">{ACCESS.map((item) => <li key={item.title}><strong>{item.title}</strong><span>{item.detail}</span></li>)}</ul>
       </div>
     </section>
@@ -64,16 +125,66 @@ export function AmenitiesSection({ images = [] }: { images?: readonly ShowcaseIm
   );
 }
 
+/** Every apartment type from the catalogue, with its sizes, category, rate, prices, layout and a link to the calculator. */
 export function ApartmentTypesSection() {
+  const types = APARTMENT_TYPES.map((type) => {
+    const units = PRICED_UNITS.filter((unit) => unit.table.id === 'apartments' && unit.row.type === type.rowType);
+    const rates = [...new Set(units.map((unit) => unit.row.ratePerSqFt))];
+    const categories = [...new Set(units.map((unit) => unit.row.unitCategory).filter(Boolean))];
+    const cheapest = units.reduce((best, unit) => (unit.row.totalPrice < best.row.totalPrice ? unit : best), units[0]);
+    return { ...type, units, rates, categories, cheapest };
+  }).filter((type) => type.units.length > 0);
+
   return (
     <section className="section apartmentTypesSection" aria-labelledby="apartment-types-heading">
       <div className="container">
-        <SectionHeading id="apartment-types-heading" eyebrow="The apartments" title="Space for your lifestyle." description="Studios, one- and two-bedroom apartments and a separate Premium Glass Collection, with a private residential entrance away from the mall." />
-        <ul className="apartmentTypes">
-          {APARTMENT_TYPES.map((type) => (
-            <li key={type.name}><Eyebrow>{type.size}</Eyebrow><h3>{type.name}</h3><p>{type.summary}</p><strong>{type.from.startsWith('PKR') ? `From ${type.from}` : type.from}</strong></li>
+        <SectionHeading id="apartment-types-heading" eyebrow="The apartments" title="Space for your lifestyle." description="Five apartment types on the 6th to 12th floors, from a 426 sq ft studio to the premium Signature Glass Apartments, with a private residential entrance, three dedicated lifts and a 28 × 50 ft lobby." />
+        <div className="aptTypes">
+          {types.map((type, index) => (
+            <article className={`aptType${type.premium ? ' isPremium' : ''}`} key={type.id} aria-labelledby={`apt-${type.id}`}>
+              <header className="aptTypeHead">
+                <p className="aptTypeKicker">
+                  <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                  {type.premium ? <strong className="premiumTag">Premium</strong> : 'Apartment type'}
+                </p>
+                <h3 id={`apt-${type.id}`}>{type.name}</h3>
+                <p className="aptTypeSummary">{type.summary}</p>
+              </header>
+
+              <dl className="aptSpecs">
+                <div><dt>Size</dt><dd>{type.units.map((unit) => formatSqFt(unit.row.sizeSqFt)).join(' · ')}</dd></div>
+                <div><dt>Category</dt><dd>{type.premium ? `Premium · ${type.categories.join(' / ')}` : type.categories.join(' / ')}</dd></div>
+                <div><dt>Rate</dt><dd>{type.rates.map((rate) => formatPKR(rate)).join(' / ')} per sq ft</dd></div>
+                <div><dt>Starting price</dt><dd>{formatPKR(type.cheapest.row.totalPrice)}<small>≈ {formatLakhCrore(type.cheapest.row.totalPrice)}</small></dd></div>
+                <div><dt>Booking 10%</dt><dd>{formatPKR(type.cheapest.row.booking)}</dd></div>
+                <div><dt>Monthly from</dt><dd>{formatPKR(type.cheapest.row.monthlyInstallment)}<small>× {type.cheapest.table.monthlyCount} months</small></dd></div>
+              </dl>
+
+              <div className="aptTypeDetail">
+                <div>
+                  <p className="aptTypeLabel">Representative layout</p>
+                  <ul className="aptLayout">{type.layout.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+                <div>
+                  <p className="aptTypeLabel">Ideal for</p>
+                  <p className="aptIdeal">{type.idealFor}</p>
+                </div>
+              </div>
+
+              <footer className="aptTypeFoot">
+                <p className="aptTypeLabel">Calculate the payment plan</p>
+                <div className="aptUnitLinks">
+                  {type.units.map((unit) => (
+                    <Link key={unit.id} href={`/payment-plans/apartments${calcHref(unit.id)}`}>
+                      {formatSqFt(unit.row.sizeSqFt)} · {formatPKR(unit.row.totalPrice)}<span aria-hidden="true">→</span>
+                    </Link>
+                  ))}
+                </div>
+              </footer>
+            </article>
           ))}
-        </ul>
+        </div>
+        <p className="aptTypesNote">Prices are starting base prices from the Aureum Catalogue, November 2026. Inner and outer categories are as per the official price list; applicable 10% category charges are additional. Layouts are representative and subject to final approved drawings.</p>
       </div>
     </section>
   );

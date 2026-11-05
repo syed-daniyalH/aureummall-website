@@ -1,5 +1,7 @@
 node_modules
 .next
+.next-dev*.log
+tmp/
 .env
 .env.*
 !.env.example
@@ -21,3 +23,6 @@ docs/*.png
 docs/*.jpg
 docs/*.jpeg
 public/assets/aureum/selected-downloads
+
+.vercel
+.env*

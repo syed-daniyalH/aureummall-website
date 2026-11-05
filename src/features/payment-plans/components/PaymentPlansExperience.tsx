@@ -1,79 +1,19 @@
-'use client';
-
-import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { PAYMENT_CATEGORIES, PAYMENT_SOURCE_LABEL, PAYMENT_TERMS, SOURCE_PAYMENT_TABLES, type SourcePaymentRow, type SourcePaymentTable } from '../data';
+import { PAYMENT_SOURCE_LABEL, PAYMENT_TERMS } from '../data';
+import { formatPKR, PAYMENT_PLAN_PAGES } from '../plan-pages';
+import { PaymentPlanTabs } from './PaymentPlanTabs';
 import { PriceCalculator } from './PriceCalculator';
+import { SourcePaymentTableView } from './SourcePaymentTableView';
 
 const PLAN_SUMMARIES = [
-  { title: 'Apartments & offices', facts: [['4.5 yrs', 'Payment plan'], ['3.5 yrs', 'Possession*'], ['10%', 'Booking'], ['15%', 'Confirmation'], ['55%', '55 monthly × 1%'], ['20%', 'Completion']] },
-  { title: 'Shops & food court', facts: [['3.5 yrs', 'Payment plan'], ['2.5 yrs', 'Possession*'], ['10%', 'Booking'], ['15%', 'Confirmation'], ['42%', '42 monthly × 1%'], ['13%', 'Half-yearly'], ['20%', 'Completion']] },
+  { title: 'Apartments & offices', facts: PAYMENT_PLAN_PAGES.find((page) => page.table.monthlyCount === 55)?.stages ?? [] },
+  { title: 'Shops & food court', facts: PAYMENT_PLAN_PAGES.find((page) => page.table.monthlyCount === 42)?.stages ?? [] },
 ] as const;
 
-function formatPKR(value: number) {
-  return `Rs ${new Intl.NumberFormat('en-PK').format(value)}`;
-}
-
-function SourcePaymentTableView({ table }: { table: SourcePaymentTable }) {
-  const renderAmount = (value?: number) => value === undefined ? '—' : formatPKR(value);
-
-  return (
-    <article className="sourcePaymentTableCard">
-      <header className="sourcePaymentTableHeader">
-        <div>
-          <Eyebrow>Payment schedule</Eyebrow>
-          <h2>{table.title}</h2>
-        </div>
-        <p>{table.rateLabel} · {table.installmentLabel} · {table.possessionLabel}</p>
-      </header>
-      <p className="paymentTableSource">From the {PAYMENT_SOURCE_LABEL}.<span className="paymentTableSwipe"> Swipe sideways to see every column.</span></p>
-      <div className="paymentTableWrap">
-        <table>
-          <caption className="srOnly">{table.title} payment plan — from the {PAYMENT_SOURCE_LABEL}.</caption>
-          <thead>
-            <tr>
-              <th scope="col">Type</th>
-              <th scope="col">Size (sq. ft.)</th>
-              <th scope="col">Rate / sq. ft.</th>
-              <th scope="col">Total price (PKR)</th>
-              <th scope="col">Booking 10% (PKR)</th>
-              <th scope="col">Confirmation 15% (PKR)</th>
-              <th scope="col">Monthly installment (PKR)</th>
-              <th scope="col">Half-yearly (PKR)</th>
-              <th scope="col">Completion 20% (PKR)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {table.rows.map((row: SourcePaymentRow) => (
-              <tr key={`${table.id}-${row.type}-${row.sizeSqFt}`}>
-                <th scope="row">{row.type}</th>
-                <td>{row.sizeSqFt.toLocaleString('en-PK')}</td>
-                <td>{formatPKR(row.ratePerSqFt)}</td>
-                <td>{formatPKR(row.totalPrice)}</td>
-                <td>{formatPKR(row.booking)}</td>
-                <td>{formatPKR(row.confirmation)}</td>
-                <td>{formatPKR(row.monthlyInstallment)}</td>
-                <td>{renderAmount(row.halfYearly)}</td>
-                <td>{formatPKR(row.completion)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="sourcePaymentNote">{table.note ? `${table.note} ` : ''}Starting base prices; 10% category charges are additional.</p>
-    </article>
-  );
-}
-
 export function PaymentPlansExperience() {
-  const [category, setCategory] = useState<(typeof PAYMENT_CATEGORIES)[number]['value']>('all');
-  const tables = useMemo(
-    () => SOURCE_PAYMENT_TABLES.filter((table) => category === 'all' || table.category === category),
-    [category],
-  );
-
   return (
     <>
       <section className="section paymentHero">
@@ -81,13 +21,31 @@ export function PaymentPlansExperience() {
           <div>
             <Eyebrow>Investment / payment plans</Eyebrow>
             <h1>Payment Plan 2026</h1>
-            <p>Studios from PKR 8,307,000, offices at PKR 23,500 per sq ft and shops from PKR 7,740,000: 10% at booking, 15% at confirmation, 1% monthly installments and 20% on completion.</p>
+            <p>Studios from PKR 8,733,000, offices from PKR 25,175,000 and first-floor shops from PKR 8,600,000: 10% at booking, 15% at confirmation, 1% monthly installments and 20% on completion.</p>
             <div className="actions">
               <ButtonLink href="#payment-workspace">See the price tables <span aria-hidden="true">↓</span></ButtonLink>
               <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
             </div>
           </div>
           <div className="paymentHeroStamp" aria-hidden="true"><span>Booking from</span><strong>10%</strong></div>
+        </div>
+      </section>
+      <section className="section planPickerSection" aria-labelledby="plan-picker-heading">
+        <div className="container">
+          <SectionHeading id="plan-picker-heading" eyebrow="Choose a plan" title="One page for every category." description="Open a category to see its sizes, prices and full instalment schedule." />
+          <ul className="planPickerGrid">
+            {PAYMENT_PLAN_PAGES.map((page) => (
+              <li key={page.table.id}>
+                <Link href={page.href} className="planPickerCard">
+                  <span className="planPickerGroup">{page.group}</span>
+                  <strong>{page.label}</strong>
+                  <span className="planPickerSummary">{page.summary}</span>
+                  <span className="planPickerFrom"><small>From</small>{formatPKR(page.startingFrom)}</span>
+                  <span className="planPickerMore">View payment plan <span aria-hidden="true">→</span></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
       <section className="section calcSection" aria-labelledby="payment-calc-heading">
@@ -102,11 +60,9 @@ export function PaymentPlansExperience() {
             id="payment-heading"
             eyebrow="Payment plan details"
             title="Every unit, every instalment."
-            description="Sizes, prices and the full instalment schedule for each category, from the Aureum Master Catalogue."
+            description="Sizes, prices and the full instalment schedule from the latest Aureum catalogue, category brochures and project factsheet."
           />
-          <div className="paymentCategoryBar" role="tablist" aria-label="Payment plan categories">
-            {PAYMENT_CATEGORIES.map((item) => <button key={item.value} type="button" role="tab" aria-selected={category === item.value} onClick={() => setCategory(item.value)}>{item.label}</button>)}
-          </div>
+          <PaymentPlanTabs />
           <div className="planSummaryGrid">
             {PLAN_SUMMARIES.map((plan) => (
               <article className="planSummary" key={plan.title}>
@@ -120,7 +76,7 @@ export function PaymentPlansExperience() {
             <p>Starting base prices from the {PAYMENT_SOURCE_LABEL}. Applicable 10% category charges are additional, and possession timing (*) is indicative. Contact the project team to confirm availability before making a decision.</p>
           </div>
           <div className="paymentPlanList">
-            {tables.map((table) => <SourcePaymentTableView key={table.id} table={table} />)}
+            {PAYMENT_PLAN_PAGES.map((page) => <SourcePaymentTableView key={page.table.id} table={page.table} />)}
           </div>
           <div className="paymentTerms"><Eyebrow>Terms</Eyebrow><ul>{PAYMENT_TERMS.map((term) => <li key={term}>{term}</li>)}</ul></div>
         </div>

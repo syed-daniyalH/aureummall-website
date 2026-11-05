@@ -6,8 +6,9 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import type { NewsCardItem } from '@/features/news/posts';
 import { PROJECT_STATS } from '@/lib/project-facts';
-import { AccessSection, BuildingLevelsSection, DeveloperSection, FloorPlanGallery, ProjectDisclaimers, ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
+import { AccessSection, BuildingLevelsSection, DeveloperSection, FloorPlanGallery, LeadershipSection, ProjectDisclaimers, ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
 import { CUTAWAY_IMAGES, EXTERIOR_NIGHT, EXTERIOR_NIGHT_WIDE, FLOOR_PLAN_IMAGES, FOOD_COURT_IMAGE, LEISURE_IMAGES, MALL_IMAGES, PARKING_IMAGE, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
+import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
 import { NewsCardList } from './NewsCardList';
 
 type PropertyPageProps = {
@@ -23,6 +24,12 @@ type PropertyPageProps = {
   children?: ReactNode;
 };
 
+const AT_A_GLANCE: Record<PropertyPageProps['interest'], { description: string; plan: string }> = {
+  apartment: { description: 'Studios to premium Signature Glass Apartments on the 6th to 12th floors, with a private residential entrance and a 4.5-year payment plan.', plan: '/payment-plans/apartments' },
+  commercial_shop: { description: 'Shops on three retail levels around a central atrium, beside a food court and playland, on a 3.5-year payment plan.', plan: '/payment-plans/first-floor-shops' },
+  corporate_office: { description: 'Full-glass offices facing Ring Road, with their own entrance, dedicated lifts and a lifetime amenities membership for owners.', plan: '/payment-plans/offices' },
+};
+
 export function WordPressPropertyPage({ eyebrow, title, intro, image, imageAlt, features, interest, registerLabel, children }: PropertyPageProps) {
   return (
     <>
@@ -34,7 +41,7 @@ export function WordPressPropertyPage({ eyebrow, title, intro, image, imageAlt, 
       </section>
       <section className="section wpPropertySection">
         <div className="container wpPropertyGrid">
-          <div><SectionHeading eyebrow="Aureum / your next step" title="Clear information for the next decision." description="Aureum brings residential, commercial and office spaces together in one connected destination. Choose the space that fits your plans." /><ButtonLink href="/payment-plans" variant="dark">See payment plans <span aria-hidden="true">→</span></ButtonLink></div>
+          <div><SectionHeading eyebrow="At a glance" title="The essentials, in four facts." description={AT_A_GLANCE[interest].description} /><ButtonLink href={AT_A_GLANCE[interest].plan} variant="dark">See the payment plan <span aria-hidden="true">→</span></ButtonLink></div>
           <ul className="wpPropertyFeatures">{features.map((feature, index) => <li key={feature}><span>0{index + 1}</span><strong>{feature}</strong></li>)}</ul>
         </div>
       </section>
@@ -58,12 +65,14 @@ export function WordPressAboutPage() {
         </div>
       </section>
       <section className="section wpAboutSection">
-        <div className="container wpAboutGrid"><div><Eyebrow>The project / at a glance</Eyebrow><h2>Shop, dine, work, stay and live.</h2></div><div className="wpAboutCopy"><p><strong>Shop</strong> across three retail levels around a central atrium. <strong>Dine &amp; play</strong> at the food court, playland, trampoline park and rooftop dining.</p><p><strong>Work</strong> in full-glass offices facing Ring Road. <strong>Stay &amp; live</strong> in a luxury hotel, apartments and premium glass residences.</p></div></div>
+        <div className="container wpAboutGrid"><div><Eyebrow>The project / at a glance</Eyebrow><h2>Shop, dine, work, stay and live.</h2></div><div className="wpAboutCopy"><p><strong>Shop</strong> across three retail levels around a central atrium. <strong>Dine &amp; play</strong> at the food court, playland, trampoline park and rooftop dining.</p><p><strong>Work</strong> in full-glass offices facing Ring Road. <strong>Stay &amp; live</strong> in a luxury hotel, apartments and Signature Glass Apartments.</p></div></div>
       </section>
       <section className="section wpAboutStats"><div className="container"><div className="wpAboutStatsGrid">{PROJECT_STATS.map(([value, label]) => <article key={label}><strong>{value}</strong><span>{label}</span></article>)}</div></div></section>
       <DeveloperSection />
+      <LeadershipSection />
       <BuildingLevelsSection image={MALL_IMAGES[0]} />
       <AccessSection />
+      <BrochureDownloads />
       <ProjectDisclaimers />
     </>
   );
@@ -80,7 +89,12 @@ const GALLERY_GROUPS = [
 export function WordPressGalleryPage() {
   return (
     <>
-      <section className="wpInternalHero section"><div className="container wpSimpleHero"><Eyebrow>Gallery / project visuals</Eyebrow><h1>See the project from every useful angle.</h1><p>Explore Aureum Mall &amp; Residences through exterior and interior renders, the mall, dining and leisure, the residences and the floor plans.</p><nav className="galleryJump" aria-label="Gallery sections">{GALLERY_GROUPS.map((group) => <a key={group.id} href={`#${group.id}`}>{group.eyebrow}</a>)}<a href="#plans">Floor plans</a></nav></div></section>
+      <section className="wpInternalHero section">
+        <div className="container wpInternalHeroGrid">
+          <div><Eyebrow>Gallery / project visuals</Eyebrow><h1>See the project from every useful angle.</h1><p>Explore Aureum Mall &amp; Residences through exterior and interior renders, the mall, dining and leisure, the residences and the floor plans.</p><nav className="galleryJump" aria-label="Gallery sections">{GALLERY_GROUPS.map((group) => <a key={group.id} href={`#${group.id}`}>{group.eyebrow}</a>)}<a href="#plans">Floor plans</a></nav></div>
+          <div className="wpInternalHeroImage"><Image src={EXTERIOR_NIGHT_WIDE.src} alt={EXTERIOR_NIGHT_WIDE.alt} fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+        </div>
+      </section>
       {GALLERY_GROUPS.map((group) => (
         <section className="section showcaseSection" id={group.id} key={group.id}>
           <div className="container"><SectionHeading eyebrow={group.eyebrow} title={group.title} /><ShowcaseGallery images={group.images} branded={group.branded} /></div>
@@ -96,7 +110,12 @@ export function WordPressGalleryPage() {
 export function WordPressNewsPage({ items }: { items: readonly NewsCardItem[] }) {
   return (
     <>
-      <section className="wpInternalHero section"><div className="container wpSimpleHero"><Eyebrow>Blogs / Aureum insights</Eyebrow><h1>News &amp; Guides from Aureum Mall &amp; Residences</h1><p>Follow Aureum Mall &amp; Residences through project updates, location information and payment-plan guidance.</p></div></section>
+      <section className="wpInternalHero section">
+        <div className="container wpInternalHeroGrid">
+          <div><Eyebrow>Blogs / Aureum insights</Eyebrow><h1>News &amp; guides from Aureum.</h1><p>Follow Aureum Mall &amp; Residences through project updates, location information and payment-plan guidance.</p></div>
+          <div className="wpInternalHeroImage"><Image src={MALL_IMAGES[0].src} alt={MALL_IMAGES[0].alt} fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+        </div>
+      </section>
       <section className="section wpNewsSection"><div className="container"><SectionHeading eyebrow="Latest from Aureum" title="Keep up with the project." description="Read the latest Aureum Mall &amp; Residences updates and useful information for your next step." /><NewsCardList items={items} /></div></section>
     </>
   );

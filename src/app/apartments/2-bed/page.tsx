@@ -11,10 +11,10 @@ export default function Page() {
     <WordPressPropertyPage
       eyebrow="Apartments / two bedrooms · from 1,103 sq ft"
       title="Room for family life."
-      intro="Two-bedroom apartments from 1,103 sq ft with space for a guest room or study, from PKR 22,611,500 with 10% booking and monthly installments from PKR 226,115."
+      intro="Two-bedroom apartments of 1,103 sq ft, or 1,316 sq ft with a servant quarter, from PKR 23,714,500 with 10% booking and monthly installments from PKR 237,145."
       image={CUTAWAY_IMAGES[1].src}
       imageAlt={CUTAWAY_IMAGES[1].alt}
-      features={['1,103 or 1,316 sq ft at PKR 20,500 per sq ft', 'Premium Glass Collection: 1,491 and 1,727 sq ft, quoted individually', '10% booking, 15% confirmation, 55 monthly installments', 'Indicative possession in 3.5 years']}
+      features={['1,103 sq ft two-bedroom, or 1,316 sq ft with a servant quarter, at PKR 21,500 per sq ft', 'Premium Signature Glass Apartments: 1,491 and 1,727 sq ft at PKR 23,000 per sq ft', '10% booking, 15% confirmation, 55 monthly installments', 'Indicative possession in 3.5 years']}
       interest="apartment"
       registerLabel="Two bedroom apartments"
     >

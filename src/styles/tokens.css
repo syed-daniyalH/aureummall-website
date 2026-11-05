@@ -16,9 +16,10 @@
   --success: #2f6b4f;
   --error: #b94a48;
 
-  --font-sans: var(--font-dm-sans), 'DM Sans', Arial, Helvetica, sans-serif;
-  --font-display: var(--font-dm-sans), 'DM Sans', Arial, Helvetica, sans-serif;
-  --font-serif: var(--font-cormorant), 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  /* Keep typography deterministic during offline builds; browsers use the branded font if installed. */
+  --font-sans: 'DM Sans', Arial, Helvetica, sans-serif;
+  --font-display: 'DM Sans', Arial, Helvetica, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
 
   --space-1: 4px;
   --space-2: 8px;
