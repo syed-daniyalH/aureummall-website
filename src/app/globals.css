@@ -7955,6 +7955,78 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
     transition: none;
   }
 }
+
+/* The source wordmark is a square canvas with generous transparent padding. Scale it inside the
+   wide header slot so the visible mark, rather than the empty canvas, carries the brand. */
+.siteHeader .brand,
+.siteHeader .brandMark {
+  width: 164px;
+  height: 72px;
+}
+
+.siteHeader .brandMark {
+  position: relative;
+  overflow: hidden;
+}
+
+.siteHeader .brandMark img {
+  transform: scale(1.72);
+  transform-origin: center;
+}
+
+/* Hero pages keep a blended navy header even after the first scroll threshold. This prevents the
+   white header strip from breaking the visual relationship with the dark hero beneath it. */
+body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid {
+  border-bottom-color: rgba(255, 255, 255, 0.14);
+  background: rgba(10, 11, 34, 0.88);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .brandOnLight {
+  display: none;
+}
+
+body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .brandOnDark {
+  display: block;
+}
+
+@media (min-width: 761px) {
+  body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid :is(.navLinks > a:not(.navCta), .navMenuTrigger) {
+    color: var(--surface);
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  }
+
+  body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .headerCall {
+    border-left-color: rgba(255, 255, 255, 0.3);
+  }
+
+  body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .headerCall small {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .headerCall a {
+    color: var(--surface) !important;
+  }
+
+  body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .navCta {
+    border-color: var(--gold-soft);
+    background: var(--gold-soft);
+    color: var(--navy-deep);
+  }
+}
+
+@media (max-width: 760px) {
+  .siteHeader .brand,
+  .siteHeader .brandMark {
+    width: 132px;
+    height: 56px;
+  }
+
+  .siteHeader .brandMark img {
+    transform: scale(1.6);
+  }
+}
 /* ---------- Developer portfolio: the three delivered Karachi towers ---------- */
 .portfolioBlock {
   margin-top: clamp(48px, 7vw, 84px);

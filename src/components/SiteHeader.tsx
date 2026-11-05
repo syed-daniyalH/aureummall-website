@@ -10,8 +10,8 @@ import { SITE } from '@/lib/site';
 import { track } from '@/lib/analytics';
 import { ANALYTICS_EVENTS } from '@/features/content-seo/data';
 
-// Past this many pixels the header turns solid; until then it is transparent over a dark page hero.
-const SOLID_AFTER_PX = 24;
+// Give the hero enough room to breathe before the sticky header changes state.
+const SOLID_AFTER_PX = 72;
 
 function subscribeToScroll(onChange: () => void) {
   window.addEventListener('scroll', onChange, { passive: true });
