@@ -8027,6 +8027,48 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
     transform: scale(1.6);
   }
 }
+
+/* The full navigation cannot fit between the logo and viewport edge on tablets. Keep the
+   same compact menu treatment from phones at every width where the desktop row would overflow. */
+@media (max-width: 960px) {
+  .siteHeader .navRow {
+    min-height: 74px;
+  }
+
+  .siteHeader .menuToggle {
+    display: inline-flex;
+  }
+
+  .siteHeader .navLinks {
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    left: 16px;
+    display: none;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    box-shadow: 0 18px 50px rgba(17, 18, 50, 0.16);
+  }
+
+  .siteHeader .navLinks.isOpen {
+    display: flex;
+  }
+
+  .siteHeader .navLinks a:not(.navCta),
+  .siteHeader .navCta {
+    padding: 12px 13px;
+  }
+
+  .siteHeader .navCta {
+    text-align: center;
+  }
+}
+
 /* ---------- Developer portfolio: the three delivered Karachi towers ---------- */
 .portfolioBlock {
   margin-top: clamp(48px, 7vw, 84px);
