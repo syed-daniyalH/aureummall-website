@@ -6,7 +6,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import type { NewsCardItem } from '@/features/news/posts';
 import { PROJECT_STATS } from '@/lib/project-facts';
-import { AccessSection, BuildingLevelsSection, DeveloperSection, FloorPlanGallery, LeadershipSection, ProjectDisclaimers, ShowcaseGallery } from '@/features/project-showcase/components/ProjectShowcase';
+import { AccessSection, BuildingLevelsSection, DeveloperSection, FloorPlanGallery, LeadershipSection, ProjectDisclaimers, ShowcaseGallery, TeamPreview } from '@/features/project-showcase/components/ProjectShowcase';
 import { CUTAWAY_IMAGES, EXTERIOR_NIGHT, EXTERIOR_NIGHT_WIDE, FLOOR_PLAN_IMAGES, FOOD_COURT_IMAGE, LEISURE_IMAGES, MALL_IMAGES, PARKING_IMAGE, RESIDENCE_IMAGES } from '@/features/project-showcase/images';
 import { BrochureDownloads } from '@/features/project-showcase/components/BrochureDownloads';
 import { NewsCardList } from './NewsCardList';
@@ -70,6 +70,7 @@ export function WordPressAboutPage() {
       <section className="section wpAboutStats"><div className="container"><div className="wpAboutStatsGrid">{PROJECT_STATS.map(([value, label]) => <article key={label}><strong>{value}</strong><span>{label}</span></article>)}</div></div></section>
       <DeveloperSection />
       <LeadershipSection />
+      <TeamPreview />
       <BuildingLevelsSection image={MALL_IMAGES[0]} />
       <AccessSection />
       <BrochureDownloads />

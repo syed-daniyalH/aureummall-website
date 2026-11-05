@@ -14,6 +14,10 @@ export default function Page() {
       title="Understand the spaces before you visit."
       intro="Review every level of Aureum, from the two basement parking levels and three retail floors to the food court and the typical residential floor. Tap any plan to open it at full size."
       image={CUTAWAY_IMAGES[1]}
+      summaryTitle="Every level, on one page."
+      summaryText="Retail, food court, residential and parking plans, plus representative apartment layouts. For prices level by level, open the building explorer."
+      summaryHref="/building-explorer"
+      summaryLabel="Explore the building"
       points={['Ground, first, second and third (food court) floors', 'Typical residential floor: 6th to 12th', 'Two basement parking levels', 'Representative apartment layouts']}
       ctaHref="#plans"
       ctaLabel="See the floor plans"

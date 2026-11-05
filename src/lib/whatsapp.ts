@@ -23,4 +23,11 @@ export function whatsappHref(interest?: string) {
   return `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** A WhatsApp link to one team member (or the main sales line), greeting them by first name. */
+export function personWhatsappHref(name: string | null, number?: string) {
+  const greeting = name ? `Hi ${name.split(' ')[0]}` : 'Hi Aureum team';
+  const message = `${greeting}, I'm interested in Aureum Mall & Residences. Please share the details and payment plan.`;
+  return `https://wa.me/${number ?? SITE.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
 export const callHref = `tel:${SITE.phoneE164}`;

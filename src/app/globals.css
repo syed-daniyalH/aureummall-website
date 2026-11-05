@@ -8595,3 +8595,546 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
     transition: none;
   }
 }
+
+/* ---------- About: the team as matching monochrome portrait cards ---------- */
+.teamSection {
+  background: var(--page);
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.teamCard {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: box-shadow var(--motion-fast), transform var(--motion-fast);
+}
+
+.teamCard:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.teamPhoto {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--navy-deep);
+}
+
+/* One look for every photo, whatever its original background: monochrome with a deep navy tint. */
+.teamPhoto img {
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08) brightness(0.96);
+  transition: filter 600ms ease, transform 700ms ease;
+}
+
+.teamPhoto::before,
+.teamPhoto::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: '';
+  pointer-events: none;
+  transition: opacity 600ms ease;
+}
+
+.teamPhoto::before {
+  background: var(--navy-deep);
+  mix-blend-mode: color;
+  opacity: 0.32;
+}
+
+.teamPhoto::after {
+  background: linear-gradient(180deg, rgba(17, 18, 50, 0) 60%, rgba(17, 18, 50, 0.45) 100%);
+}
+
+.teamCard:hover .teamPhoto img {
+  filter: grayscale(0) contrast(1) brightness(1);
+  transform: scale(1.03);
+}
+
+.teamCard:hover .teamPhoto::before {
+  opacity: 0;
+}
+
+.teamCaption {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px 18px;
+  border-top: 2px solid var(--gold-soft);
+}
+
+.teamName {
+  margin: 0;
+  color: var(--indigo);
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.teamRole {
+  margin: 0;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .teamGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .teamCaption {
+    padding: 12px 12px 14px;
+  }
+
+  .teamName {
+    font-size: 18px;
+  }
+
+  .teamRole {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (hover: none) {
+  .teamCard:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teamCard,
+  .teamPhoto img,
+  .teamPhoto::before {
+    transition: none;
+  }
+}
+/* The dark scrolled header also needs a light phone menu button, or the button disappears into the bar. */
+body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero, .paymentHero, .explorerHero, .mediaHero, .trustHero)) .siteHeader.isSolid .menuToggle {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--surface);
+}
+
+/* ---------- Team page ---------- */
+.teamMoreLink {
+  margin-top: 28px;
+}
+
+.teamCardFull .teamCaption {
+  gap: 6px;
+}
+
+.teamQuote {
+  margin: 6px 0 2px;
+  padding-left: 12px;
+  border-left: 2px solid var(--gold-soft);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.teamMeta {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.teamMeta span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.teamWhatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--indigo);
+  border-radius: 2px;
+  color: var(--indigo);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: background var(--motion-fast), color var(--motion-fast);
+}
+
+.teamWhatsapp:hover {
+  background: var(--indigo);
+  color: var(--surface);
+}
+
+.section.teamCta {
+  background: var(--navy-deep);
+  color: var(--surface);
+}
+
+.teamCtaInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 48px;
+}
+
+.teamCta .eyebrow {
+  color: var(--gold-soft);
+}
+
+.teamCta h2 {
+  margin: 12px 0 10px;
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 3.6vw, 48px);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.teamCta p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 17px;
+}
+
+.teamCta .actions {
+  margin: 0;
+}
+
+.contactTeamLink {
+  color: var(--gold-soft);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .teamWhatsapp {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+}
+/* ---------- Full-site review, round 3 ---------- */
+
+/* A single brochure (sub-pages) keeps a sensible card width instead of stretching across the page. */
+.brochureGrid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 290px));
+}
+
+/* Blog articles: the title lines up with the article text, at a size that suits long titles. */
+.container.articleHeroInner {
+  max-width: none;
+}
+
+.articleHero h1 {
+  max-width: 920px;
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 3.8vw, 54px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.articleMain {
+  min-width: 0;
+}
+
+.articleCover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 36px;
+  border-radius: var(--radius-sm);
+  background: var(--soft);
+}
+
+.articleCover img {
+  object-fit: cover;
+}
+
+/* Unit Finder: the four spaces as picture cards with starting prices. */
+.spacesSection {
+  background: var(--page);
+}
+
+.spaceGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.spaceCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: box-shadow var(--motion-fast), transform var(--motion-fast);
+}
+
+.spaceCard:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-3px);
+}
+
+.spaceImage {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--soft);
+}
+
+.spaceImage img {
+  object-fit: cover;
+  transition: transform 700ms ease;
+}
+
+.spaceCard:hover .spaceImage img {
+  transform: scale(1.04);
+}
+
+.spaceBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+}
+
+.spaceBody h3 {
+  margin: 0;
+  color: var(--indigo);
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.spaceBody h3 a {
+  color: inherit;
+}
+
+.spaceBody p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.spaceBody .spaceFrom {
+  display: grid;
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--indigo);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.spaceFrom small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.spaceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.spaceLinks a {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.spaceLinks a:hover {
+  color: var(--indigo);
+}
+
+/* 404 and thank-you pages: clear next steps. */
+.recoveryLinks,
+.thankYouNext {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.recoveryLinks a {
+  color: var(--indigo);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.recoveryLinks a:hover {
+  color: var(--gold);
+}
+
+.thankYouNext {
+  border-top-color: rgba(255, 255, 255, 0.16);
+}
+
+.thankYouNext span:first-child {
+  width: 100%;
+  color: var(--gold-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.thankYouNext a {
+  color: var(--surface);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.thankYouNext a:hover {
+  color: var(--gold-soft);
+}
+
+@media (max-width: 1100px) {
+  .spaceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .spaceGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .brochureGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* Investment facts, overseas steps and legal pages. */
+.factsSection,
+.stepsSection {
+  background: var(--page);
+}
+
+.factGrid,
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.factGrid li,
+.stepsGrid li {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--gold-soft);
+  border-radius: 0;
+  background: var(--surface);
+}
+
+.factGrid strong {
+  color: var(--indigo);
+  font-family: var(--font-serif);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.factGrid span {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.factGrid p,
+.stepsGrid p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.stepNumber {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stepsGrid h3 {
+  margin: 4px 0 0;
+  color: var(--indigo);
+  font-size: 19px;
+}
+
+.stepsGrid a {
+  margin-top: auto;
+  padding-top: 10px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.legalPage .legalIntro {
+  color: var(--ink);
+  font-size: 19px;
+}
+
+@media (max-width: 1000px) {
+  .factGrid,
+  .stepsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .factGrid,
+  .stepsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

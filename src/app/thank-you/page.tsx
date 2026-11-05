@@ -1,4 +1,4 @@
-import { ButtonLink } from '@/components/ui/ButtonLink';
+import Link from 'next/link';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { createRouteMetadata } from '@/features/content-seo/metadata';
 import { SITE } from '@/lib/site';
@@ -24,9 +24,12 @@ export default function ThankYouPage() {
             Call {SITE.phoneDisplay}
           </a>
         </div>
-        <p className="thankYouNext">
-          While you wait: <ButtonLink href="/payment-plans" variant="secondary">See the payment plans</ButtonLink>
-        </p>
+        <nav className="thankYouNext" aria-label="While you wait">
+          <span>While you wait</span>
+          <Link href="/payment-plans">See the payment plans <span aria-hidden="true">→</span></Link>
+          <Link href="/gallery">Browse the gallery <span aria-hidden="true">→</span></Link>
+          <Link href="/immersive-media#virtual-tour">Take the 360° tour <span aria-hidden="true">→</span></Link>
+        </nav>
       </div>
     </section>
   );

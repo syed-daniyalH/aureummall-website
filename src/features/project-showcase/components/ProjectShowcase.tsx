@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { calcHref, formatLakhCrore, formatPKR, formatSqFt, PRICED_UNITS } from '@/features/payment-plans/units';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { ACCESS, AMENITIES, APARTMENT_TYPES, BUILDING_LEVELS, DEVELOPER, IMAGE_DISCLAIMER, LEADERSHIP, PROJECT_DISCLAIMERS } from '@/lib/project-facts';
+import { ACCESS, AMENITIES, APARTMENT_TYPES, BUILDING_LEVELS, DEVELOPER, IMAGE_DISCLAIMER, LEADERSHIP, PROJECT_DISCLAIMERS, visibleTeam, type TeamMember } from '@/lib/project-facts';
+import { ButtonLink } from '@/components/ui/ButtonLink';
+import { personWhatsappHref } from '@/lib/whatsapp';
 
 /** `note` replaces the default "Artist’s impression" caption (e.g. for drawings and maps). */
 export type ShowcaseImage = { src: string; alt: string; label?: string; note?: string };
@@ -79,6 +81,77 @@ export function LeadershipSection() {
             </article>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Team portraits share one crop and a monochrome navy treatment that evens out their different
+ * backgrounds and lighting; hovering shows the photo in full colour.
+ */
+function TeamPortrait({ member }: { member: TeamMember }) {
+  return (
+    <div className="teamPhoto">
+      <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 560px) 46vw, (max-width: 1000px) 30vw, 290px" style={member.position ? { objectPosition: member.position } : undefined} />
+    </div>
+  );
+}
+
+const PREVIEW_COUNT = 4;
+
+/** About page: the first few team faces and a link to the full Team page. */
+export function TeamPreview() {
+  const members = visibleTeam().slice(0, PREVIEW_COUNT);
+  if (members.length === 0) return null;
+
+  return (
+    <section className="section teamSection" aria-labelledby="team-heading">
+      <div className="container">
+        <SectionHeading id="team-heading" eyebrow="Our team" title="The people you will meet." description="The Aureum sales and project team: the people who show you the site, take you through the payment plan and answer your questions along the way." />
+        <ul className="teamGrid">
+          {members.map((member) => (
+            <li className="teamCard" key={member.id}>
+              <TeamPortrait member={member} />
+              <div className="teamCaption">
+                <p className="teamName">{member.name ?? 'Name to be confirmed'}</p>
+                <p className="teamRole">{member.role ?? 'Aureum Mall & Residences'}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <ButtonLink href="/team" variant="dark" className="teamMoreLink">Meet the whole team <span aria-hidden="true">→</span></ButtonLink>
+      </div>
+    </section>
+  );
+}
+
+/** Team page: every member with what they handle, their languages and a direct WhatsApp button. */
+export function TeamDirectory() {
+  const members = visibleTeam();
+  if (members.length === 0) return null;
+
+  return (
+    <section className="section teamSection teamDirectory" id="team" aria-labelledby="team-directory-heading">
+      <div className="container">
+        <SectionHeading id="team-directory-heading" eyebrow="Sales & project team" title="Talk to the person, not a call centre." description="Message any member of the team directly on WhatsApp. They can share current availability, walk you through the payment plan and arrange your site visit." />
+        <ul className="teamGrid">
+          {members.map((member) => (
+            <li className="teamCard teamCardFull" key={member.id}>
+              <TeamPortrait member={member} />
+              <div className="teamCaption">
+                <p className="teamName">{member.name ?? 'Name to be confirmed'}</p>
+                <p className="teamRole">{member.role ?? 'Aureum Mall & Residences'}</p>
+                {member.quote ? <blockquote className="teamQuote">“{member.quote}”</blockquote> : null}
+                {member.focus?.length ? <p className="teamMeta"><span>Handles</span>{member.focus.join(' · ')}</p> : null}
+                {member.languages?.length ? <p className="teamMeta"><span>Speaks</span>{member.languages.join(' · ')}</p> : null}
+                <a className="teamWhatsapp" href={personWhatsappHref(member.name, member.whatsapp)} target="_blank" rel="noopener">
+                  Message on WhatsApp <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

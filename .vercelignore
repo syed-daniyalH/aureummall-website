@@ -7,3 +7,7 @@ wordpress-source
 public/wordpress
 public/assets/aureum/Aureum-Project-Profile.pdf
 source-archive
+# Source files kept on disk but never published: unused raw TVC master and the WeTransfer 3D-view delivery.
+public/video/Aureum Mall Residences Luxury Apartments Shops in Bahria Town Lahore Official TVC.mp4
+public/wetransfer_3d-views_2026-10-31_0952.zip
+public/wetransfer_3d-views_2026-10-31_0952

@@ -7,8 +7,10 @@ import { BRAND_FILM } from '../data';
 
 function wantsMotion() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
-  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
-  return !connection?.saveData;
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
+  // On slow mobile connections the poster image stands in for the 10-18 MB film.
+  const slow = connection?.effectiveType ? ['slow-2g', '2g', '3g'].includes(connection.effectiveType) : false;
+  return !connection?.saveData && !slow;
 }
 
 type BackgroundFilmProps = { className?: string; poster: string; sizes: string };

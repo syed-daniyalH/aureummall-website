@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ButtonLink } from '@/components/ui/ButtonLink';
@@ -6,7 +7,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { WhatsAppLink } from '@/components/WhatsAppLink';
 import { JsonLd } from '@/features/content-seo/components/JsonLd';
 import { pageTitle } from '@/features/content-seo/metadata';
-import { formatPostDate, getAllPosts, getPost, getRelatedPosts, publishedIso } from '@/features/news/posts';
+import { formatPostDate, getAllPosts, getPost, getRelatedPosts, postImage, publishedIso } from '@/features/news/posts';
 import { SITE } from '@/lib/site';
 
 type ArticlePageProps = { params: Promise<{ slug: string }> };
@@ -36,8 +37,9 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       siteName: SITE.name,
       publishedTime: publishedIso(post),
       locale: 'en_PK',
+      ...(postImage(post) ? { images: [{ url: postImage(post) as string, alt: title }] } : {}),
     },
-    twitter: { card: 'summary_large_image', title, description: post.description },
+    twitter: { card: 'summary_large_image', title, description: post.description, ...(postImage(post) ? { images: [postImage(post) as string] } : {}) },
   };
 }
 
@@ -48,6 +50,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   const url = `${SITE.url}/news/${post.slug}`;
   const related = getRelatedPosts(post.slug, 3);
+  const cover = postImage(post);
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -120,7 +123,14 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       <section className="section articleSection">
         <div className="container articleLayout">
-          <article className="articleBody" dangerouslySetInnerHTML={{ __html: post.html }} />
+          <div className="articleMain">
+            {cover ? (
+              <figure className="articleCover">
+                <Image src={cover} alt="" fill priority sizes="(max-width: 900px) 92vw, 820px" />
+              </figure>
+            ) : null}
+            <article className="articleBody" dangerouslySetInnerHTML={{ __html: post.html }} />
+          </div>
 
           <aside className="articleAside" aria-label="Talk to the sales team">
             <div className="articleCta">

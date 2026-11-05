@@ -55,6 +55,47 @@ export const LEADERSHIP = [
   },
 ] as const;
 
+/**
+ * The sales and project team on the About page. Photos are cropped to the same 4:5 head-and-shoulders
+ * portrait (public/assets/aureum/approved/team/2026). A member shows on the live site once `name` is filled
+ * in; until then the card appears only in local development, so nobody is published under a guessed name.
+ */
+export type TeamMember = {
+  id: string;
+  name: string | null;
+  role: string | null;
+  image: string;
+  position?: string;
+  /** What the person handles, e.g. "Apartments", "Overseas buyers". Shown on the Team page. */
+  focus?: readonly string[];
+  languages?: readonly string[];
+  /** Their own WhatsApp number in international digits (923001234567); the main sales line otherwise. */
+  whatsapp?: string;
+  /** A short line in their own words, only when they have approved it. */
+  quote?: string;
+};
+
+const TEAM_PHOTOS = '/assets/aureum/approved/team/2026';
+
+export const TEAM: readonly TeamMember[] = [
+  { id: 'adan-shykh', name: 'Adan Shykh', role: 'Real Estate Consultant', image: `${TEAM_PHOTOS}/adan-shykh.jpg` },
+  { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: null, image: `${TEAM_PHOTOS}/saqib-ali-rao.jpg`, quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
+  { id: 'team-01', name: null, role: null, image: `${TEAM_PHOTOS}/team-01.jpg`, position: '50% 20%' },
+  { id: 'team-03', name: null, role: null, image: `${TEAM_PHOTOS}/team-03.jpg` },
+  { id: 'team-04', name: null, role: null, image: `${TEAM_PHOTOS}/team-04.jpg` },
+  { id: 'team-07', name: null, role: null, image: `${TEAM_PHOTOS}/team-07.jpg` },
+  { id: 'team-08', name: null, role: null, image: `${TEAM_PHOTOS}/team-08.jpg` },
+  { id: 'team-02', name: null, role: null, image: `${TEAM_PHOTOS}/team-02.jpg`, position: '50% 10%' },
+  { id: 'team-09', name: null, role: null, image: `${TEAM_PHOTOS}/team-09.jpg` },
+  { id: 'team-10', name: null, role: null, image: `${TEAM_PHOTOS}/team-10.jpg` },
+];
+
+/** Team members to show: everyone named on the live site, plus unnamed placeholders during local development. */
+export function visibleTeam() {
+  const showPending = process.env.NODE_ENV === 'development';
+  return TEAM.filter((member) => member.name || showPending);
+}
+
 export const PROJECT_STATS = [
   ['16', 'Kanal landmark'],
   ['3', 'Retail levels'],

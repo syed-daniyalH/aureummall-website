@@ -49,7 +49,7 @@ export function getPaymentPlanPage(id: string) {
 }
 
 export function formatPKR(value: number) {
-  return `Rs ${new Intl.NumberFormat('en-PK').format(value)}`;
+  return `PKR ${new Intl.NumberFormat('en-PK').format(value)}`;
 }
 
 /** "PKR 8.73M" style figure for menus, where the full amount is too long. */

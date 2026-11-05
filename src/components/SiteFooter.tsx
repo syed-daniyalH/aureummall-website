@@ -6,6 +6,7 @@ import { DEVELOPER } from '@/lib/project-facts';
 
 const EXPLORE_LINKS = [
   { href: '/about', label: 'About Aureum' },
+  { href: '/team', label: 'Our team' },
   { href: '/apartments', label: 'Residences' },
   { href: '/commercial-shops', label: 'Commercial shops' },
   { href: '/corporate-offices', label: 'Corporate offices' },

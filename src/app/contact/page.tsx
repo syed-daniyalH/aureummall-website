@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { LeadForm } from '@/components/LeadForm';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SITE } from '@/lib/site';
@@ -22,7 +23,7 @@ export default function Page() {
           <div className="contactIntro">
             <Eyebrow>Contact / sales team</Eyebrow>
             <h1>Talk to the Aureum sales team.</h1>
-            <p>Ask about availability, the current payment plan or a site visit. Call, send a WhatsApp message or leave your details and the team will get back to you.</p>
+            <p>Ask about availability, the current payment plan or a site visit. Call, send a WhatsApp message or leave your details and the team will get back to you. <Link href="/team" className="contactTeamLink">Meet the team →</Link></p>
             <ul className="contactMethods">
               {CONTACT_METHODS.map((method) => (
                 <li key={method.label}>
