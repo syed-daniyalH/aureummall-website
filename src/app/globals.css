@@ -8087,11 +8087,30 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
   }
 }
 
-/* Keep the leadership editorial section dark; the alternating .section background has higher
-   specificity and otherwise turns this white-on-navy content into white-on-ivory. */
+/* Rebalance the page rhythm: the hero and footer stay navy while leadership becomes a light
+   editorial surface instead of stacking another large blue band above the team grid. */
 .section.leadershipSection {
-  background: var(--navy-deep);
-  color: var(--surface);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.section.leadershipSection .leadershipIntro h2,
+.section.leadershipSection .leaderBody h3 {
+  color: var(--ink);
+}
+
+.section.leadershipSection .leadershipIntro p,
+.section.leadershipSection .leaderBio {
+  color: var(--muted);
+}
+
+.section.leadershipSection .leaderOrgs li {
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.section.leadershipSection .leaderInset {
+  border-color: var(--surface);
 }
 
 .section.leadershipSection .leaderBody,
