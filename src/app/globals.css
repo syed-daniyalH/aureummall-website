@@ -8059,6 +8059,24 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
     display: flex;
   }
 
+  /* Hero-page desktop colours must not leak into the light dropdown panel. */
+  .siteHeader .navLinks :is(a:not(.navCta), .navMenuTrigger) {
+    color: var(--ink) !important;
+    text-shadow: none;
+  }
+
+  .siteHeader .navLinks .headerCall {
+    border-left-color: var(--line);
+  }
+
+  .siteHeader .navLinks .headerCall small {
+    color: var(--muted);
+  }
+
+  .siteHeader .navLinks .headerCall a {
+    color: var(--indigo) !important;
+  }
+
   .siteHeader .navLinks a:not(.navCta),
   .siteHeader .navCta {
     padding: 12px 13px;
