@@ -74,18 +74,18 @@ export type TeamMember = {
 const TEAM_PHOTOS = '/assets/aureum/approved/team/2026';
 
 export const TEAM: readonly TeamMember[] = [
+  { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg` },
+  { id: 'dua-rana', name: 'Dua Rana', role: 'Sales Manager', image: `${TEAM_PHOTOS}/Sales Manager Dua Rana.jpg` },
+  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg` },
   { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Saqib-Ali-Rao).jpeg`, quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
   { id: 'umaima-ahsan', name: 'Umaima Ahsan', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Umaima Ahsan).jpg` },
-  { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg` },
+  { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg` },
+  { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg` },
   { id: 'adan-shykh', name: 'Adan Shykh', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate (Adan-Shykh).jpg` },
   { id: 'haris-ali', name: 'Haris Ali', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate Haris Ali).jpg` },
   { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Ghulam Ahmad).jpg` },
   { id: 'saad-amjad', name: 'Saad Amjad', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Saad Amjad).jpg` },
   { id: 'wali-nasir', name: 'Wali Nasir', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Wali Nasir).jpeg` },
-  { id: 'dua-rana', name: 'Dua Rana', role: 'Sales Manager', image: `${TEAM_PHOTOS}/Sales Manager Dua Rana.jpg` },
-  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg` },
-  { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg` },
-  { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg` },
 ];
 
 /** All named members from the main team folder are published on the site. */
