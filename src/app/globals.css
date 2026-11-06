@@ -8087,6 +8087,37 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
   }
 }
 
+/* Keep the leadership editorial section dark; the alternating .section background has higher
+   specificity and otherwise turns this white-on-navy content into white-on-ivory. */
+.section.leadershipSection {
+  background: var(--navy-deep);
+  color: var(--surface);
+}
+
+.section.leadershipSection .leaderBody,
+.section.leadershipSection .leaderMedia {
+  min-width: 0;
+}
+
+@media (max-width: 960px) {
+  .section.leadershipSection .leaderRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .section.leadershipSection .leaderRow .leaderMedia,
+  .section.leadershipSection .leaderRow.isReversed .leaderMedia {
+    order: 0;
+    justify-self: start;
+    width: min(100%, 420px);
+    margin: 0;
+  }
+
+  .section.leadershipSection .leaderBody {
+    max-width: 680px;
+  }
+}
+
 /* ---------- Developer portfolio: the three delivered Karachi towers ---------- */
 .portfolioBlock {
   margin-top: clamp(48px, 7vw, 84px);
