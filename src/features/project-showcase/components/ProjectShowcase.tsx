@@ -134,7 +134,7 @@ export function TeamDirectory() {
   return (
     <section className="section teamSection teamDirectory" id="team" aria-labelledby="team-directory-heading">
       <div className="container">
-        <SectionHeading id="team-directory-heading" eyebrow="Sales & project team" title="Talk to the person, not a call centre." description="Message any member of the team directly on WhatsApp. They can share current availability, walk you through the payment plan and arrange your site visit." />
+        <SectionHeading id="team-directory-heading" eyebrow="Sales & project team" title="Personal guidance for a considered investment." description="Speak directly with the Aureum team about residences, retail, offices and the payment plan. We will arrange a private site visit and guide you through the details at your own pace." />
         <ul className="teamGrid">
           {members.map((member) => (
             <li className="teamCard teamCardFull" key={member.id}>
