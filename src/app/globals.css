@@ -8062,7 +8062,7 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
   /* Hero-page desktop colours must not leak into the light dropdown panel. */
   .siteHeader .navLinks :is(a:not(.navCta), .navMenuTrigger) {
     color: var(--ink) !important;
-    text-shadow: none;
+    text-shadow: none !important;
   }
 
   .siteHeader .navLinks .headerCall {
