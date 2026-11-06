@@ -8,7 +8,7 @@ import { callHref } from '@/lib/whatsapp';
 
 export const metadata = createRouteMetadata('/team');
 
-const TEAM_PHOTO = '/assets/aureum/approved/team/aureum-sales-team.webp';
+const TEAM_PHOTO = '/assets/aureum/approved/team/mian-waqas.webp';
 
 export default function TeamPage() {
   return (
@@ -24,7 +24,7 @@ export default function TeamPage() {
               <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
             </div>
           </div>
-          <div className="wpInternalHeroImage"><Image src={TEAM_PHOTO} alt="The Aureum sales team in front of the Aureum Mall site hoarding" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <div className="wpInternalHeroImage"><Image src={TEAM_PHOTO} alt="Aureum project leadership member at the development site" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
         </div>
       </section>
       <LeadershipSection />
