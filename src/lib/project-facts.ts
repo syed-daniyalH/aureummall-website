@@ -55,11 +55,7 @@ export const LEADERSHIP = [
   },
 ] as const;
 
-/**
- * The sales and project team on the About page. Photos are cropped to the same 4:5 head-and-shoulders
- * portrait (public/assets/aureum/approved/team/2026). A member shows on the live site once `name` is filled
- * in; until then the card appears only in local development, so nobody is published under a guessed name.
- */
+/** The current main sales and project team, sourced from the named photos in team/2026. */
 export type TeamMember = {
   id: string;
   name: string | null;
@@ -78,22 +74,23 @@ export type TeamMember = {
 const TEAM_PHOTOS = '/assets/aureum/approved/team/2026';
 
 export const TEAM: readonly TeamMember[] = [
-  { id: 'adan-shykh', name: 'Adan Shykh', role: 'Real Estate Consultant', image: `${TEAM_PHOTOS}/adan-shykh.jpg` },
-  { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: null, image: `${TEAM_PHOTOS}/saqib-ali-rao.jpg`, quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
-  { id: 'team-01', name: null, role: null, image: `${TEAM_PHOTOS}/team-01.jpg`, position: '50% 20%' },
-  { id: 'team-03', name: null, role: null, image: `${TEAM_PHOTOS}/team-03.jpg` },
-  { id: 'team-04', name: null, role: null, image: `${TEAM_PHOTOS}/team-04.jpg` },
-  { id: 'team-07', name: null, role: null, image: `${TEAM_PHOTOS}/team-07.jpg` },
-  { id: 'team-08', name: null, role: null, image: `${TEAM_PHOTOS}/team-08.jpg` },
-  { id: 'team-02', name: null, role: null, image: `${TEAM_PHOTOS}/team-02.jpg`, position: '50% 10%' },
-  { id: 'team-09', name: null, role: null, image: `${TEAM_PHOTOS}/team-09.jpg` },
-  { id: 'team-10', name: null, role: null, image: `${TEAM_PHOTOS}/team-10.jpg` },
+  { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Saqib-Ali-Rao).jpeg`, quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
+  { id: 'umaima-ahsan', name: 'Umaima Ahsan', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Umaima Ahsan).jpg` },
+  { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg` },
+  { id: 'adan-shykh', name: 'Adan Shykh', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate (Adan-Shykh).jpg` },
+  { id: 'haris-ali', name: 'Haris Ali', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate Haris Ali).jpg` },
+  { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Ghulam Ahmad).jpg` },
+  { id: 'saad-amjad', name: 'Saad Amjad', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Saad Amjad).jpg` },
+  { id: 'wali-nasir', name: 'Wali Nasir', role: 'Sales Associate', image: `${TEAM_PHOTOS}/Sales Associate(Wali Nasir).jpeg` },
+  { id: 'dua-rana', name: 'Dua Rana', role: 'Sales Manager', image: `${TEAM_PHOTOS}/Sales Manager Dua Rana.jpg` },
+  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg` },
+  { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg` },
+  { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Senior Sales Associate', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg` },
 ];
 
-/** Team members to show: everyone named on the live site, plus unnamed placeholders during local development. */
+/** All named members from the main team folder are published on the site. */
 export function visibleTeam() {
-  const showPending = process.env.NODE_ENV === 'development';
-  return TEAM.filter((member) => member.name || showPending);
+  return TEAM;
 }
 
 export const PROJECT_STATS = [
