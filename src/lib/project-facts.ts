@@ -50,7 +50,7 @@ export const LEADERSHIP = [
     role: 'Chief Executive Officer',
     organisations: ['Aureum Mall & Residences'],
     bio: 'Mian Waqas Ashraf leads the Aureum Mall & Residences project team as chief executive, taking the development from its groundbreaking on 1 October 2026 through construction to handover, and building the mall, offices and residences around the people who will shop, work and live there.',
-    image: { src: '/assets/aureum/approved/team/mian-waqas.webp', alt: 'Mian Waqas Ashraf, Chief Executive Officer of Aureum Mall & Residences, in front of the Aureum building', position: '52% 18%', zoom: 1 },
+    image: { src: '/assets/aureum/approved/leadership/mian-waqas-ashraf-ceo-2026.webp', alt: 'Portrait of Mian Waqas Ashraf, Chief Executive Officer of Aureum Mall & Residences', position: '50% 10%', zoom: 1 },
     inset: null,
   },
 ] as const;
