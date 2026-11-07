@@ -2,13 +2,14 @@ import Image from 'next/image';
 import { ButtonLink } from '@/components/ui/ButtonLink';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { createRouteMetadata } from '@/features/content-seo/metadata';
-import { LeadershipSection, TeamDirectory } from '@/features/project-showcase/components/ProjectShowcase';
+import { LeadershipSection, salesTeam, TeamDirectory } from '@/features/project-showcase/components/ProjectShowcase';
 import { SITE } from '@/lib/site';
 import { callHref } from '@/lib/whatsapp';
 
 export const metadata = createRouteMetadata('/team');
 
-const TEAM_PHOTO = '/assets/aureum/approved/team/mian-waqas.webp';
+/** The hero shows the team itself: a mosaic of six sales portraits rather than one person. */
+const HERO_FACES = salesTeam().slice(0, 6);
 
 export default function TeamPage() {
   return (
@@ -18,13 +19,19 @@ export default function TeamPage() {
           <div>
             <Eyebrow>Our team / Aureum Mall &amp; Residences</Eyebrow>
             <h1>Meet the Aureum team.</h1>
-            <p>The leadership behind the project and the sales and project team who will show you the site, explain the payment plan and answer your questions.</p>
+            <p>The leadership behind the project and the sales executives who will show you the site, explain the payment plan and answer your questions, supported by our marketing and creative team.</p>
             <div className="actions">
               <ButtonLink href="#team">Meet the team <span aria-hidden="true">↓</span></ButtonLink>
               <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
             </div>
           </div>
-          <div className="wpInternalHeroImage"><Image src={TEAM_PHOTO} alt="Aureum project leadership member at the development site" fill priority sizes="(max-width: 900px) 92vw, 560px" /></div>
+          <div className="wpInternalHeroImage teamHeroMosaic" role="img" aria-label={`Portraits of the Aureum sales team: ${HERO_FACES.map((m) => m.name).join(', ')}`}>
+            {HERO_FACES.map((member, index) => (
+              <div className="teamHeroTile" key={member.id}>
+                <Image src={member.image} alt="" fill priority={index < 3} sizes="(max-width: 900px) 31vw, 190px" style={{ objectPosition: member.position ?? '50% 18%' }} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       <LeadershipSection />

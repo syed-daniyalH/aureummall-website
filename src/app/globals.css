@@ -8944,6 +8944,145 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
   color: var(--surface);
 }
 
+/*
+ * Team directory layout: equal-height cards in each row with the WhatsApp button pinned to the
+ * bottom, so every button lines up horizontally whatever the quote length. A short last row is
+ * centred instead of leaving a gap on the right.
+ */
+.teamDirectory .teamGrid {
+  --team-gap: clamp(16px, 2vw, 24px);
+  --team-cols: 4;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--team-gap);
+}
+
+.teamDirectory .teamGrid > .teamCard {
+  display: flex;
+  flex: 0 1 calc((100% - (var(--team-cols) - 1) * var(--team-gap)) / var(--team-cols));
+  flex-direction: column;
+  min-width: 0;
+}
+
+.teamCardFull .teamCaption {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.teamCardFull .teamQuote {
+  margin-bottom: 16px;
+}
+
+.teamCardFull .teamActions {
+  margin-top: auto;
+}
+
+.teamCardFull .teamWhatsapp,
+.teamCardFull .teamDept {
+  box-sizing: border-box;
+  height: 42px;
+}
+
+.teamCardFull .teamWhatsapp {
+  display: flex;
+  margin-top: 0;
+  padding-block: 0;
+  white-space: nowrap;
+}
+
+/* Team page hero: six sales portraits in a navy grid with gold keylines. */
+.wpInternalHeroImage.teamHeroMosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 6px;
+  padding: 6px;
+  background: var(--navy-deep);
+  box-shadow: 0 0 0 1px var(--gold-soft), var(--shadow-hero);
+}
+
+.teamHeroTile {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  background: linear-gradient(160deg, var(--indigo) 0%, var(--navy-deep) 100%);
+  box-shadow: inset 0 0 0 1px rgba(216, 191, 142, 0.5);
+}
+
+.teamHeroTile img {
+  object-fit: cover;
+}
+
+.teamHeroTile::after {
+  position: absolute;
+  inset: 0;
+  content: '';
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(17, 18, 50, 0) 65%, rgba(17, 18, 50, 0.4) 100%);
+  box-shadow: inset 0 0 0 1px rgba(216, 191, 142, 0.5);
+}
+
+/* Marketing and creative staff have no sales line; a quiet note sits where the button would. */
+.teamCardFull .teamDept {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px dashed var(--line-gold);
+  border-radius: 2px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1000px) {
+  .teamDirectory .teamGrid {
+    --team-cols: 3;
+  }
+}
+
+/* Phones: one card per row, photo beside the details, so quotes and buttons have room. */
+@media (max-width: 700px) {
+  .teamDirectory .teamGrid {
+    --team-cols: 1;
+  }
+
+  .teamDirectory .teamGrid > .teamCard {
+    flex-direction: row;
+  }
+
+  .teamCardFull .teamPhoto {
+    flex: 0 0 38%;
+    aspect-ratio: auto;
+    min-height: 100%;
+    border-width: 6px;
+    border-right-width: 0;
+  }
+
+  .teamCardFull .teamCaption {
+    padding: 14px 14px 14px;
+    border-top: 0;
+    border-left: 2px solid var(--gold-soft);
+  }
+
+  .teamCardFull .teamName {
+    font-size: 19px;
+  }
+
+  .teamCardFull .teamRole {
+    font-size: 10.5px;
+  }
+
+  .teamCardFull .teamQuote {
+    margin-bottom: 12px;
+    font-size: 14.5px;
+  }
+}
+
 .section.teamCta {
   background: var(--navy-deep);
   color: var(--surface);

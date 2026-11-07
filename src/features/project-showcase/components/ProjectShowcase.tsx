@@ -99,16 +99,21 @@ function TeamPortrait({ member }: { member: TeamMember }) {
 
   return (
     <div className={`teamPhoto${member.tone === 'gold' ? ' isGoldTone' : ''}`}>
-      <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 560px) 46vw, (max-width: 1000px) 30vw, 290px" style={imageStyle} />
+      <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 700px) 40vw, (max-width: 1000px) 30vw, 290px" style={imageStyle} />
     </div>
   );
 }
 
 const PREVIEW_COUNT = 4;
 
-/** About page: the first few team faces and a link to the full Team page. */
+/** The people a buyer actually deals with: everyone outside the marketing and creative teams. */
+export function salesTeam() {
+  return visibleTeam().filter((member) => !member.department);
+}
+
+/** About page: the first few sales faces and a link to the full Team page. */
 export function TeamPreview() {
-  const members = visibleTeam().slice(0, PREVIEW_COUNT);
+  const members = salesTeam().slice(0, PREVIEW_COUNT);
   if (members.length === 0) return null;
 
   return (
@@ -140,7 +145,7 @@ export function TeamDirectory() {
   return (
     <section className="section teamSection teamDirectory" id="team" aria-labelledby="team-directory-heading">
       <div className="container">
-        <SectionHeading id="team-directory-heading" eyebrow="Sales & project team" title="Personal guidance for a considered investment." description="Speak directly with the Aureum team about residences, retail, offices and the payment plan. We will arrange a private site visit and guide you through the details at your own pace." />
+        <SectionHeading id="team-directory-heading" eyebrow="Sales, marketing & creative team" title="Personal guidance for a considered investment." description="Our sales executives will take you through residences, retail, offices and the payment plan, arrange a private site visit and guide you through the details at your own pace. Message any of them on WhatsApp and the sales desk will connect you." />
         <ul className="teamGrid">
           {members.map((member) => (
             <li className="teamCard teamCardFull" key={member.id}>
@@ -151,9 +156,15 @@ export function TeamDirectory() {
                 {member.quote ? <blockquote className="teamQuote">“{member.quote}”</blockquote> : null}
                 {member.focus?.length ? <p className="teamMeta"><span>Handles</span>{member.focus.join(' · ')}</p> : null}
                 {member.languages?.length ? <p className="teamMeta"><span>Speaks</span>{member.languages.join(' · ')}</p> : null}
-                <a className="teamWhatsapp" href={personWhatsappHref(member.name, member.whatsapp)} target="_blank" rel="noopener">
-                  Message on WhatsApp <span aria-hidden="true">↗</span>
-                </a>
+                <div className="teamActions">
+                  {member.department ? (
+                    <p className="teamDept">{member.department} team</p>
+                  ) : (
+                    <a className="teamWhatsapp" href={personWhatsappHref(member.name, member.whatsapp, member.callName)} target="_blank" rel="noopener" aria-label={`Message ${member.name ?? 'the Aureum team'} on WhatsApp (opens in a new tab)`}>
+                      Message on WhatsApp <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
               </div>
             </li>
           ))}

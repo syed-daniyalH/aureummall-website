@@ -50,7 +50,7 @@ export const LEADERSHIP = [
     role: 'Chief Executive Officer',
     organisations: ['Aureum Mall & Residences'],
     bio: 'Mian Waqas Ashraf leads the Aureum Mall & Residences project team as chief executive, taking the development from its groundbreaking on 1 October 2026 through construction to handover, and building the mall, offices and residences around the people who will shop, work and live there.',
-    image: { src: '/assets/aureum/approved/leadership/mian-waqas-ashraf-ceo.webp', alt: 'Portrait of Mian Waqas Ashraf, Chief Executive Officer of Aureum Mall & Residences', position: '50% 0%', zoom: 1.1 },
+    image: { src: '/assets/aureum/approved/team/mian-waqas.webp', alt: 'Mian Waqas Ashraf, Chief Executive Officer of Aureum Mall & Residences, in front of the Aureum building', position: '52% 18%', zoom: 1 },
     inset: null,
   },
 ] as const;
@@ -71,6 +71,10 @@ export type TeamMember = {
   languages?: readonly string[];
   /** Their own WhatsApp number in international digits (923001234567); the main sales line otherwise. */
   whatsapp?: string;
+  /** Non-sales staff get no WhatsApp button; the card shows their department instead. */
+  department?: 'Marketing' | 'Creative';
+  /** The name buyers should use in the WhatsApp message when it isn't the first word of `name`. */
+  callName?: string;
   /** A short role-aligned line shown on the Team page. */
   quote?: string;
 };
@@ -78,15 +82,15 @@ export type TeamMember = {
 const TEAM_PHOTOS = '/assets/aureum/approved/team/2026';
 
 export const TEAM: readonly TeamMember[] = [
-  { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg`, quote: 'A strong brand gives every visit, every message and every detail a clear sense of place.' },
+  { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', department: 'Marketing', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg`, quote: 'A strong brand gives every visit, every message and every detail a clear sense of place.' },
   { id: 'dua-rana', name: 'Dua Rana', role: 'Sales Manager', image: `${TEAM_PHOTOS}/Sales Manager Dua Rana.jpg`, quote: 'A good sales experience begins with listening, then turns the right question into the right opportunity.' },
-  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg`, quote: 'Good design makes the value of a place visible before a client ever steps inside.' },
-  { id: 'muhammad-husnain', name: 'Muhammad Husnain', role: 'Senior Videographer & Designer', image: `${TEAM_PHOTOS}/Senior Videographer and Designer (Muhammad Husnain).jpg`, position: '50% 30%', quote: 'A great frame lets people feel a place long before they walk through its doors.' },
+  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg`, quote: 'Good design makes the value of a place visible before a client ever steps inside.' },
+  { id: 'muhammad-husnain', name: 'Muhammad Husnain', role: 'Senior Videographer & Designer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Videographer and Designer (Muhammad Husnain).jpg`, position: '50% 30%', quote: 'A great frame lets people feel a place long before they walk through its doors.' },
   { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Senior Sales Associate (Saqib Ali Rao) 2026.jpg`, position: '50% 20%', quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
   { id: 'umaima-ahsan', name: 'Umaima Ahsan', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Umaima Ahsan).jpg`, imageZoom: 1.12, quote: 'The best conversation starts with understanding what a buyer wants to build, not just what they want to buy.' },
   { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg`, quote: 'Clarity turns a first enquiry into a confident decision.' },
   { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg`, quote: 'Every detail matters when a future home or business begins with a conversation.' },
-  { id: 'rana-areeb-ali', name: 'Rana Areeb Ali', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Rana Areeb Ali).webp`, position: '48% 22%', quote: 'Trust is built one honest answer at a time.' },
+  { id: 'rana-areeb-ali', name: 'Rana Areeb Ali', callName: 'Areeb', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Rana Areeb Ali).webp`, position: '48% 22%', quote: 'Trust is built one honest answer at a time.' },
   { id: 'adan-shykh', name: 'Adan Shykh', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate (Adan-Shykh).jpg`, quote: 'The right space starts with asking the right questions.' },
   { id: 'haris-ali', name: 'Haris Ali', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate Haris Ali).jpg`, quote: 'A thoughtful introduction can turn a property search into a clear next step.' },
   { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate(Ghulam Ahmad).jpg`, quote: 'Good guidance keeps the search focused on fit, value and the life ahead.' },
