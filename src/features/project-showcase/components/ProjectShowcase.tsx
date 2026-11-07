@@ -88,8 +88,8 @@ export function LeadershipSection() {
 }
 
 /**
- * Team portraits share one crop and a monochrome navy treatment that evens out their different
- * backgrounds and lighting; hovering shows the photo in full colour.
+ * Team portraits share one 4:5 crop in full colour, framed in the Aureum navy mat with a gold
+ * keyline so photos of different sizes and backgrounds read as one set.
  */
 function TeamPortrait({ member }: { member: TeamMember }) {
   const imageStyle = {
@@ -98,7 +98,7 @@ function TeamPortrait({ member }: { member: TeamMember }) {
   } as CSSProperties;
 
   return (
-    <div className="teamPhoto">
+    <div className={`teamPhoto${member.tone === 'gold' ? ' isGoldTone' : ''}`}>
       <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 560px) 46vw, (max-width: 1000px) 30vw, 290px" style={imageStyle} />
     </div>
   );
