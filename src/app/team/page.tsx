@@ -19,7 +19,7 @@ export default function TeamPage() {
           <div>
             <Eyebrow>Our team / Aureum Mall &amp; Residences</Eyebrow>
             <h1>Meet the Aureum team.</h1>
-            <p>The leadership behind the project and the sales executives who will show you the site, explain the payment plan and answer your questions, supported by our marketing and creative team.</p>
+            <p>The leadership shaping Aureum, and the advisors who guide you personally from your first site visit through every stage of your investment, backed by a dedicated marketing and creative team.</p>
             <div className="actions">
               <ButtonLink href="#team">Meet the team <span aria-hidden="true">↓</span></ButtonLink>
               <ButtonLink href="/contact?intent=site_visit#enquiry" variant="secondary">Book a visit</ButtonLink>
