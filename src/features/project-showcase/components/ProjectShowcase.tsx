@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import { calcHref, formatLakhCrore, formatPKR, formatSqFt, PRICED_UNITS } from '@/features/payment-plans/units';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -91,9 +92,14 @@ export function LeadershipSection() {
  * backgrounds and lighting; hovering shows the photo in full colour.
  */
 function TeamPortrait({ member }: { member: TeamMember }) {
+  const imageStyle = {
+    '--team-image-zoom': member.imageZoom ?? 1,
+    ...(member.position ? { objectPosition: member.position } : {}),
+  } as CSSProperties;
+
   return (
     <div className="teamPhoto">
-      <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 560px) 46vw, (max-width: 1000px) 30vw, 290px" style={member.position ? { objectPosition: member.position } : undefined} />
+      <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 560px) 46vw, (max-width: 1000px) 30vw, 290px" style={imageStyle} />
     </div>
   );
 }
