@@ -9,7 +9,7 @@ import { APARTMENT_TYPES, DEVELOPER, LEADERSHIP, TEAM, visibleTeam } from './pro
 const publicFile = (path: string) => existsSync(join(process.cwd(), 'public', path));
 
 describe('images referenced by the content exist', () => {
-  it.each([...LEADERSHIP.flatMap((leader) => [leader.image.src, ...(leader.inset ? [leader.inset.src] : [])]), ...DEVELOPER.portfolio.map((project) => project.image), DEVELOPER.logo, ...TEAM.map((member) => member.image)])('%s', (src) => {
+  it.each([...LEADERSHIP.flatMap((leader) => [leader.image.src, ...(leader.inset ? [leader.inset.src] : [])]), ...DEVELOPER.portfolio.map((project) => project.image), DEVELOPER.logo, ...TEAM.flatMap((member) => (member.image ? [member.image] : []))])('%s', (src) => {
     expect(publicFile(src)).toBe(true);
   });
 

@@ -60,7 +60,8 @@ export type TeamMember = {
   id: string;
   name: string | null;
   role: string | null;
-  image: string;
+  /** Leave out until a photo is supplied; the card then shows the person's initials. */
+  image?: string;
   position?: string;
   /** Crop zoom used to bring full-body source portraits into the shared card framing. */
   imageZoom?: number;
@@ -84,17 +85,18 @@ const TEAM_PHOTOS = '/assets/aureum/approved/team/2026';
 export const TEAM: readonly TeamMember[] = [
   { id: 'arslan-ayub', name: 'Arslan Ayub', role: 'Marketing Head', department: 'Marketing', image: `${TEAM_PHOTOS}/Marketing Head (Arslan Ayub).jpg`, quote: 'A strong brand gives every visit, every message and every detail a clear sense of place.' },
   { id: 'dua-rana', name: 'Dua Rana', role: 'Sales Manager', image: `${TEAM_PHOTOS}/Sales Manager Dua Rana.jpg`, quote: 'A good sales experience begins with listening, then turns the right question into the right opportunity.' },
-  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Senior Graphic Designer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg`, quote: 'Good design makes the value of a place visible before a client ever steps inside.' },
-  { id: 'muhammad-husnain', name: 'Muhammad Husnain', role: 'Senior Videographer & Designer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Videographer and Designer (Muhammad Husnain).jpg`, position: '50% 30%', quote: 'A great frame lets people feel a place long before they walk through its doors.' },
-  { id: 'muhammad-irfan', name: 'Muhammad Irfan', role: 'Senior Photographer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Photographer (Muhammad Irfan).jpg`, position: '52% 12%', quote: 'The right light shows a space exactly as it will feel to live and work in.' },
-  { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Senior Sales Executive (Saqib Ali Rao).jpg`, position: '50% 15%', quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
-  { id: 'umaima-ahsan', name: 'Umaima Ahsan', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Umaima Ahsan).jpg`, imageZoom: 1.12, quote: 'The best conversation starts with understanding what a buyer wants to build, not just what they want to buy.' },
-  { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg`, quote: 'Clarity turns a first enquiry into a confident decision.' },
-  { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Senior Sales Executive', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg`, quote: 'Every detail matters when a future home or business begins with a conversation.' },
+  { id: 'hamzah-mughal', name: 'Hamzah Mughal', role: 'Creative Manager', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Graphic Designer (Hamzah Mughal).jpeg`, quote: 'Good design makes the value of a place visible before a client ever steps inside.' },
+  { id: 'muhammad-husnain', name: 'Muhammad Husnain', role: 'Video Editor & Videography Specialist', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Videographer and Designer (Muhammad Husnain).jpg`, position: '50% 30%', quote: 'A great frame lets people feel a place long before they walk through its doors.' },
+  { id: 'muhammad-irfan', name: 'Muhammad Irfan', role: 'Photographer', department: 'Creative', image: `${TEAM_PHOTOS}/Senior Photographer (Muhammad Irfan).jpg`, position: '52% 12%', quote: 'The right light shows a space exactly as it will feel to live and work in.' },
+  { id: 'syed-daniyal-haider', name: 'Syed Daniyal Haider', role: 'AI Automation Specialist', department: 'Marketing', quote: 'Smart automation gives our team more time for what matters most: every buyer, every conversation.' },
+  { id: 'saqib-ali-rao', name: 'Saqib Ali Rao', role: 'Investment Advisory Specialist', image: `${TEAM_PHOTOS}/Senior Sales Executive (Saqib Ali Rao).jpg`, position: '50% 15%', quote: 'I look at investment through two lenses: what it is worth today and what it can become tomorrow.' },
+  { id: 'umaima-ahsan', name: 'Umaima Ahsan', role: 'Investment Advisory Specialist', image: `${TEAM_PHOTOS}/(Senior Sales Associate )(Umaima Ahsan).jpg`, imageZoom: 1.12, quote: 'The best conversation starts with understanding what a buyer wants to build, not just what they want to buy.' },
+  { id: 'rimsha-khan', name: 'Rimsha Khan', role: 'Investment Advisory Specialist', image: `${TEAM_PHOTOS}/Senior Sales Associate (Rimsha-Khan).jpg`, quote: 'Clarity turns a first enquiry into a confident decision.' },
+  { id: 'tayyab-rabbani', name: 'Tayyab Rabbani', role: 'Investment Advisory Specialist', image: `${TEAM_PHOTOS}/Tayyab-Rabbani(Senior Sales Associate ).jpg`, quote: 'Every detail matters when a future home or business begins with a conversation.' },
   { id: 'rana-areeb-ali', name: 'Rana Areeb Ali', callName: 'Areeb', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Rana Areeb Ali).webp`, position: '48% 22%', quote: 'Trust is built one honest answer at a time.' },
   { id: 'adan-shykh', name: 'Adan Shykh', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate (Adan-Shykh).jpg`, quote: 'The right space starts with asking the right questions.' },
   { id: 'haris-ali', name: 'Haris Ali', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate Haris Ali).jpg`, quote: 'A thoughtful introduction can turn a property search into a clear next step.' },
-  { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate(Ghulam Ahmad).jpg`, quote: 'Great service isn’t about rushing a buyer to a decision; it’s about building a process so clear that the right choice makes itself.' },
+  { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Ghulam Ahmad).jpg`, imageZoom: 1.55, position: '42% 18%', quote: 'Great service isn’t about rushing a buyer to a decision; it’s about building a process so clear that the right choice makes itself.' },
   { id: 'saad-amjad', name: 'Saad Amjad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate(Saad Amjad).jpg`, quote: 'Every enquiry deserves a clear answer and a route forward.' },
   { id: 'wali-nasir', name: 'Wali Nasir', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate (Wali Nasir) 2026.jpg`, imageZoom: 1.12, position: '50% 22%', quote: 'The best way to represent a place is to understand the people it is meant for.' },
 ];

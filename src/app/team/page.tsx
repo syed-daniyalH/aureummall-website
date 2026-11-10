@@ -9,7 +9,7 @@ import { callHref } from '@/lib/whatsapp';
 export const metadata = createRouteMetadata('/team');
 
 /** The hero shows the team itself: a mosaic of six sales portraits rather than one person. */
-const HERO_FACES = salesTeam().slice(0, 6);
+const HERO_FACES = salesTeam().filter((member): member is typeof member & { image: string } => Boolean(member.image)).slice(0, 6);
 
 export default function TeamPage() {
   return (

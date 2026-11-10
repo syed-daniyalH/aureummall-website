@@ -8992,6 +8992,22 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
   white-space: nowrap;
 }
 
+/* No photo yet: gold serif initials on the navy mat, in the same frame as the portraits. */
+.teamPhoto.isMonogram {
+  display: grid;
+  place-items: center;
+}
+
+.teamPhoto.isMonogram span {
+  position: relative;
+  z-index: 2;
+  color: var(--gold-soft);
+  font-family: var(--font-serif);
+  font-size: clamp(56px, 6vw, 84px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 /* Team page hero: six sales portraits in a navy grid with gold keylines. */
 .wpInternalHeroImage.teamHeroMosaic {
   display: grid;

@@ -97,6 +97,15 @@ function TeamPortrait({ member }: { member: TeamMember }) {
     ...(member.position ? { objectPosition: member.position } : {}),
   } as CSSProperties;
 
+  if (!member.image) {
+    const initials = (member.name ?? 'Aureum').split(' ').filter((part) => part.length > 1).slice(0, 2).map((part) => part[0]).join('');
+    return (
+      <div className="teamPhoto isMonogram" role="img" aria-label={`${member.name ?? 'Aureum team member'}, photo coming soon`}>
+        <span aria-hidden="true">{initials}</span>
+      </div>
+    );
+  }
+
   return (
     <div className={`teamPhoto${member.tone === 'gold' ? ' isGoldTone' : ''}`}>
       <Image src={member.image} alt={member.name ? `${member.name}${member.role ? `, ${member.role}` : ''} at Aureum Mall & Residences` : 'Aureum team member'} fill sizes="(max-width: 700px) 40vw, (max-width: 1000px) 30vw, 290px" style={imageStyle} />
