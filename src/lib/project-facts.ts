@@ -96,7 +96,7 @@ export const TEAM: readonly TeamMember[] = [
   { id: 'rana-areeb-ali', name: 'Rana Areeb Ali', callName: 'Areeb', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Rana Areeb Ali).webp`, position: '48% 22%', quote: 'Trust is built one honest answer at a time.' },
   { id: 'adan-shykh', name: 'Adan Shykh', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate (Adan-Shykh).jpg`, quote: 'The right space starts with asking the right questions.' },
   { id: 'haris-ali', name: 'Haris Ali', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate Haris Ali).jpg`, quote: 'A thoughtful introduction can turn a property search into a clear next step.' },
-  { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Ghulam Ahmad).jpg`, imageZoom: 1.55, position: '42% 18%', quote: 'Great service isn’t about rushing a buyer to a decision; it’s about building a process so clear that the right choice makes itself.' },
+  { id: 'ghulam-ahmad', name: 'Ghulam Ahmad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Executive (Ghulam Ahmad) portrait.jpg`, position: '50% 20%', quote: 'Great service isn’t about rushing a buyer to a decision; it’s about building a process so clear that the right choice makes itself.' },
   { id: 'saad-amjad', name: 'Saad Amjad', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate(Saad Amjad).jpg`, quote: 'Every enquiry deserves a clear answer and a route forward.' },
   { id: 'wali-nasir', name: 'Wali Nasir', role: 'Sales Executive', image: `${TEAM_PHOTOS}/Sales Associate (Wali Nasir) 2026.jpg`, imageZoom: 1.12, position: '50% 22%', quote: 'The best way to represent a place is to understand the people it is meant for.' },
 ];
