@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { SiteHeader } from '@/components/SiteHeader';
+import '@/styles/animated-navbar.css';
+import { AureumFloatingNav } from '@/components/AureumFloatingNav';
 import { SiteFooter } from '@/components/SiteFooter';
 import { ContactActions } from '@/components/ContactActions';
 import { SITE } from '@/lib/site';
@@ -34,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <SiteSchema />
         <AnalyticsScripts />
         <a className="skipLink" href="#main-content">Skip to content</a>
-        <SiteHeader />
+        <AureumFloatingNav />
         <main id="main-content">{children}</main>
         <SiteFooter />
         <ContactActions />
