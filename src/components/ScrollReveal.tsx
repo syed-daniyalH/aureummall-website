@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, type CSSProperties, type FocusEvent, type ReactNode } from 'react';
 
 type ScrollRevealProps = {
   children: ReactNode;
@@ -9,41 +9,40 @@ type ScrollRevealProps = {
   as?: 'div' | 'section' | 'li' | 'article';
 };
 
-/**
- * Wraps content in a scroll-triggered fade-up reveal.
- * Uses IntersectionObserver — no external animation library needed.
- */
+let revealObserver: IntersectionObserver | undefined;
+
+function getRevealObserver() {
+  revealObserver ??= new IntersectionObserver((entries, observer) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        if (!entry.target.matches(':focus-within')) entry.target.classList.add('isVisible');
+        observer.unobserve(entry.target);
+      }
+    }
+  });
+  return revealObserver;
+}
+
 export function ScrollReveal({ children, className = '', delay = 0, as: Tag = 'div' }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const element = ref.current;
+    if (!element || !('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    // Respect prefers-reduced-motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      el.classList.add('isVisible');
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.classList.add('isVisible');
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -60px 0px' }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
+    const observer = getRevealObserver();
+    observer.observe(element);
+    return () => observer.unobserve(element);
   }, []);
 
-  const delayClass = delay > 0 ? ` revealDelay${delay}` : '';
-
   return (
-    <Tag ref={ref as any} className={`reveal${delayClass} ${className}`}>
+    <Tag
+      ref={(element: HTMLElement | null) => { ref.current = element; }}
+      onFocus={({ currentTarget }: FocusEvent<HTMLElement>) => currentTarget.classList.remove('isVisible')}
+      className={`reveal ${className}`.trim()}
+      style={{ '--reveal-delay': `${delay * 45}ms` } as CSSProperties}
+    >
       {children}
     </Tag>
   );

@@ -9453,24 +9453,35 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema, .wpInternalHero
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Scroll reveal animation ─────────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity var(--motion-reveal), transform var(--motion-reveal);
+@keyframes aureumEditorialReveal {
+  from {
+    opacity: 0.82;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.reveal.isVisible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes aureumHeroCopySettle {
+  from { transform: translateY(8px); }
+  to { transform: translateY(0); }
 }
 
-.reveal.revealDelay1 { transition-delay: 120ms; }
-.reveal.revealDelay2 { transition-delay: 240ms; }
-.reveal.revealDelay3 { transition-delay: 360ms; }
-.reveal.revealDelay4 { transition-delay: 480ms; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal.isVisible:not(:focus-within) {
+    animation: aureumEditorialReveal 540ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms) backwards;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .heroCinemaInner > h1,
+  .heroCinemaInner > .heroCinemaLead {
+    animation: aureumHeroCopySettle 580ms cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  .heroCinemaInner > .heroCinemaLead {
+    animation-delay: 65ms;
+  }
 }
 
 /* ── Global typography ───────────────────────────────────────────────────── */
