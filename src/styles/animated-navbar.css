@@ -155,9 +155,9 @@ body:has(> #main-content > section:first-of-type:is(.heroCinema,.wpInternalHero,
  .aureumPillLinksEnd{inset-inline:auto -40px}
 }
 @media(max-width:370px){
-
  .aureumPillArrow{font-size:20px}
- .siteHeader.aureumFloatingHeader .aureumPillBrand .brandMark{width:78px!important}
+ .aureumFloatingPill{padding-inline:4px}
+ .siteHeader.aureumFloatingHeader .aureumPillBrand .brandMark{width:56px!important}
  .aureumMegaSurface{padding:0 14px}
  .aureumMegaInquire{font-size:9px}
 }
