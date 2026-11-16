@@ -19,16 +19,25 @@ const SECONDARY_ROUTES = new Set(['/gallery', '/immersive-media#virtual-tour', '
 
 export function AureumFloatingNav() {
   const [open, setOpen] = useState(false);
-  const [exploreOpen, setExploreOpen] = useState(false);
+  const [dropdown, setDropdown] = useState<'explore' | 'plans' | null>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const openRef = useRef(open);
-  const pointerType = useRef('');
 
   useEffect(() => {
     openRef.current = open;
   }, [open]);
+
+  useEffect(() => {
+    if (!dropdown) return;
+    const active = pillRef.current?.querySelector(`[data-dropdown="${dropdown}"]`);
+    function dismiss(event: PointerEvent) {
+      if (event.target instanceof Node && !active?.contains(event.target)) setDropdown(null);
+    }
+    document.addEventListener('pointerdown', dismiss);
+    return () => document.removeEventListener('pointerdown', dismiss);
+  }, [dropdown]);
 
   // Compute scroll geometry in an animation frame; no new animation package required.
   useEffect(() => {
@@ -82,36 +91,72 @@ export function AureumFloatingNav() {
 
   function closeMenu() {
     setOpen(false);
-    setExploreOpen(false);
+    setDropdown(null);
   }
 
   function handleDialogClose() {
     setOpen(false);
-    setExploreOpen(false);
     menuButtonRef.current?.focus();
   }
 
   return (
     <header className="siteHeader aureumFloatingHeader">
-      <div className="aureumFloatingPill" ref={pillRef}>
-        <button
-          className="aureumPillMenu"
-          type="button"
-          ref={menuButtonRef}
-          aria-haspopup="dialog"
-          aria-expanded={open}
-          aria-controls="aureum-mega-dialog"
-          onClick={() => setOpen(true)}
-        >
-          <span className="aureumHamburger" aria-hidden="true"><i /><i /></span>
-          <span>MENU</span>
-        </button>
+      <div className="aureumFloatingPill" ref={pillRef} onKeyDown={(event) => {
+        if (event.key !== 'Escape' || !dropdown) return;
+        setDropdown(null);
+        pillRef.current?.querySelector<HTMLButtonElement>(`[data-dropdown="${dropdown}"] button`)?.focus();
+      }}>
+        <div className="aureumPillGroup">
+          <button
+            className="aureumPillMenu"
+            type="button"
+            ref={menuButtonRef}
+            aria-haspopup="dialog"
+            aria-expanded={open}
+            aria-controls="aureum-mega-dialog"
+            aria-label="Menu"
+            onClick={() => { setDropdown(null); setOpen(true); }}
+          >
+            <span className="aureumHamburger" aria-hidden="true"><i /><i /></span>
+            <span>MENU</span>
+          </button>
+          <div className="aureumPillDropdown" data-dropdown="explore"
+            onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdown(null); }}>
+            <button type="button" className="aureumPillTrigger" aria-expanded={dropdown === 'explore'}
+              aria-controls="aureum-explore-links" onClick={() => setDropdown(dropdown === 'explore' ? null : 'explore')}>
+              Explore <span className="aureumPillChevron" aria-hidden="true">⌄</span>
+            </button>
+            <div id="aureum-explore-links" className="aureumPillLinks" hidden={dropdown !== 'explore'}>
+              {EXPLORE.map((item) => (
+                <Link href={item.href} key={item.href} onClick={closeMenu}>
+                  <span><strong>{item.label}</strong><small>{item.detail}</small></span><span aria-hidden="true">↗</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
         <Link className="aureumPillBrand" href="/" onClick={closeMenu} aria-label={SITE.name + ' home'}>
           <BrandMark tone="light" />
         </Link>
-        <Link className="aureumPillInquire" href="/contact?intent=site_visit#enquiry" onClick={closeMenu}>
-          <span>INQUIRE</span><span aria-hidden="true" className="aureumPillArrow">→</span>
-        </Link>
+        <div className="aureumPillGroup aureumPillGroupEnd">
+          <div className="aureumPillDropdown" data-dropdown="plans"
+            onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setDropdown(null); }}>
+            <button type="button" className="aureumPillTrigger" aria-label="Payment Plans" aria-expanded={dropdown === 'plans'}
+              aria-controls="aureum-payment-links" onClick={() => setDropdown(dropdown === 'plans' ? null : 'plans')}>
+              <span><span className="aureumPillPaymentWord">Payment </span>Plans</span>
+              <span className="aureumPillChevron" aria-hidden="true">⌄</span>
+            </button>
+            <div id="aureum-payment-links" className="aureumPillLinks aureumPillLinksEnd" hidden={dropdown !== 'plans'}>
+              <Link href="/payment-plans" onClick={closeMenu}><strong>All payment plans</strong><span aria-hidden="true">↗</span></Link>
+              {PAYMENT_PLAN_PAGES.map((page) => (
+                <Link href={page.href} key={page.table.id} onClick={closeMenu}>{page.label}</Link>
+              ))}
+            </div>
+          </div>
+          <Link className="aureumPillInquire" href="/contact?intent=site_visit#enquiry" onClick={closeMenu} aria-label="Inquire">
+            <span>INQUIRE</span><span aria-hidden="true" className="aureumPillArrow">→</span>
+          </Link>
+        </div>
       </div>
 
       <dialog
@@ -151,46 +196,6 @@ export function AureumFloatingNav() {
                     <span aria-hidden="true">↗</span>
                   </Link>
                 ))}
-              </section>
-
-              <section className="aureumMegaSecondary" aria-label="More website pages">
-                <p className="aureumMegaLabel">DISCOVER MORE</p>
-                <div
-                  className="aureumMegaExplore"
-                  onPointerEnter={(event) => { if (event.pointerType === 'mouse') setExploreOpen(true); }}
-                  onPointerLeave={(event) => { if (event.pointerType === 'mouse' && !event.currentTarget.contains(document.activeElement)) setExploreOpen(false); }}
-                  onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setExploreOpen(false); }}
-                >
-                  <button
-                    type="button"
-                    className="aureumMegaSectionTrigger"
-                    aria-expanded={exploreOpen}
-                    aria-controls="aureum-explore-links"
-                    onPointerDown={(event) => { pointerType.current = event.pointerType; }}
-                    onClick={(event) => {
-                      const isMouse = event.detail > 0 && pointerType.current === 'mouse';
-                      pointerType.current = '';
-                      setExploreOpen((value) => isMouse ? true : !value);
-                    }}
-                  >
-                    <span>Explore</span><span className={'aureumMegaChevron' + (exploreOpen ? ' isOpen' : '')} aria-hidden="true">⌄</span>
-                  </button>
-                  <div id="aureum-explore-links" className="aureumMegaExploreLinks" hidden={!exploreOpen}>
-                    {EXPLORE.map((item) => (
-                      <Link href={item.href} key={item.href} onClick={closeMenu}>
-                        <span><strong>{item.label}</strong><small>{item.detail}</small></span><span aria-hidden="true">↗</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="aureumMegaPlans">
-                  <p className="aureumMegaLabel">PAYMENT PLANS</p>
-                  <Link className="aureumMegaPlansAll" href="/payment-plans" onClick={closeMenu}>All payment plans <span aria-hidden="true">↗</span></Link>
-                  {PAYMENT_PLAN_PAGES.map((page) => (
-                    <Link className="aureumMegaPlanLink" href={page.href} key={page.table.id} onClick={closeMenu}>{page.label}</Link>
-                  ))}
-                </div>
               </section>
 
               <aside className="aureumMegaFeature" aria-label="Visit Aureum">
