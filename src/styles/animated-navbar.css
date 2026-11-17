@@ -1,0 +1,172 @@
+/* Aureum V2: isolated floating navigation, layered after legacy globals. */
+.siteHeader.aureumFloatingHeader {
+  position:relative;z-index:150;height:var(--header-h,81px);min-height:var(--header-h,81px);
+  padding:0;border:0!important;box-shadow:none!important;background:transparent!important;
+  backdrop-filter:none!important;pointer-events:none
+}
+.siteHeader.aureumFloatingHeader::before,
+body:has(> #main-content > section:first-of-type:is(.heroCinema,.wpInternalHero,.paymentHero,.explorerHero,.mediaHero,.trustHero)) .siteHeader.aureumFloatingHeader::before{display:none!important;content:none!important}
+.aureumFloatingPill{
+ --aureum-pill-width:min(1120px,85vw);--aureum-pill-top:16px;--aureum-pill-radius:999px;
+ position:fixed;top:max(var(--aureum-pill-top),env(safe-area-inset-top));left:50%;transform:translateX(-50%);
+ display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;
+ width:var(--aureum-pill-width);max-width:calc(100vw - 24px);height:64px;padding:0 9px 0 24px;
+ background:color-mix(in srgb,var(--navy-deep) 94%,transparent);color:#fff;
+ border:1px solid color-mix(in srgb,var(--gold-soft) 45%,transparent);
+ border-radius:var(--aureum-pill-radius);box-shadow:0 12px 42px #07152a55;
+ backdrop-filter:blur(16px);isolation:isolate;pointer-events:auto
+}
+.aureumPillGroup{display:flex;align-items:center;gap:12px;justify-self:start}
+.aureumPillGroupEnd{justify-self:end}
+.aureumPillMenu,.aureumPillTrigger,.aureumPillInquire,.aureumMegaClose,.aureumMegaInquire{
+ display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;
+ background:none;border:0;color:inherit;font:700 12px var(--font-sans);
+ letter-spacing:.11em;cursor:pointer
+}
+.aureumPillMenu{justify-self:start;padding:0 8px}
+.aureumHamburger{display:grid;gap:6px;width:32px}
+.aureumHamburger i{width:32px;height:1px;background:var(--gold-soft);transition:width .2s ease}
+.aureumHamburger i:last-child{width:22px}
+.aureumPillMenu:hover .aureumHamburger i:last-child{width:32px}
+.aureumPillMenu:hover,.aureumMegaClose:hover{color:var(--gold-soft)}
+.aureumPillBrand,.aureumMegaLogo{display:inline-flex;justify-self:center;align-items:center;justify-content:center}
+.siteHeader.aureumFloatingHeader :is(.aureumPillBrand,.aureumMegaLogo) .brandMark{
+ display:block!important;width:114px!important;height:58px!important;border:0!important;overflow:hidden
+}
+.siteHeader.aureumFloatingHeader :is(.aureumPillBrand,.aureumMegaLogo) .brandMark img{
+ width:100%;height:100%;object-fit:contain;transform:scale(1.55)
+}
+.aureumPillInquire{justify-self:end;min-width:148px;padding:0 15px;
+ border:1px solid color-mix(in srgb,var(--gold-soft) 60%,transparent);border-radius:999px;
+ transition:background-color .2s,color .2s
+}
+.aureumPillInquire:hover{background:var(--gold-soft);color:var(--navy-deep)}
+.aureumPillArrow{font-size:23px;font-weight:400;line-height:0}
+.aureumPillDropdown{position:relative}
+.aureumPillTrigger{padding:0 8px;gap:6px;text-transform:uppercase;white-space:nowrap}
+.aureumPillTrigger:hover,.aureumPillTrigger[aria-expanded="true"]{color:var(--gold-soft)}
+.aureumPillChevron{color:var(--gold-soft);font-size:17px;transition:transform .2s}
+.aureumPillTrigger[aria-expanded="true"] .aureumPillChevron{transform:rotate(180deg)}
+.aureumPillLinks[hidden]{display:none}
+.aureumPillLinks{
+ position:absolute;top:calc(100% + 12px);inset-inline-start:0;display:grid;gap:2px;
+ width:min(252px,calc(100vw - 48px));max-height:calc(100dvh - 102px);overflow:auto;
+ padding:8px;border:1px solid color-mix(in srgb,var(--gold-soft) 45%,transparent);
+ border-radius:14px;background:var(--navy-deep);box-shadow:0 12px 42px #07152a70
+}
+.aureumPillLinksEnd{inset-inline:auto 0}
+.aureumPillLinks a{
+ display:flex;align-items:center;justify-content:space-between;min-height:44px;gap:12px;
+ padding:8px 10px;border-radius:6px;color:#fff;font:500 14px var(--font-sans)
+}
+.aureumPillLinks a:hover{background:#ffffff17}
+.aureumPillLinks a>span:has(small){display:grid;gap:2px}
+.aureumPillLinks small{color:#ffffffb8;font-size:11px}
+.aureumPillLinks a>span:last-child{color:var(--gold-soft)}
+.aureumPillLinks a:focus-visible{outline-offset:-3px}
+.aureumMegaDialog{
+ position:fixed;inset:0;width:100vw;max-width:none;height:100dvh;max-height:none;
+ margin:0;padding:12px;border:0;overflow:auto;color:#fff;
+ background:#05102bbb;pointer-events:auto
+}
+.aureumMegaDialog::backdrop{background:#05102b66}
+.aureumMegaSurface{
+ display:flex;flex-direction:column;min-height:calc(100dvh - 24px);
+ padding:0 clamp(22px,4vw,70px);
+ border:1px solid color-mix(in srgb,var(--gold-soft) 32%,transparent);
+ border-radius:28px;background:linear-gradient(130deg,var(--dark-surface,#1a3a7a),var(--navy-deep) 68%,#234985);
+ box-shadow:0 36px 90px #0004
+}
+.aureumMegaDialog[open]{animation:aureumMegaFadeIn .26s ease both}
+.aureumMegaDialog[open] .aureumMegaSurface{animation:aureumMegaSlide .42s cubic-bezier(.22,1,.36,1) both}
+.aureumMegaTop{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+ align-items:center;min-height:90px;border-bottom:1px solid color-mix(in srgb,var(--gold-soft) 32%,transparent)}
+.aureumMegaClose{justify-self:start}.aureumMegaClose span{font-size:27px;color:var(--gold-soft)}
+.aureumMegaInquire{justify-self:end;border-bottom:1px solid var(--gold-soft)}
+.aureumMegaInquire span{color:var(--gold-soft);font-size:20px}
+.aureumMegaNavigation{width:100%;max-width:1500px;margin:auto;padding:clamp(28px,5vh,70px) 0}
+.aureumMegaHeading{max-width:700px;margin-bottom:42px}
+.aureumMegaKicker,.aureumMegaLabel{color:var(--gold-soft);font:700 11px var(--font-sans);letter-spacing:.16em}
+.aureumMegaHeading h2{margin:12px 0;color:#fff;font:400 clamp(40px,5vw,76px)/1.06 var(--font-serif)}
+.aureumMegaHeading>p:last-child{margin:0;color:#ffffffb8}
+.aureumMegaColumns{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(240px,.88fr);gap:clamp(24px,4vw,70px)}
+.aureumMegaLabel{margin:0 0 14px}
+.aureumMegaMainLink{
+ display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:12px;min-height:60px;
+ border-bottom:1px solid color-mix(in srgb,var(--gold-soft) 27%,transparent);
+ font:400 clamp(25px,2.2vw,38px)/1.08 var(--font-serif);
+ transition:color .2s,padding-left .2s
+}
+.aureumMegaMainLink:hover{color:var(--gold-soft);padding-left:8px}
+.aureumMegaMainLink>span:last-child{font:400 20px var(--font-sans)}
+.aureumMegaIndex{color:var(--gold-soft);font:500 11px var(--font-sans)}
+.aureumMegaFeature{display:flex;flex-direction:column;justify-content:flex-end;min-height:370px;padding:30px;
+ border:1px solid color-mix(in srgb,var(--gold-soft) 33%,transparent);
+ border-radius:150px 150px 18px 18px;
+ background:radial-gradient(circle at 55% 8%,color-mix(in srgb,var(--coral,#e8766a) 25%,transparent),transparent 42%),
+ linear-gradient(160deg,var(--gold),var(--navy-deep) 80%)}
+.aureumMegaFeature p{color:var(--gold-soft);font-size:10px;letter-spacing:.16em}
+.aureumMegaFeature h3{margin:8px 0 18px;font:400 clamp(30px,2.7vw,43px)/1.07 var(--font-serif)}
+.aureumMegaFeature>span{color:#ffffffc7;font-size:12px}
+.aureumMegaFeature a{display:flex;justify-content:space-between;gap:10px;margin-top:26px;padding-top:13px;
+ border-top:1px solid color-mix(in srgb,var(--gold-soft) 55%,transparent);font-size:12px;font-weight:700}
+.aureumMegaFeature a span{color:var(--gold-soft)}
+.aureumMegaBottom{display:flex;justify-content:space-between;gap:20px;margin-top:auto;padding:25px 0;
+ border-top:1px solid color-mix(in srgb,var(--gold-soft) 30%,transparent);color:#ffffffb8;font-size:12px}
+.aureumMegaBottom a:hover{color:var(--gold-soft)}
+@keyframes aureumMegaFadeIn{from{opacity:0}to{opacity:1}}
+@keyframes aureumMegaSlide{from{opacity:.65;transform:translateY(-18px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:1040px){
+ .aureumPillGroup{gap:4px}
+ .aureumPillInquire{min-width:auto}
+ .aureumMegaColumns{grid-template-columns:minmax(0,1fr)}
+ .aureumMegaFeature{display:none}
+}
+@media(max-width:768px){
+ :root{--header-h:69px}
+ .siteHeader.aureumFloatingHeader{height:69px;min-height:69px}
+ .aureumFloatingPill{width:calc(100vw - 24px);height:58px;padding:0 6px 0 12px}
+ .aureumPillMenu{gap:7px;font-size:11px}
+ .aureumPillTrigger{padding:0 3px;gap:3px;font-size:10px;letter-spacing:.04em}
+ .aureumPillPaymentWord{display:none}
+ .aureumHamburger{width:25px}
+ .aureumHamburger i{width:25px}
+ .aureumHamburger i:last-child{width:18px}
+ .siteHeader.aureumFloatingHeader .aureumPillBrand .brandMark{width:84px!important;height:52px!important}
+ .aureumPillInquire{min-width:76px;min-height:42px;gap:6px;padding:0 9px;font-size:10px}
+ .aureumPillArrow{font-size:16px}
+ .aureumMegaDialog{padding:6px}
+ .aureumMegaSurface{min-height:calc(100dvh - 12px);padding:0 18px;border-radius:18px}
+ .aureumMegaTop{min-height:76px}
+ .siteHeader.aureumFloatingHeader .aureumMegaLogo .brandMark{width:92px!important;height:52px!important}
+ .aureumMegaClose,.aureumMegaInquire{font-size:11px;gap:5px}
+ .aureumMegaNavigation{padding:30px 0 38px}
+ .aureumMegaHeading{margin-bottom:28px}
+ .aureumMegaHeading h2{font-size:clamp(37px,8vw,58px)}
+ .aureumMegaColumns{grid-template-columns:1fr;gap:38px}
+ .aureumMegaMainLink{min-height:56px;font-size:28px}
+ .aureumMegaBottom{flex-direction:column;padding:18px 0}
+}
+@media(max-width:560px){
+ .aureumPillGroup{gap:2px}
+ .aureumPillMenu>span:last-child,.aureumPillInquire>span:first-child{display:none}
+ .aureumPillMenu,.aureumPillInquire{width:40px;min-width:40px;padding:0}
+ .aureumPillLinks{inset-inline-start:-40px}
+ .aureumPillLinksEnd{inset-inline:auto -40px}
+}
+@media(max-width:370px){
+ .aureumPillArrow{font-size:20px}
+ .aureumFloatingPill{padding-inline:4px}
+ .siteHeader.aureumFloatingHeader .aureumPillBrand .brandMark{width:56px!important}
+ .aureumMegaSurface{padding:0 14px}
+ .aureumMegaInquire{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ .aureumMegaDialog[open],.aureumMegaDialog[open] .aureumMegaSurface{animation:none}
+ .aureumHamburger i,.aureumMegaMainLink,.aureumPillChevron{transition:none}
+}
+#virtual-tour{scroll-margin-top:92px}
+.skipLink:focus{z-index:1000}
+.aureumMegaDialog :is(a,button):focus-visible,.aureumFloatingPill :is(a,button):focus-visible{
+ outline:3px solid var(--gold-soft);outline-offset:4px
+}
