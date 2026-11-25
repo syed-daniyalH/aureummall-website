@@ -29,7 +29,8 @@ export type ChatbotDeliveryResult =
   | { ok: false; reason: 'not_configured' | 'webhook_failed' };
 
 export async function deliverChatbotEvent(payload: ChatbotEventPayload): Promise<ChatbotDeliveryResult> {
-  const url = process.env.CHATBOT_CRM_WEBHOOK_URL || process.env.LEAD_WEBHOOK_URL;
+  const fallbackUrl = payload.event === 'lead_registered' ? process.env.LEAD_WEBHOOK_URL : '';
+  const url = process.env.CHATBOT_CRM_WEBHOOK_URL || fallbackUrl;
   if (!url) {
     if (process.env.NODE_ENV !== 'production') {
       console.info('[chatbot] CRM webhook is not configured; event not delivered in development:', payload.event, payload.sessionId);
@@ -41,8 +42,21 @@ export async function deliverChatbotEvent(payload: ChatbotEventPayload): Promise
   }
 
   const secret = process.env.CHATBOT_CRM_WEBHOOK_SECRET || process.env.LEAD_WEBHOOK_SECRET || '';
+  const compatibilityFields =
+    payload.event === 'lead_registered'
+      ? {
+          fullName: payload.lead?.fullName ?? '',
+          phone: payload.lead?.phone ?? '',
+          email: payload.lead?.email ?? '',
+          propertyInterest: payload.lead?.interestLabel ?? '',
+          intent: 'chatbot',
+          message: '',
+        }
+      : {};
+
   const body = JSON.stringify({
     ...payload,
+    ...compatibilityFields,
     secret,
   });
 
