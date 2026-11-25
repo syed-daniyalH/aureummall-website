@@ -273,7 +273,7 @@ export function AureumChatbot() {
           )}
 
           <nav className={styles.rail} aria-label="Chatbot actions">
-            <button className={`${styles.tab} ${activeTab === 'enquire' ? styles.tabActive : ''}`} type="button" aria-selected={activeTab === 'enquire'} onClick={() => selectTab('enquire')}>
+            <button className={`${styles.tab} ${activeTab === 'enquire' ? styles.tabActive : ''}`} type="button" aria-pressed={activeTab === 'enquire'} onClick={() => selectTab('enquire')}>
               <span className={styles.tabIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M4 20h16M6 20V9l6-4 6 4v11M9 20v-5h6v5M9 10h.01M12 10h.01M15 10h.01" /></svg>
               </span>
@@ -285,7 +285,7 @@ export function AureumChatbot() {
               </span>
               Call
             </a>
-            <button className={`${styles.tab} ${activeTab === 'chat' ? styles.tabActive : ''}`} type="button" aria-selected={activeTab === 'chat'} onClick={() => selectTab('chat')}>
+            <button className={`${styles.tab} ${activeTab === 'chat' ? styles.tabActive : ''}`} type="button" aria-pressed={activeTab === 'chat'} onClick={() => selectTab('chat')}>
               <span className={styles.tabIcon} aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5h-6L7 20v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z" /><path d="M8 9h.01M12 9h.01M16 9h.01" /></svg>
               </span>
