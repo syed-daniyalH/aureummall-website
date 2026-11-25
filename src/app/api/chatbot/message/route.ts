@@ -1,11 +1,13 @@
 import { randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { deliverChatbotEvent } from '@/lib/chatbot-delivery';
+import { departmentForInterest, type ChatbotInterest } from '@/lib/chatbot';
 
 const MessageSchema = z.object({
   sessionId: z.uuid(),
   message: z.string().trim().min(1, 'Please enter a message.').max(1000),
   pageUrl: z.string().url().max(1000).optional().default(''),
+  interest: z.enum(['studio', 'one_bed_apartment', 'two_bed_apartment', 'commercial', 'office', 'food_court_space', 'other']),
 });
 
 async function readJson(request: Request) {
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
     source: 'website_chatbot',
     channel: 'website',
     status: 'active',
-    department: 'Sales Operations',
+    department: departmentForInterest(parsed.data.interest as ChatbotInterest),
     message: parsed.data.message,
     pageUrl: parsed.data.pageUrl,
     referrer: '',
