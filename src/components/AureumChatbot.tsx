@@ -62,6 +62,7 @@ export function AureumChatbot() {
     }).catch(() => undefined);
     setSessionId('');
     setMode('welcome');
+    setOpen(false);
     setMessages([initialMessage]);
     setError('');
   }
@@ -166,6 +167,7 @@ export function AureumChatbot() {
           sessionId,
           message: nextMessage,
           pageUrl: window.location.href,
+          interest: form.interest,
         }),
       });
       const result = (await response.json().catch(() => ({}))) as { ok?: boolean; reply?: string; message?: string };
@@ -242,6 +244,7 @@ export function AureumChatbot() {
                   </label>
                 </div>
                 {error && <p className={styles.error} role="alert">{error}</p>}
+                <p className={styles.consent}>By continuing, you agree that the Aureum Sales Team may contact you about this enquiry.</p>
                 <button className={styles.submit} type="submit" disabled={status === 'submitting'}>
                   {status === 'submitting' ? 'Connecting…' : 'Start chat'}
                 </button>
